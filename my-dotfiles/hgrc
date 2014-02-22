@@ -1,0 +1,4 @@
+[ui]
+username = Alex Jeffery <apj21@sussex.ac.uk>
+[web]
+cacerts = /etc/ssl/certs/ca-certificates.crt

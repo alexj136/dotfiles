@@ -1,0 +1,31 @@
+background yes
+out_to_x no
+out_to_console yes
+update_interval 3
+total_run_times 0
+use_spacer none
+
+#^fg(\#aaaaaa)NET ${wireless_essid wlp12s0}^fg() \
+
+# Molokai colours
+#    light blue   - 4eb4fa
+#    mid blue     - 3579a8
+#    dark blue    - 30309b
+#    maroon       - 960050
+#    orange       - c47f2c
+#    bright green - 80ff00
+#    purple       - 7e40a5
+#    pink         - ff0090
+
+# Understated color theme
+#    light - aaaaaa
+#    dark  - 666666
+
+TEXT
+
+^fg(\#666666)CPU ${cpu cpu0}% ${acpitemp}C^fg() \
+^fg(\#aaaaaa)VOL ${exec amixer get Master -M | grep -oE "[[:digit:]]*%"} ${exec amixer get Master | grep -oE "\[on]|\[off]" | tr '[:lower:]' '[:upper:]'| sed 's/^.\(.*\).$/\1/'}^fg() \
+^fg(\#666666)RAM ${mem}^fg() \
+^fg(\#aaaaaa)BAT ${battery_short}^fg() \
+^fg(\#666666)${time %a %d %b %Y}^fg() \
+^fg(\#aaaaaa)${time %H:%M}^fg() \
