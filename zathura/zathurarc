@@ -1,3 +1,4 @@
-set font Droid\ Sans\ Mono\ 10
+#set font Droid\ Sans\ Mono\ 10
+set font Inconsolata\ 11
 set default-bg "#101010"
 set inputbar-fg "#000000"

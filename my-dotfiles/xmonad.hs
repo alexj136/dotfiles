@@ -242,7 +242,7 @@ myStartupHook = setWMName "LG3D"
 
 main = do
     statusDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w 700 " ++
-                                "-fn \'Droid Sans Mono:size=10' ")
+                                "-fn \'Inconsolata:size=11' ")
     xmonad defaultConfig
         { terminal           = myTerminal
         , focusFollowsMouse  = myFocusFollowsMouse
