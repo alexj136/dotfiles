@@ -32,5 +32,6 @@ exec trayer --edge top --align right --height 17 --widthtype pixel --width 20 --
 # Launch the screensaver daemon
 exec xscreensaver -no-splash &
 
-# Run XMonad
-exec xmonad
+# Run window manager
+#exec xmonad
+exec openbox
