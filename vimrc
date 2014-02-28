@@ -77,7 +77,8 @@ call pathogen#helptags() " Generate helptags for everything in 'runtimepath'
 :set guioptions=a
 
 " Font for gvim
-:set guifont=Droid\ Sans\ Mono\ 10
+":set guifont=Droid\ Sans\ Mono\ 10
+:set guifont=Inconsolata\ 11
 
 " Show line numbers at launch
 :set nu
