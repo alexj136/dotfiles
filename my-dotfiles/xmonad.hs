@@ -241,8 +241,20 @@ myStartupHook = setWMName "LG3D"
 -- Now run xmonad with the appropriate defaults
 
 main = do
-    statusDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w 700 " ++
+    -- Xmonad status bar
+    xmonadDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w 700 " ++
                                 "-fn \'Inconsolata:size=11' ")
+
+    -- Conky status bar
+    conkyDzenBar <- spawn ("conky -c /home/alex/.conkyrc | dzen2 -x 700 " ++
+                           "-y 0 -w 560 -ta r -fn 'Inconsolata:size=11' &")
+
+    --System tray
+    tray <- spawn ("trayer --edge top --align right --height 18 " ++
+                   "--widthtype pixel --width 20 --expand true " ++
+                   "--transparent true --alpha 0 --tint 0x111111 &")
+
+    -- Launch Xmonad
     xmonad defaultConfig
         { terminal           = myTerminal
         , focusFollowsMouse  = myFocusFollowsMouse
@@ -255,6 +267,6 @@ main = do
         , mouseBindings      = myMouseBindings
         , layoutHook         = myLayout
         , manageHook         = myManageHook
-        , logHook            = myLogHook statusDzenBar
+        , logHook            = myLogHook xmonadDzenBar
         , startupHook        = myStartupHook
         }

@@ -31,10 +31,10 @@
 
 <menu id="root-menu" label="Openbox 3">
   <separator label="Applications" />
-  <item label="xterm">
-    <action name="Execute"><command>xterm</command></action>
+  <item label="XTerm">
+    <action name="Execute"><command>xterm -geometry 90x23</command></action>
   </item>
-  <item label="gvim">
+  <item label="GVim">
     <action name="Execute">
       <command>gvim</command>
       <startupnotify>
