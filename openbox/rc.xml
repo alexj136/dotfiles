@@ -212,16 +212,16 @@
   <keybind key="S-A-Down">
     <action name="SendToDesktop"><to>down</to><wrap>no</wrap></action>
   </keybind>
-  <keybind key="W-F1">
+  <keybind key="W-1">
     <action name="GoToDesktop"><to>1</to></action>
   </keybind>
-  <keybind key="W-F2">
+  <keybind key="W-2">
     <action name="GoToDesktop"><to>2</to></action>
   </keybind>
-  <keybind key="W-F3">
+  <keybind key="W-3">
     <action name="GoToDesktop"><to>3</to></action>
   </keybind>
-  <keybind key="W-F4">
+  <keybind key="W-4">
     <action name="GoToDesktop"><to>4</to></action>
   </keybind>
   <keybind key="W-d">
@@ -260,9 +260,17 @@
       </finalactions>
     </action>
   </keybind>
-  <keybind key="C-A-Tab">
+  <keybind key="W-j">
     <action name="NextWindow">
-      <panels>yes</panels><desktop>yes</desktop>
+      <finalactions>
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </finalactions>
+    </action>
+  </keybind>
+  <keybind key="W-k">
+    <action name="PreviousWindow">
       <finalactions>
         <action name="Focus"/>
         <action name="Raise"/>
@@ -294,13 +302,22 @@
   </keybind>
 
   <!-- Keybindings for running applications -->
-  <keybind key="W-e">
+  <keybind key="W-t">
     <action name="Execute">
       <startupnotify>
         <enabled>true</enabled>
-        <name>Konqueror</name>
+        <name>XTerm</name>
       </startupnotify>
-      <command>kfmclient openProfile filemanagement</command>
+      <command>xterm -geometry 90x22</command>
+    </action>
+  </keybind>
+  <keybind key="W-y">
+    <action name="Execute">
+      <startupnotify>
+        <enabled>true</enabled>
+        <name>Firefox</name>
+      </startupnotify>
+      <command>firefox</command>
     </action>
   </keybind>
 </keyboard>

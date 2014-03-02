@@ -1,4 +1,17 @@
-# These things are run when an Openbox X Session is started.
+#!/bin/sh
+#
+# ~/.config/openbox/autostart
+#
+# This script runs when Openbox is started
 
 # Start PyPanel
 exec pypanel &
+
+# Start batti (battery level indicator)
+exec batti &
+
+# Start volumeicon (volume systray applet)
+exec volumeicon &
+
+# Restore the wallpaper
+exec sh ~/.fehbg &
