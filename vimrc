@@ -89,7 +89,9 @@ call pathogen#helptags() " Generate helptags for everything in 'runtimepath'
 " Color schemes (separate vim/gvim)
 if has ("gui_running")
   colorscheme molokai
-elseif match ($TERM, "xterm-256color") != -1 || match ($TERM, "xterm") != -1
+elseif match ($TERM, "xterm-256color")  != -1 ||
+     \ match ($TERM, "xterm")           != -1 ||
+     \ match ($TERM, "screen-256color") != -1
   set t_Co=256
   colorscheme molokai
 else
