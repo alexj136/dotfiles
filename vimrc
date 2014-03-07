@@ -25,14 +25,12 @@ endif
 " turn on this option as well
 set background=dark
 
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
+" Jump to the last position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
+" Load indentation rules and plugins according to the detected filetype.
 if has("autocmd")
   filetype plugin indent on
 endif
@@ -77,7 +75,6 @@ call pathogen#helptags() " Generate helptags for everything in 'runtimepath'
 :set guioptions=a
 
 " Font for gvim
-":set guifont=Droid\ Sans\ Mono\ 10
 :set guifont=Inconsolata\ 11
 
 " Show line numbers at launch
@@ -86,7 +83,8 @@ call pathogen#helptags() " Generate helptags for everything in 'runtimepath'
 " Wrap long lines only between separate words, do not wrap within a word
 :set wrap lbr
 
-" Color schemes (separate vim/gvim)
+" Color schemes - if we're in gvim, or a terminal that supports 256 colors,
+" use molokai. Otherwise, use the default color scheme.
 if has ("gui_running")
   colorscheme molokai
 elseif match ($TERM, "xterm-256color")  != -1 ||
@@ -96,6 +94,16 @@ elseif match ($TERM, "xterm-256color")  != -1 ||
   colorscheme molokai
 else
   colorscheme default
+endif
+
+" ================
+" WildMenu Options
+" ================
+
+if has ("wildmenu")
+    set wildmenu
+    set wildmode=longest,list,full
+    set wildignore+=*.o,*.hi,*.swp
 endif
 
 " ============
