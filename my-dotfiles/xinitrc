@@ -17,21 +17,11 @@ exec xrdb -merge ~/.Xresources &
 # Run the network manager tray icon
 exec nm-applet &
 
-# Map caps lock to escape
-exec setxkbmap -option caps:escape &
-
 # Set desktop wallpaper
 exec sh ~/.fehbg &
-
-# Launch conky MOVED TO XMONAD
-#exec conky -c /home/alex/.conkyrc | dzen2 -x 700 -y 0 -w 560 -ta r -fn 'Droid Sans Mono:size=10' &
-#exec conky -c /home/alex/.conkyrc | dzen2 -x 700 -y 0 -w 560 -ta r -fn 'Inconsolata:size=11' &
-
-# Run the system tray MOVED TO XMONAD
-#exec trayer --edge top --align right --height 18 --widthtype pixel --width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &
 
 # Launch the screensaver daemon
 exec xscreensaver -no-splash &
 
 # Run window manager selected by SLiM
-exec $1
+exec xmonad

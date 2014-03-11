@@ -18,6 +18,8 @@ import System.Exit
 
 import System.IO (stderr)
 
+import Network.BSD (HostName, getHostName)
+
 import XMonad.Hooks.SetWMName
 
 import qualified XMonad.StackSet               as W
@@ -238,21 +240,64 @@ myLogHook h = dynamicLogWithPP $ dzenPP
 myStartupHook = setWMName "LG3D"
  
 ------------------------------------------------------------------------
+-- Host-Specific Settings
+
+data HostConfig = HostConfig
+    { xmonadStatus :: String
+    , systemStatus :: String
+    , tray         :: String
+    }
+
+hostLookup :: (HostConfig -> String) -> HostName -> String
+hostLookup hostFn hostNm = case M.lookup hostNm hosts of
+    Nothing   -> error "Host not configured"
+    Just hst  -> hostFn hst
+
+hosts :: M.Map HostName HostConfig
+hosts = M.fromList
+    [ ("Alex-ThinkPad", thinkPad)
+    , ("Alex-Latitude", latitude)
+    ]
+
+-- ThinkPad T430
+thinkPad :: HostConfig
+thinkPad = HostConfig
+    -- Xmonad status bar
+    "dzen2 -ta l -x 0 -y 0 -w 800 -fn \'Inconsolata:size=11' "
+    -- System status bar
+    ("conky -c /home/alex/.conkyrc | " ++
+    "dzen2 -x 800 -y 0 -w 780 -ta r -fn 'Inconsolata:size=11' &")
+    -- System tray
+    ("trayer --edge top --align right --height 18 --widthtype pixel " ++
+    "--width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &")
+
+-- Latitude E4300
+latitude :: HostConfig
+latitude = HostConfig
+    -- Xmonad status bar
+    "dzen2 -ta l -x 0 -y 0 -w 700 -fn \'Inconsolata:size=11' "
+    -- System status bar
+    ("conky -c /home/alex/.conkyrc | " ++
+    "dzen2 -x 700 -y 0 -w 560 -ta r -fn 'Inconsolata:size=11' &")
+    -- System tray
+    ("trayer --edge top --align right --height 18 --widthtype pixel " ++
+    "--width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &")
+
+------------------------------------------------------------------------
 -- Now run xmonad with the appropriate defaults
 
 main = do
+
+    host <- getHostName
+
     -- Xmonad status bar
-    xmonadDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w 700 " ++
-                                "-fn \'Inconsolata:size=11' ")
+    xmonadDzenBar <- spawnPipe (hostLookup xmonadStatus host)
 
-    -- Conky status bar
-    conkyDzenBar <- spawn ("conky -c /home/alex/.conkyrc | dzen2 -x 700 " ++
-                           "-y 0 -w 560 -ta r -fn 'Inconsolata:size=11' &")
+    -- System status bar
+    systemDzenBar <- spawn (hostLookup systemStatus host)
 
-    --System tray
-    tray <- spawn ("trayer --edge top --align right --height 18 " ++
-                   "--widthtype pixel --width 20 --expand true " ++
-                   "--transparent true --alpha 0 --tint 0x111111 &")
+    -- System tray
+    systemTray <- spawn (hostLookup tray host)
 
     -- Launch Xmonad
     xmonad defaultConfig
