@@ -75,7 +75,7 @@ call pathogen#helptags() " Generate helptags for everything in 'runtimepath'
 :set guioptions=a
 
 " Font for gvim
-:set guifont=Inconsolata\ 11
+:set guifont=Inconsolata\ 12
 
 " Show line numbers at launch
 :set nu
@@ -102,7 +102,7 @@ endif
 
 if has ("wildmenu")
     set wildmenu
-    set wildmode=longest,list,full
+    set wildmode=longest,full
     set wildignore+=*.o,*.hi,*.swp
 endif
 
