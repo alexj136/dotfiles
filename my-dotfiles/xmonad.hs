@@ -118,8 +118,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_c     ), restart "xmonad" True)
 
     -- Volume keys
-    , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer set Master 5-")
-    , ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer set Master 5+")
+    , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer -M set Master 5%-")
+    , ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer -M set Master 5%+")
     , ((0, xF86XK_AudioMute          ), spawn "amixer set Master toggle")
 
     -- Lock the screen
@@ -169,7 +169,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 
-myLayout = smartBorders (avoidStruts (Mirror tiled ||| tiled ||| Full) ||| Full)
+myLayout = smartBorders (avoidStruts (tiled ||| Mirror tiled ||| Full) ||| Full)
   where
     tiled   = ResizableTall nmaster delta ratio [2/100]
     nmaster = 1     -- The default number of windows in the master pane
