@@ -7,6 +7,8 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.SetWMName
+import XMonad.Actions.CycleWS
 import XMonad.Util.Run
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
@@ -20,11 +22,9 @@ import System.IO (stderr)
 
 import Network.BSD (HostName, getHostName)
 
-import XMonad.Hooks.SetWMName
-
 import qualified XMonad.StackSet               as W
-import qualified Data.Map                      as M
 import qualified XMonad.Actions.FlexibleResize as F
+import qualified Data.Map                      as M
  
 ------------------------------------------------------------------------
 -- Simple settings
@@ -70,8 +70,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
  
-    -- Move focus to the next window
-    , ((modm,               xK_Tab   ), windows W.focusDown)
+    -- Cycle non-empty workspaces with mod+tab or mod+shift+tab
+    , ((modm,               xK_Tab   ), moveTo Next NonEmptyWS)
+    , ((modm .|. shiftMask, xK_Tab   ), moveTo Prev NonEmptyWS)
  
     -- Move focus to the next window
     , ((modm,               xK_j     ), windows W.focusDown)
@@ -155,7 +156,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- mod-button3, Set the window to floating mode and resize by dragging
     , ((modMask, button3), (\w -> focus w >> F.mouseResizeWindow w))
  
-    -- you may also bind events to the mouse scroll wheel (button4 and button5)
+    -- Scroll through non-empty workspaces with mod+scrollwheel
+    , ((modMask, button4), (\w -> moveTo Prev NonEmptyWS))
+    , ((modMask, button5), (\w -> moveTo Next NonEmptyWS))
     ]
  
 ------------------------------------------------------------------------
