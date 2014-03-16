@@ -7,6 +7,8 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.SetWMName
+import XMonad.Actions.CycleWS
 import XMonad.Util.Run
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
@@ -18,11 +20,11 @@ import System.Exit
 
 import System.IO (stderr)
 
-import XMonad.Hooks.SetWMName
+import Network.BSD (HostName, getHostName)
 
 import qualified XMonad.StackSet               as W
-import qualified Data.Map                      as M
 import qualified XMonad.Actions.FlexibleResize as F
+import qualified Data.Map                      as M
  
 ------------------------------------------------------------------------
 -- Simple settings
@@ -68,8 +70,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
  
-    -- Move focus to the next window
-    , ((modm,               xK_Tab   ), windows W.focusDown)
+    -- Cycle non-empty workspaces with mod+tab or mod+shift+tab
+    , ((modm,               xK_Tab   ), moveTo Next NonEmptyWS)
+    , ((modm .|. shiftMask, xK_Tab   ), moveTo Prev NonEmptyWS)
  
     -- Move focus to the next window
     , ((modm,               xK_j     ), windows W.focusDown)
@@ -116,8 +119,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_c     ), restart "xmonad" True)
 
     -- Volume keys
-    , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer set Master 5-")
-    , ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer set Master 5+")
+    , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer -M set Master 5%-")
+    , ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer -M set Master 5%+")
     , ((0, xF86XK_AudioMute          ), spawn "amixer set Master toggle")
 
     -- Lock the screen
@@ -153,7 +156,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- mod-button3, Set the window to floating mode and resize by dragging
     , ((modMask, button3), (\w -> focus w >> F.mouseResizeWindow w))
  
-    -- you may also bind events to the mouse scroll wheel (button4 and button5)
+    -- Scroll through non-empty workspaces with mod+scrollwheel
+    , ((modMask, button4), (\w -> moveTo Prev NonEmptyWS))
+    , ((modMask, button5), (\w -> moveTo Next NonEmptyWS))
     ]
  
 ------------------------------------------------------------------------
@@ -167,7 +172,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 
-myLayout = smartBorders (avoidStruts (Mirror tiled ||| tiled ||| Full) ||| Full)
+myLayout = smartBorders (avoidStruts (tiled ||| Mirror tiled ||| Full) ||| Full)
   where
     tiled   = ResizableTall nmaster delta ratio [2/100]
     nmaster = 1     -- The default number of windows in the master pane
@@ -238,21 +243,64 @@ myLogHook h = dynamicLogWithPP $ dzenPP
 myStartupHook = setWMName "LG3D"
  
 ------------------------------------------------------------------------
+-- Host-Specific Settings
+
+data HostConfig = HostConfig
+    { xmonadStatus :: String
+    , systemStatus :: String
+    , tray         :: String
+    }
+
+hostLookup :: (HostConfig -> String) -> HostName -> String
+hostLookup hostFn hostNm = case M.lookup hostNm hosts of
+    Nothing   -> error "Host not configured"
+    Just hst  -> hostFn hst
+
+hosts :: M.Map HostName HostConfig
+hosts = M.fromList
+    [ ("Alex-ThinkPad", thinkPad)
+    , ("Alex-Latitude", latitude)
+    ]
+
+-- ThinkPad T430
+thinkPad :: HostConfig
+thinkPad = HostConfig
+    -- Xmonad status bar
+    "dzen2 -ta l -x 0 -y 0 -w 800 -fn \'Inconsolata:size=12' "
+    -- System status bar
+    ("conky -c /home/alex/.conkyrc | " ++
+    "dzen2 -x 800 -y 0 -w 780 -ta r -fn 'Inconsolata:size=12' &")
+    -- System tray
+    ("trayer --edge top --align right --height 19 --widthtype pixel " ++
+    "--width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &")
+
+-- Latitude E4300
+latitude :: HostConfig
+latitude = HostConfig
+    -- Xmonad status bar
+    "dzen2 -ta l -x 0 -y 0 -w 700 -fn \'Inconsolata:size=11' "
+    -- System status bar
+    ("conky -c /home/alex/.conkyrc | " ++
+    "dzen2 -x 700 -y 0 -w 560 -ta r -fn 'Inconsolata:size=11' &")
+    -- System tray
+    ("trayer --edge top --align right --height 18 --widthtype pixel " ++
+    "--width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &")
+
+------------------------------------------------------------------------
 -- Now run xmonad with the appropriate defaults
 
 main = do
+
+    host <- getHostName
+
     -- Xmonad status bar
-    xmonadDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w 700 " ++
-                                "-fn \'Inconsolata:size=11' ")
+    xmonadDzenBar <- spawnPipe (hostLookup xmonadStatus host)
 
-    -- Conky status bar
-    conkyDzenBar <- spawn ("conky -c /home/alex/.conkyrc | dzen2 -x 700 " ++
-                           "-y 0 -w 560 -ta r -fn 'Inconsolata:size=11' &")
+    -- System status bar
+    systemDzenBar <- spawn (hostLookup systemStatus host)
 
-    --System tray
-    tray <- spawn ("trayer --edge top --align right --height 18 " ++
-                   "--widthtype pixel --width 20 --expand true " ++
-                   "--transparent true --alpha 0 --tint 0x111111 &")
+    -- System tray
+    systemTray <- spawn (hostLookup tray host)
 
     -- Launch Xmonad
     xmonad defaultConfig
