@@ -12,7 +12,6 @@ import XMonad.Actions.CycleWS
 import XMonad.Util.Run
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
-import XMonad.Layout.Groups
 
 import Graphics.X11.ExtraTypes.XF86
 
@@ -56,7 +55,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
  
     -- launch dmenu
     , ((modm,               xK_d     ), spawn "exe=`dmenu_run -b` && eval \"exec $exe\"")
-    , ((modm,               xK_g     ), spawn "gmrun")
  
     -- close focused window 
     , ((modm .|. shiftMask, xK_q     ), kill)
@@ -99,7 +97,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Shrink/Expand child areas
     , ((modm .|. shiftMask, xK_h     ), sendMessage MirrorShrink)
     , ((modm .|. shiftMask, xK_l     ), sendMessage MirrorExpand)
- 
+
     -- Push window back into tiling
     , ((modm              , xK_i     ), withFocused $ windows . W.sink)
  
@@ -172,12 +170,13 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 
-myLayout = smartBorders (avoidStruts (tiled ||| Mirror tiled ||| Full) ||| Full)
+myLayout = smartBorders $ avoidStruts (tiled ||| Mirror tiled ||| Full) ||| Full
   where
-    tiled   = ResizableTall nmaster delta ratio [2/100]
-    nmaster = 1     -- The default number of windows in the master pane
-    delta   = 3/100 -- Percent of screen to increment by when resizing panes
-    ratio   = 1/2   -- Default proportion of screen occupied by master pane
+    tiled   = ResizableTall nmaster delta ratio slaves
+    nmaster = 1         -- The default number of windows in the master pane
+    delta   = 3/100     -- Percent of screen to increment by when resizing panes
+    ratio   = 1/2       -- Default proportion of screen occupied by master pane
+    slaves  = [2/100]
  
 ------------------------------------------------------------------------
 -- Window rules
