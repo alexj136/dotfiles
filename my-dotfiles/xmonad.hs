@@ -248,6 +248,7 @@ data HostConfig = HostConfig
     { xmonadStatus :: String
     , systemStatus :: String
     , tray         :: String
+    , xrandr       :: String
     }
 
 hostLookup :: (HostConfig -> String) -> HostName -> String
@@ -259,6 +260,7 @@ hosts :: M.Map HostName HostConfig
 hosts = M.fromList
     [ ("Alex-ThinkPad", thinkPad)
     , ("Alex-Latitude", latitude)
+    , ("Alex-Desktop" , desktop )
     ]
 
 -- ThinkPad T430
@@ -267,11 +269,13 @@ thinkPad = HostConfig
     -- Xmonad status bar
     "dzen2 -ta l -x 0 -y 0 -w 800 -fn \'Inconsolata:size=12' "
     -- System status bar
-    ("conky -c /home/alex/.conkyrc | " ++
-    "dzen2 -x 800 -y 0 -w 780 -ta r -fn 'Inconsolata:size=12' &")
+    "conky -c /home/alex/.conkyrc | \
+    \dzen2 -x 800 -y 0 -w 780 -ta r -fn 'Inconsolata:size=12' &"
     -- System tray
-    ("trayer --edge top --align right --height 19 --widthtype pixel " ++
-    "--width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &")
+    "trayer --edge top --align right --height 19 --widthtype pixel \
+    \--width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &"
+    -- Screen resolution
+    "xrandr --auto"
 
 -- Latitude E4300
 latitude :: HostConfig
@@ -279,11 +283,27 @@ latitude = HostConfig
     -- Xmonad status bar
     "dzen2 -ta l -x 0 -y 0 -w 700 -fn \'Inconsolata:size=11' "
     -- System status bar
-    ("conky -c /home/alex/.conkyrc | " ++
-    "dzen2 -x 700 -y 0 -w 560 -ta r -fn 'Inconsolata:size=11' &")
+    "conky -c /home/alex/.conkyrc | \
+    \dzen2 -x 700 -y 0 -w 560 -ta r -fn 'Inconsolata:size=11' &"
     -- System tray
-    ("trayer --edge top --align right --height 18 --widthtype pixel " ++
-    "--width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &")
+    "trayer --edge top --align right --height 18 --widthtype pixel \
+    \--width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &"
+    -- Screen resolution
+    "xrandr --auto"
+
+-- Desktop
+desktop :: HostConfig
+desktop = HostConfig
+    -- Xmonad status bar
+    "dzen2 -ta l -x 0 -y 0 -w 960 -fn \'Inconsolata:size=12' "
+    -- System status bar
+    "conky -c /home/alex/.conkyrc | \
+    \dzen2 -x 960 -y 0 -w 960 -ta r -fn 'Inconsolata:size=12' &"
+    -- System tray (none necessary
+    ""
+    -- Screen resolution
+    "xrandr --output HDMI-0 --mode 1920x1080 --primary --left-of DVI-0 \
+    \--output DVI-0 --mode 1280x1024"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with the appropriate defaults
@@ -291,6 +311,9 @@ latitude = HostConfig
 main = do
 
     host <- getHostName
+
+    -- Set screen resolution
+    runXrandr <- spawn(hostLookup xrandr host)
 
     -- Xmonad status bar
     xmonadDzenBar <- spawnPipe (hostLookup xmonadStatus host)
