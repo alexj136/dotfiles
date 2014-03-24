@@ -267,29 +267,29 @@ hosts = M.fromList
 thinkPad :: HostConfig
 thinkPad = HostConfig
     -- Xmonad status bar
-    "dzen2 -ta l -x 0 -y 0 -w 800 -fn \'Inconsolata:size=12' &"
+    "dzen2 -ta l -x 0 -y 0 -w 800 -fn \'Inconsolata:size=12'"
     -- System status bar
     "conky -c /home/alex/.conkyrc | \
-    \dzen2 -x 800 -y 0 -w 780 -ta r -fn 'Inconsolata:size=12' &"
+    \dzen2 -x 800 -y 0 -w 780 -ta r -fn 'Inconsolata:size=12'"
     -- System tray
     "trayer --edge top --align right --height 19 --widthtype pixel \
-    \--width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &"
+    \--width 20 --expand true --transparent true --alpha 0 --tint 0x111111"
     -- Screen resolution
-    "xrandr --auto &"
+    "xrandr --auto"
 
 -- Latitude E4300
 latitude :: HostConfig
 latitude = HostConfig
     -- Xmonad status bar
-    "dzen2 -ta l -x 0 -y 0 -w 700 -fn \'Inconsolata:size=11' &"
+    "dzen2 -ta l -x 0 -y 0 -w 700 -fn \'Inconsolata:size=11'"
     -- System status bar
     "conky -c /home/alex/.conkyrc | \
-    \dzen2 -x 700 -y 0 -w 560 -ta r -fn 'Inconsolata:size=11' &"
+    \dzen2 -x 700 -y 0 -w 560 -ta r -fn 'Inconsolata:size=11'"
     -- System tray
     "trayer --edge top --align right --height 18 --widthtype pixel \
-    \--width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &"
+    \--width 20 --expand true --transparent true --alpha 0 --tint 0x111111"
     -- Screen resolution
-    "xrandr --auto &"
+    "xrandr --auto"
 
 -- Desktop
 desktop :: HostConfig
