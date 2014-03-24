@@ -17,9 +17,6 @@ exec xrdb -merge ~/.Xresources &
 # Run the network manager tray icon
 exec nm-applet &
 
-# Set desktop wallpaper
-exec sh ~/.fehbg &
-
 # Launch the screensaver daemon
 exec xscreensaver -no-splash &
 
