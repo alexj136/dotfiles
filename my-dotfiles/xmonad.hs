@@ -12,7 +12,6 @@ import XMonad.Actions.CycleWS
 import XMonad.Util.Run
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
-import XMonad.Layout.Groups
 
 import Graphics.X11.ExtraTypes.XF86
 
@@ -56,7 +55,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
  
     -- launch dmenu
     , ((modm,               xK_d     ), spawn "exe=`dmenu_run -b` && eval \"exec $exe\"")
-    , ((modm,               xK_g     ), spawn "gmrun")
  
     -- close focused window 
     , ((modm .|. shiftMask, xK_q     ), kill)
@@ -99,7 +97,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Shrink/Expand child areas
     , ((modm .|. shiftMask, xK_h     ), sendMessage MirrorShrink)
     , ((modm .|. shiftMask, xK_l     ), sendMessage MirrorExpand)
- 
+
     -- Push window back into tiling
     , ((modm              , xK_i     ), withFocused $ windows . W.sink)
  
@@ -172,12 +170,13 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 
-myLayout = smartBorders (avoidStruts (tiled ||| Mirror tiled ||| Full) ||| Full)
+myLayout = smartBorders $ avoidStruts (tiled ||| Mirror tiled ||| Full) ||| Full
   where
-    tiled   = ResizableTall nmaster delta ratio [2/100]
-    nmaster = 1     -- The default number of windows in the master pane
-    delta   = 3/100 -- Percent of screen to increment by when resizing panes
-    ratio   = 1/2   -- Default proportion of screen occupied by master pane
+    tiled   = ResizableTall nmaster delta ratio slaves
+    nmaster = 1         -- The default number of windows in the master pane
+    delta   = 3/100     -- Percent of screen to increment by when resizing panes
+    ratio   = 1/2       -- Default proportion of screen occupied by master pane
+    slaves  = [2/100]
  
 ------------------------------------------------------------------------
 -- Window rules
@@ -243,50 +242,6 @@ myLogHook h = dynamicLogWithPP $ dzenPP
 myStartupHook = setWMName "LG3D"
  
 ------------------------------------------------------------------------
--- Host-Specific Settings
-
-data HostConfig = HostConfig
-    { xmonadStatus :: String
-    , systemStatus :: String
-    , tray         :: String
-    }
-
-hostLookup :: (HostConfig -> String) -> HostName -> String
-hostLookup hostFn hostNm = case M.lookup hostNm hosts of
-    Nothing   -> error "Host not configured"
-    Just hst  -> hostFn hst
-
-hosts :: M.Map HostName HostConfig
-hosts = M.fromList
-    [ ("Alex-ThinkPad", thinkPad)
-    , ("Alex-Latitude", latitude)
-    ]
-
--- ThinkPad T430
-thinkPad :: HostConfig
-thinkPad = HostConfig
-    -- Xmonad status bar
-    "dzen2 -ta l -x 0 -y 0 -w 800 -fn \'Inconsolata:size=12' "
-    -- System status bar
-    ("conky -c /home/alex/.conkyrc | " ++
-    "dzen2 -x 800 -y 0 -w 780 -ta r -fn 'Inconsolata:size=12' &")
-    -- System tray
-    ("trayer --edge top --align right --height 19 --widthtype pixel " ++
-    "--width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &")
-
--- Latitude E4300
-latitude :: HostConfig
-latitude = HostConfig
-    -- Xmonad status bar
-    "dzen2 -ta l -x 0 -y 0 -w 700 -fn \'Inconsolata:size=11' "
-    -- System status bar
-    ("conky -c /home/alex/.conkyrc | " ++
-    "dzen2 -x 700 -y 0 -w 560 -ta r -fn 'Inconsolata:size=11' &")
-    -- System tray
-    ("trayer --edge top --align right --height 18 --widthtype pixel " ++
-    "--width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &")
-
-------------------------------------------------------------------------
 -- Now run xmonad with the appropriate defaults
 
 main = do
@@ -294,13 +249,16 @@ main = do
     host <- getHostName
 
     -- Xmonad status bar
-    xmonadDzenBar <- spawnPipe (hostLookup xmonadStatus host)
-
-    -- System status bar
-    systemDzenBar <- spawn (hostLookup systemStatus host)
-
-    -- System tray
-    systemTray <- spawn (hostLookup tray host)
+    xmonadDzenBar <- spawnPipe $
+        case host of
+            "Alex-ThinkPad" ->
+                "dzen2 -ta l -x 0 -y 0 -w 800 -fn \'Inconsolata:size=12'"
+            "Alex-Latitude" ->
+                "dzen2 -ta l -x 0 -y 0 -w 700 -fn \'Inconsolata:size=11'"
+            "Alex-Desktop"  ->
+                "dzen2 -ta l -x 0 -y 0 -w 960 -fn \'Inconsolata:size=12'"
+            other           ->
+                "echo \'Hostname: " ++ other ++ " not recognised\' > ~/xmoErr"
 
     -- Launch Xmonad
     xmonad defaultConfig

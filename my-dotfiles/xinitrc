@@ -17,11 +17,40 @@ exec xrdb -merge ~/.Xresources &
 # Run the network manager tray icon
 exec nm-applet &
 
+# Launch the screensaver daemon
+exec xscreensaver -no-splash &
+
 # Set desktop wallpaper
 exec sh ~/.fehbg &
 
-# Launch the screensaver daemon
-exec xscreensaver -no-splash &
+if [ "$HOSTNAME" == "Alex-ThinkPad" ]; then
+    # System status bar
+    exec conky -c /home/alex/.conkyrc | dzen2 -x 800 -y 0 -w 780 -ta r \
+        -fn 'Inconsolata:size=12' &
+    # System tray
+    exec trayer --edge top --align right --height 19 --widthtype pixel \
+        --width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &
+
+elif [ "$HOSTNAME" == "Alex-Latitude" ]; then
+    # System status bar
+    exec conky -c /home/alex/.conkyrc | dzen2 -x 700 -y 0 -w 560 -ta r \
+        -fn 'Inconsolata:size=11' &
+    # System tray
+    exec trayer --edge top --align right --height 18 --widthtype pixel \
+        --width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &
+
+elif [ "$HOSTNAME" == "Alex-Desktop" ]; then
+    # System status bar
+    exec conky -c /home/alex/.conkyrc | dzen2 -x 960 -y 0 -w 960 -ta r \
+        -fn 'Inconsolata:size=12' &
+    # Screen resolution
+    exec xrandr --output HDMI-0 --mode 1920x1080 --primary --left-of DVI-0 \
+        --output DVI-0 --mode 1280x1024 &
+
+else
+    # Write a file to the home folder with the unrecognised hostname
+    echo "Hostname $HOSTNAME not recognised" > ~/xinitErr &
+fi
 
 # Run window manager selected by SLiM
 exec xmonad
