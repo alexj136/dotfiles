@@ -25,7 +25,7 @@ TEXT
 
 ^fg(\#aaaaaa)HDD ${fs_used}^fg() \
 ^fg(\#666666)CPU ${cpu cpu0}% ${acpitemp}C^fg() \
-^fg(\#aaaaaa)VOL ${exec amixer get Master -M | grep -oE "[[:digit:]]*%"} ${exec amixer get Master | grep -oE "\[on]|\[off]" | tr '[:lower:]' '[:upper:]'| sed 's/^.\(.*\).$/\1/'}^fg() \
+^fg(\#aaaaaa)VOL ${exec amixer get Master -M | grep -oE "[[:digit:]]*%" | sed -n '1 p'} ${exec amixer get Master | grep -oE "\[on]|\[off]" | tr '[:lower:]' '[:upper:]'| sed 's/^.\(.*\).$/\1/' | sed -n '1 p'}^fg() \
 ^fg(\#666666)RAM ${mem}^fg() \
 ^fg(\#aaaaaa)BAT ${battery_short}^fg() \
 ^fg(\#666666)${time %a %d %b %Y}^fg() \
