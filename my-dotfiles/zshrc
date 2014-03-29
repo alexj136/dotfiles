@@ -24,7 +24,8 @@ alias python="ipython2"
 # Uncomment following line if you want to disable command autocorrection
 # DISABLE_CORRECTION="true"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
+# Uncomment following line if you want red dots to be displayed while waiting
+# for completion
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment following line if you want to disable marking untracked files under
@@ -36,8 +37,9 @@ alias python="ipython2"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="dd/mm/yyyy"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Which plugins would you like to load? (plugins can be found in
+# ~/.oh-my-zsh/plugins/*). Custom plugins may be added to
+# ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git mercurial)
 
@@ -63,3 +65,6 @@ export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 
 # Ignore files with extensions specified below when tab-completing.
 zstyle ':completion:*:*:*:*:*files' ignored-patterns '*.hi' '*.o'
+
+# Enable transparency in xterm
+[ -n "$XTERM_VERSION" ] && transset-df --min 0.85 --max 0.85 -a > /dev/null

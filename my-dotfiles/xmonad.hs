@@ -12,6 +12,8 @@ import XMonad.Actions.CycleWS
 import XMonad.Util.Run
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.Grid
+import XMonad.Layout.Spacing
 
 import Graphics.X11.ExtraTypes.XF86
 
@@ -107,9 +109,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Deincrement the number of windows in the master area
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
  
-    -- toggle the status bar gap (used with avoidStruts from Hooks.ManageDocks)
-    -- , ((modm , xK_b ), sendMessage ToggleStruts)
- 
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_x     ), io (exitWith ExitSuccess))
  
@@ -170,7 +169,11 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 
-myLayout = smartBorders $ avoidStruts (tiled ||| Mirror tiled ||| Full) ||| Full
+myLayout =
+    smartSpacing 4 $ smartBorders $ avoidStruts (
+        tiled ||| Mirror tiled ||| Grid ||| Full
+    )
+    ||| Full
   where
     tiled   = ResizableTall nmaster delta ratio slaves
     nmaster = 1         -- The default number of windows in the master pane
@@ -224,12 +227,13 @@ myLogHook h = dynamicLogWithPP $ dzenPP
 
     cleanLayout :: String -> String
     cleanLayout s = case s of
-        "ResizableTall"        -> " RT "
-        "Tall"                 -> " T "
-        "Mirror Tall"          -> " MT "
-        "Mirror ResizableTall" -> " MRT "
-        "Full"                 -> " F "
-        _                      -> " U "
+        "SmartSpacing 4 ResizableTall"        -> " RT "
+        "SmartSpacing 4 Tall"                 -> " T "
+        "SmartSpacing 4 Mirror Tall"          -> " MT "
+        "SmartSpacing 4 Mirror ResizableTall" -> " MRT "
+        "SmartSpacing 4 Grid"                 -> " G "
+        "SmartSpacing 4 Full"                 -> " F "
+        _                                     -> " U "
 
 ------------------------------------------------------------------------
 -- Startup hook

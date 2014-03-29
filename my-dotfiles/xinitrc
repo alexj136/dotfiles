@@ -20,6 +20,9 @@ exec nm-applet &
 # Launch the screensaver daemon
 exec xscreensaver -no-splash &
 
+# Start the compositing manager for transparency in xterm
+exec xcompmgr &
+
 # Set desktop wallpaper
 exec sh ~/.fehbg &
 
