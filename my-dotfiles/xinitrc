@@ -23,9 +23,6 @@ exec xscreensaver -no-splash &
 # Start the compositing manager for transparency in xterm
 exec xcompmgr &
 
-# Set desktop wallpaper
-exec sh ~/.fehbg &
-
 if [ "$HOSTNAME" == "Alex-ThinkPad" ]; then
     # System status bar
     exec conky -c /home/alex/.conkyrc | dzen2 -x 800 -y 0 -w 780 -ta r \
@@ -54,6 +51,9 @@ else
     # Write a file to the home folder with the unrecognised hostname
     echo "Hostname $HOSTNAME not recognised" > ~/xinitErr &
 fi
+
+# Set desktop wallpaper
+exec sh ~/.fehbg &
 
 # Run window manager selected by SLiM
 exec xmonad
