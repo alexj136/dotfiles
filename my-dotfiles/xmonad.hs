@@ -12,7 +12,6 @@ import XMonad.Actions.CycleWS
 import XMonad.Util.Run
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
-import XMonad.Layout.Grid
 import XMonad.Layout.Spacing
 
 import Graphics.X11.ExtraTypes.XF86
@@ -171,15 +170,17 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 myLayout =
     smartSpacing 4 $ smartBorders $ avoidStruts (
-        tiled ||| Mirror tiled ||| Grid ||| Full
+        tiled1 ||| Mirror tiled1 ||| tiled2 ||| Mirror tiled2 ||| Full
     )
     ||| Full
   where
-    tiled   = ResizableTall nmaster delta ratio slaves
-    nmaster = 1         -- The default number of windows in the master pane
-    delta   = 3/100     -- Percent of screen to increment by when resizing panes
-    ratio   = 1/2       -- Default proportion of screen occupied by master pane
-    slaves  = [2/100]
+    tiled1   = ResizableTall nmaster1 delta ratio slaves
+    tiled2   = ResizableTall nmaster2 delta ratio slaves
+    nmaster1 = 1        -- The default number of windows in the master pane
+    nmaster2 = 2
+    delta    = 3/100    -- Percent of screen to increment by when resizing panes
+    ratio    = 1/2      -- Default proportion of screen occupied by master pane
+    slaves   = [1]
  
 ------------------------------------------------------------------------
 -- Window rules
