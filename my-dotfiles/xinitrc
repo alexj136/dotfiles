@@ -40,12 +40,12 @@ elif [ "$HOSTNAME" == "Alex-Latitude" ]; then
         --width 20 --expand true --transparent true --alpha 0 --tint 0x111111 &
 
 elif [ "$HOSTNAME" == "Alex-Desktop" ]; then
-    # System status bar
-    exec conky -c /home/alex/.conkyrc | dzen2 -x 960 -y 0 -w 960 -ta r \
-        -fn 'Inconsolata:size=12' &
     # Screen resolution
     exec xrandr --output HDMI-0 --mode 1920x1080 --primary --left-of DVI-0 \
         --output DVI-0 --mode 1280x1024 &
+    # System status bar
+    exec conky -c /home/alex/.conkyrc | dzen2 -x 960 -y 0 -w 960 -ta r \
+        -fn 'Inconsolata:size=12' &
 
 else
     # Write a file to the home folder with the unrecognised hostname
