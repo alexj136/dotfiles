@@ -43,6 +43,7 @@ elif [ "$HOSTNAME" == "Alex-Desktop" ]; then
     # Screen resolution
     exec xrandr --output HDMI-0 --mode 1920x1080 --primary --left-of DVI-0 \
         --output DVI-0 --mode 1280x1024 &
+    wait $!
     # System status bar
     exec conky -c /home/alex/.conkyrc | dzen2 -x 960 -y 0 -w 960 -ta r \
         -fn 'Inconsolata:size=12' &
