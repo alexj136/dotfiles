@@ -64,7 +64,7 @@ export PATH=$HOME/bin:/usr/local/bin:/opt/java/bin:$PATH
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 
 # Ignore files with extensions specified below when tab-completing.
-zstyle ':completion:*:*:*:*:*files' ignored-patterns '*.hi' '*.o'
+zstyle ':completion:*:*:*:*:*files' ignored-patterns '*.hi' '*.o' '*.pyc' '*.class'
 
 # Enable transparency in xterm
 [ -n "$XTERM_VERSION" ] && transset-df --min 0.85 --max 0.85 -a > /dev/null
