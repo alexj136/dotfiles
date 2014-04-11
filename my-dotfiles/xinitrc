@@ -20,9 +20,6 @@ exec nm-applet &
 # Launch the screensaver daemon
 exec xscreensaver -no-splash &
 
-# Start the compositing manager for transparency in xterm
-exec xcompmgr &
-
 if [ "$HOSTNAME" == "Alex-ThinkPad" ]; then
     # System status bar
     exec conky -c /home/alex/.conkyrc | dzen2 -x 800 -y 0 -w 780 -ta r \
