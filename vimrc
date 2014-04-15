@@ -86,12 +86,12 @@ call pathogen#helptags() " Generate helptags for everything in 'runtimepath'
 " Color schemes - if we're in gvim, or a terminal that supports 256 colors,
 " use molokai. Otherwise, use the default color scheme.
 if has ("gui_running")
-  colorscheme molokai
+  colorscheme solarized
 elseif match ($TERM, "xterm-256color")  != -1 ||
      \ match ($TERM, "xterm")           != -1 ||
      \ match ($TERM, "screen-256color") != -1
   set t_Co=256
-  colorscheme molokai
+  colorscheme solarized
 else
   colorscheme default
 endif
