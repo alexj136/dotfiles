@@ -1,6 +1,7 @@
 # color the right and bottom edges of maximized gvim windows
 style "gvim" {
-    bg[NORMAL] = "#1b1d1e"
+    #bg[NORMAL] = "#1b1d1e" # Molokai
+    bg[NORMAL] = "#002b36" # Solarized
 }
 widget "vim-main-window.*GtkForm" style "gvim"
 gtk-font-name="Droid Sans 10"
