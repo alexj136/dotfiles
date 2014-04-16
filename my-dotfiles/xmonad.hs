@@ -30,11 +30,11 @@ import qualified Data.Map                      as M
 -- Simple settings
 
 myTerminal           = "uxterm"
-myBorderWidth        = 2
-myNormalBorderColor  = "#111111"
-myFocusedBorderColor = "#3333aa"
-myLogBGColor         = "#3333aa"
-myLogFGColor         = "#eeeeee"
+myBorderWidth        = 2         -- Blue/White Scheme
+myNormalBorderColor  = "#002b36" -- "#111111"
+myFocusedBorderColor = "#268bd2" -- "#3333aa"
+myLogBGColor         = "#eee8d5" -- "#3333aa"
+myLogFGColor         = "#268bd2" -- "#eeeeee"
 myModMask            = mod4Mask
 myWorkspaces         = map show [1..9]
 myFocusFollowsMouse  = True

@@ -61,7 +61,7 @@ export PATH=$HOME/bin:/usr/local/bin:/opt/java/bin:$PATH
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Make swing apps cooperate a little better.
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 
 # Ignore files with extensions specified below when tab-completing.
 zstyle ':completion:*:*:*:*:*files' ignored-patterns '*.hi' '*.o' '*.pyc' '*.class'
