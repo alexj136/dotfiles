@@ -21,12 +21,16 @@ use_spacer none
 #    light - aaaaaa
 #    dark  - 666666
 
+# Solarized theme
+#    blue - 268bd2
+#    cyan - 2aa198
+
 TEXT
 
-^fg(\#aaaaaa)HDD ${fs_used}^fg() \
-^fg(\#666666)CPU ${cpu cpu0}% ${acpitemp}C^fg() \
-^fg(\#aaaaaa)VOL ${exec amixer get Master -M | grep -oE "[[:digit:]]*%" | sed -n '1 p'} ${exec amixer get Master | grep -oE "\[on]|\[off]" | tr '[:lower:]' '[:upper:]'| sed 's/^.\(.*\).$/\1/' | sed -n '1 p'}^fg() \
-^fg(\#666666)RAM ${mem}^fg() \
-^fg(\#aaaaaa)BAT ${battery_short}^fg() \
-^fg(\#666666)${time %a %d %b %Y}^fg() \
-^fg(\#aaaaaa)${time %H:%M}^fg() \
+^fg(\#268bd2)HDD ${fs_used}^fg() \
+^fg(\#2aa198)CPU ${cpu cpu0}% ${acpitemp}C^fg() \
+^fg(\#268bd2)VOL ${exec amixer get Master -M | grep -oE "[[:digit:]]*%" | sed -n '1 p'} ${exec amixer get Master | grep -oE "\[on]|\[off]" | tr '[:lower:]' '[:upper:]'| sed 's/^.\(.*\).$/\1/' | sed -n '1 p'}^fg() \
+^fg(\#2aa198)RAM ${mem}^fg() \
+^fg(\#268bd2)BAT ${battery_short}^fg() \
+^fg(\#2aa198)${time %a %d %b %Y}^fg() \
+^fg(\#268bd2)${time %H:%M}^fg() \

@@ -33,8 +33,9 @@ myTerminal           = "uxterm"
 myBorderWidth        = 2         -- Blue/White Scheme
 myNormalBorderColor  = "#002b36" -- "#111111"
 myFocusedBorderColor = "#268bd2" -- "#3333aa"
-myLogBGColor         = "#eee8d5" -- "#3333aa"
-myLogFGColor         = "#268bd2" -- "#eeeeee"
+myLogFG1Color        = "#eee8d5" -- "#3333aa"
+myLogFG2Color        = "#586e75" -- "#eeeeee"
+myLogBGColor         = "#002b36" -- "#111111"
 myModMask            = mod4Mask
 myWorkspaces         = map show [1..9]
 myFocusFollowsMouse  = True
@@ -221,10 +222,10 @@ myLogHook h = dynamicLogWithPP $ dzenPP
     pad str = ' ' : str ++ " "
 
     colorize :: String -> String
-    colorize = dzenColor myLogFGColor myLogBGColor 
+    colorize = dzenColor myLogFG1Color myLogFG2Color 
 
     colorizeFlipped :: String -> String
-    colorizeFlipped = dzenColor myLogBGColor myLogFGColor 
+    colorizeFlipped = dzenColor myLogFG2Color myLogFG1Color 
 
     cleanLayout :: String -> String
     cleanLayout s = case s of
@@ -257,11 +258,14 @@ main = do
     xmonadDzenBar <- spawnPipe $
         case host of
             "Alex-ThinkPad" ->
-                "dzen2 -ta l -x 0 -y 0 -w 800 -fn \'Inconsolata:size=12'"
+                "dzen2 -ta l -x 0 -y 0 -w 800 -bg '" ++ myLogBGColor
+                ++ "' -fn \'Inconsolata:size=12'"
             "Alex-Latitude" ->
-                "dzen2 -ta l -x 0 -y 0 -w 700 -fn \'Inconsolata:size=11'"
+                "dzen2 -ta l -x 0 -y 0 -w 700 -bg '" ++ myLogBGColor
+                ++ "' -fn \'Inconsolata:size=12'"
             "Alex-Desktop"  ->
-                "dzen2 -ta l -x 0 -y 0 -w 960 -fn \'Inconsolata:size=12'"
+                "dzen2 -ta l -x 0 -y 0 -w 960 -bg '" ++ myLogBGColor
+                ++ "' -fn \'Inconsolata:size=12'"
             other           ->
                 "echo \'Hostname: " ++ other ++ " not recognised\' > ~/xmoErr"
 
