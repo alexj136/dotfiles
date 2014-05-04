@@ -3,6 +3,5 @@
 !.gitignore
 !my-dotfiles*
 !fontconfig*
-!luakit*
 !openbox*
 !zathura*
