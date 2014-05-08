@@ -11,6 +11,7 @@ ZSH_THEME="sunrise"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias python="ipython2"
+alias mk="make"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
