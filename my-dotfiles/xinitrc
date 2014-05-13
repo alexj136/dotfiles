@@ -28,6 +28,9 @@ if [ "$HOSTNAME" == "Alex-ThinkPad" ]; then
     exec trayer --edge top --align right --height 19 --widthtype pixel \
         --width 20 --expand true --transparent true --alpha 0 --tint 0x002b36 &
 
+    # Load xterm font size
+    exec xrdb -merge /home/alex/.config/my-dotfiles/xtermFaceSize12 &
+
 elif [ "$HOSTNAME" == "Alex-Latitude" ]; then
     # System status bar
     exec conky -c /home/alex/.config/my-dotfiles/conkyrc | dzen2 -x 700 -y 0 \
@@ -35,6 +38,9 @@ elif [ "$HOSTNAME" == "Alex-Latitude" ]; then
     # System tray
     exec trayer --edge top --align right --height 18 --widthtype pixel \
         --width 20 --expand true --transparent true --alpha 0 --tint 0x002b36 &
+
+    # Load xterm font size
+    exec xrdb -merge /home/alex/.config/my-dotfiles/xtermFaceSize11 &
 
 elif [ "$HOSTNAME" == "Alex-Desktop" ]; then
     # Screen resolution
@@ -44,6 +50,9 @@ elif [ "$HOSTNAME" == "Alex-Desktop" ]; then
     # System status bar
     exec conky -c /home/alex/.config/my-dotfiles/conkyrc | dzen2 -x 960 -y 0 \
         -w 960 -ta r -bg '#002b36' -fn 'Inconsolata:size=12' &
+
+    # Load xterm font size
+    exec xrdb -merge /home/alex/.config/my-dotfiles/xtermFaceSize12 &
 
 else
     # Write a file to the home folder with the unrecognised hostname
