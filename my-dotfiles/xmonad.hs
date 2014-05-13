@@ -262,7 +262,7 @@ main = do
                 ++ "' -fn \'Inconsolata:size=12'"
             "Alex-Latitude" ->
                 "dzen2 -ta l -x 0 -y 0 -w 700 -bg '" ++ myLogBGColor
-                ++ "' -fn \'Inconsolata:size=12'"
+                ++ "' -fn \'Inconsolata:size=11'"
             "Alex-Desktop"  ->
                 "dzen2 -ta l -x 0 -y 0 -w 960 -bg '" ++ myLogBGColor
                 ++ "' -fn \'Inconsolata:size=12'"

@@ -12,7 +12,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # Load xterm settings
-exec xrdb -merge ~/.Xresources &
+exec xrdb -merge /home/alex/.config/my-dotfiles/Xresources &
 
 # Run the network manager tray icon
 exec nm-applet &
@@ -31,9 +31,9 @@ if [ "$HOSTNAME" == "Alex-ThinkPad" ]; then
 elif [ "$HOSTNAME" == "Alex-Latitude" ]; then
     # System status bar
     exec conky -c /home/alex/.config/my-dotfiles/conkyrc | dzen2 -x 700 -y 0 \
-        -w 560 -ta r -bg '#002b36' -fn 'Inconsolata:size=12' &
+        -w 560 -ta r -bg '#002b36' -fn 'Inconsolata:size=11' &
     # System tray
-    exec trayer --edge top --align right --height 19 --widthtype pixel \
+    exec trayer --edge top --align right --height 18 --widthtype pixel \
         --width 20 --expand true --transparent true --alpha 0 --tint 0x002b36 &
 
 elif [ "$HOSTNAME" == "Alex-Desktop" ]; then
@@ -51,7 +51,7 @@ else
 fi
 
 # Set desktop wallpaper
-exec sh ~/.fehbg &
+exec feh --bg-fill '/home/alex/docs/Gran_Canaria_by_ALF.jpg' &
 
 # Run window manager selected by SLiM
 exec xmonad
