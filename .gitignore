@@ -1,9 +1,2 @@
-*
-!README.md
-!.gitignore
-!links.sh
-!i3config
-!my-dotfiles*
-!fontconfig*
-!openbox*
-!zathura*
+*.swp
+*.swo
