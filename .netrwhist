@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/alex/.vim'
 let g:netrw_dirhist_2='/home/alex/fyp/src'
 let g:netrw_dirhist_3='/home/alex/lecno'
+let g:netrw_dirhist_4='/home/alex/fyp/src/Polymorphic'
+let g:netrw_dirhist_5='/home/alex/jra/minty-spec'
+let g:netrw_dirhist_6='/home/alex/notions-of-computability'

@@ -51,10 +51,6 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-" Settings for pathogen
-execute pathogen#infect()
-call pathogen#helptags() " Generate helptags for everything in 'runtimepath'
-
 " ===================
 " Indentation Options
 " ===================
@@ -75,7 +71,7 @@ call pathogen#helptags() " Generate helptags for everything in 'runtimepath'
 :set guioptions=a
 
 " Font for gvim
-:set guifont=Inconsolata\ 12
+:set guifont=Inconsolata\ 11
 
 " Show line numbers at launch
 :set nu
