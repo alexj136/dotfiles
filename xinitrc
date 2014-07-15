@@ -12,7 +12,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # Load xterm settings
-exec xrdb -merge /home/alex/.config/my-dotfiles/Xresources &
+exec xrdb -merge ~/.Xresources &
 
 # Run the network manager tray icon
 exec nm-applet &
@@ -25,7 +25,7 @@ if [ "$HOSTNAME" == "Alex-ThinkPad" ]; then
     exec conky | dzen2 -x 800 -y 0 -w 780 -ta r -bg '#002b36' \
         -fn 'Inconsolata:size=11' &
     # System tray
-    exec trayer --edge top --align right --height 19 --widthtype pixel \
+    exec trayer --edge top --align right --height 18 --widthtype pixel \
         --width 20 --expand true --transparent true --alpha 0 --tint 0x002b36 &
 
 elif [ "$HOSTNAME" == "Alex-Desktop" ]; then
