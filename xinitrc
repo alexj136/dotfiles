@@ -22,25 +22,11 @@ exec xscreensaver -no-splash &
 
 if [ "$HOSTNAME" == "Alex-ThinkPad" ]; then
     # System status bar
-    exec conky -c /home/alex/.config/my-dotfiles/conkyrc | dzen2 -x 800 -y 0 \
-        -w 780 -ta r -bg '#002b36' -fn 'Inconsolata:size=12' &
+    exec conky | dzen2 -x 800 -y 0 -w 780 -ta r -bg '#002b36' \
+        -fn 'Inconsolata:size=11' &
     # System tray
     exec trayer --edge top --align right --height 19 --widthtype pixel \
         --width 20 --expand true --transparent true --alpha 0 --tint 0x002b36 &
-
-    # Load xterm font size
-    exec xrdb -merge /home/alex/.config/my-dotfiles/xtermFaceSize12 &
-
-elif [ "$HOSTNAME" == "Alex-Latitude" ]; then
-    # System status bar
-    exec conky -c /home/alex/.config/my-dotfiles/conkyrc | dzen2 -x 700 -y 0 \
-        -w 560 -ta r -bg '#002b36' -fn 'Inconsolata:size=11' &
-    # System tray
-    exec trayer --edge top --align right --height 18 --widthtype pixel \
-        --width 20 --expand true --transparent true --alpha 0 --tint 0x002b36 &
-
-    # Load xterm font size
-    exec xrdb -merge /home/alex/.config/my-dotfiles/xtermFaceSize11 &
 
 elif [ "$HOSTNAME" == "Alex-Desktop" ]; then
     # Screen resolution
@@ -48,11 +34,8 @@ elif [ "$HOSTNAME" == "Alex-Desktop" ]; then
         --output DVI-0 --mode 1280x1024 &
     wait $!
     # System status bar
-    exec conky -c /home/alex/.config/my-dotfiles/conkyrc | dzen2 -x 960 -y 0 \
-        -w 960 -ta r -bg '#002b36' -fn 'Inconsolata:size=12' &
-
-    # Load xterm font size
-    exec xrdb -merge /home/alex/.config/my-dotfiles/xtermFaceSize12 &
+    exec conky | dzen2 -x 960 -y 0 -w 960 -ta r -bg '#002b36' \
+        -fn 'Inconsolata:size=11' &
 
 else
     # Write a file to the home folder with the unrecognised hostname
