@@ -17,10 +17,8 @@ import XMonad.Layout.Spacing
 import Graphics.X11.ExtraTypes.XF86
 
 import System.Exit
-
 import System.IO (stderr)
-
-import Network.BSD (HostName, getHostName)
+import System.Directory (getHomeDirectory)
 
 import qualified XMonad.StackSet               as W
 import qualified XMonad.Actions.FlexibleResize as F
@@ -252,9 +250,16 @@ myStartupHook = setWMName "LG3D"
 
 main = do
 
-    -- Xmonad status bar
-    xmonadDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w 800 -bg '"
-        ++ myLogBGColor ++ "' -fn \'Inconsolata:size=11'")
+    -- Determine the screen width
+    homeDir <- getHomeDirectory
+    screenWidthString <- readFile $ homeDir ++ "/.screenwidth"
+    let screenWidth = read screenWidthString
+
+    -- Run the XMonad status bar from the left-hand edge to the exact middle of
+    -- the screen
+    xmonadDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w "
+        ++ show (screenWidth `div` 2) ++ " -bg '" ++ myLogBGColor
+        ++ "' -fn \'Inconsolata:size=11'")
 
     -- Launch Xmonad
     xmonad defaultConfig
