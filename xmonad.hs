@@ -252,19 +252,9 @@ myStartupHook = setWMName "LG3D"
 
 main = do
 
-    host <- getHostName
-
     -- Xmonad status bar
-    xmonadDzenBar <- spawnPipe $
-        case host of
-            "Alex-ThinkPad" ->
-                "dzen2 -ta l -x 0 -y 0 -w 800 -bg '" ++ myLogBGColor
-                ++ "' -fn \'Inconsolata:size=11'"
-            "Alex-Desktop"  ->
-                "dzen2 -ta l -x 0 -y 0 -w 960 -bg '" ++ myLogBGColor
-                ++ "' -fn \'Inconsolata:size=11'"
-            other           ->
-                "echo \'Hostname: " ++ other ++ " not recognised\' > ~/xmoErr"
+    xmonadDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w 800 -bg '"
+        ++ myLogBGColor ++ "' -fn \'Inconsolata:size=11'")
 
     -- Launch Xmonad
     xmonad defaultConfig
