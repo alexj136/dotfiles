@@ -12,7 +12,7 @@ import XMonad.Actions.CycleWS
 import XMonad.Util.Run
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
-import XMonad.Layout.Spacing
+-- import XMonad.Layout.Spacing -- Uncomment here & in myLayout to have gaps between windows
 
 import Graphics.X11.ExtraTypes.XF86
 
@@ -168,7 +168,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- which denotes layout choice.
 
 myLayout =
-    smartSpacing 4 $ smartBorders $ avoidStruts (
+    {- smartSpacing 4 $ -} smartBorders $ avoidStruts (
         tiled1 ||| Mirror tiled1 ||| tiled2 ||| Mirror tiled2 ||| Full
     )
     ||| Full
