@@ -12,7 +12,6 @@ import XMonad.Actions.CycleWS
 import XMonad.Util.Run
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
--- import XMonad.Layout.Spacing -- Uncomment here & in myLayout to have gaps between windows
 
 import Graphics.X11.ExtraTypes.XF86
 
@@ -168,7 +167,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- which denotes layout choice.
 
 myLayout =
-    {- smartSpacing 4 $ -} smartBorders $ avoidStruts (
+    smartBorders $ avoidStruts (
         tiled1 ||| Mirror tiled1 ||| tiled2 ||| Mirror tiled2 ||| Full
     )
     ||| Full
@@ -227,13 +226,13 @@ myLogHook h = dynamicLogWithPP $ dzenPP
 
     cleanLayout :: String -> String
     cleanLayout s = case s of
-        "SmartSpacing 4 ResizableTall"        -> " RT "
-        "SmartSpacing 4 Tall"                 -> " T "
-        "SmartSpacing 4 Mirror Tall"          -> " MT "
-        "SmartSpacing 4 Mirror ResizableTall" -> " MRT "
-        "SmartSpacing 4 Grid"                 -> " G "
-        "SmartSpacing 4 Full"                 -> " F "
-        _                                     -> " U "
+        "ResizableTall"        -> " RT "
+        "Tall"                 -> " T "
+        "Mirror Tall"          -> " MT "
+        "Mirror ResizableTall" -> " MRT "
+        "Grid"                 -> " G "
+        "Full"                 -> " F "
+        _                      -> " U "
 
 ------------------------------------------------------------------------
 -- Startup hook
