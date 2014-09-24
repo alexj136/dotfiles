@@ -113,9 +113,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_c     ), restart "xmonad" True)
 
     -- Volume keys
-    , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer -M set Master 5%-")
-    , ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer -M set Master 5%+")
-    , ((0, xF86XK_AudioMute          ), spawn "amixer set Master toggle")
+    , ((0, xF86XK_AudioLowerVolume   ), spawn myAudioLowerCommand)
+    , ((0, xF86XK_AudioRaiseVolume   ), spawn myAudioRaiseCommand)
+    , ((0, xF86XK_AudioMute          ), spawn myAudioMuteCommand)
+
+    , ((modm              , xK_minus ), spawn myAudioLowerCommand)
+    , ((modm              , xK_equal ), spawn myAudioRaiseCommand)
+    , ((modm              , xK_0     ), spawn myAudioMuteCommand)
 
     -- Lock the screen
     , ((modm .|. shiftMask, xK_z     ), spawn "xscreensaver-command --lock")
@@ -136,6 +140,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
  
  
+------------------------------------------------------------------------
+-- Volume commands: commands that are issued when a key combination is
+-- activated to adjust volume
+
+myAudioRaiseCommand = "amixer -M set Master 5%-"
+myAudioLowerCommand = "amixer -M set Master 5%+"
+myAudioMuteCommand  = "amixer set Master toggle"
+
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
 
