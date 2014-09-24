@@ -37,4 +37,4 @@ exec trayer --edge top --align right --height 18 --widthtype pixel \
 exec feh --bg-fill '/home/alex/docs/Gran_Canaria_by_ALF.jpg' &
 
 # Run window manager selected by SLiM
-exec xmonad
+exec $1
