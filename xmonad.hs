@@ -144,8 +144,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 -- Volume commands: commands that are issued when a key combination is
 -- activated to adjust volume
 
-myAudioRaiseCommand = "amixer -M set Master 5%-"
-myAudioLowerCommand = "amixer -M set Master 5%+"
+myAudioRaiseCommand = "amixer -M set Master 5%+"
+myAudioLowerCommand = "amixer -M set Master 5%-"
 myAudioMuteCommand  = "amixer set Master toggle"
 
 ------------------------------------------------------------------------
