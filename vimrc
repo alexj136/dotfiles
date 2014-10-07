@@ -15,14 +15,17 @@ runtime! debian.vim
 " options, so any other options should be set AFTER setting 'compatible'.
 "set compatible
 
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
+" Load Pathogen (package manager).
+execute pathogen#infect()
+call pathogen#helptags()
+
+" Enable syntax highlighting.
 if has("syntax")
   syntax on
 endif
 
 " If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
+" turn on this option as well.
 set background=dark
 
 " Jump to the last position when reopening a file
@@ -121,13 +124,6 @@ function! ToggleSpellCheck()
   endif
   setlocal spell! spelllang=en_gb
 endfunction
-
-" Enable toggling of NERDTree with F4
-:map <F4> :NERDTreeToggle<CR>
-
-" Run make with F11, make clean with F12
-:nnoremap <F11> :!make<CR>
-:nnoremap <F12> :!make clean<CR>
 
 " Highlight characters past column 80. Toggle with F5
 :nnoremap <F5> :call ToggleHighlightLongLines()<CR>
