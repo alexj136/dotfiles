@@ -1,4 +1,8 @@
-snippet pub
+snippet pa
+	package ${0};
+snippet im
+	import ${0};
+snippet pu
 	public ${0}
 snippet pri
 	private ${0}
@@ -20,15 +24,35 @@ snippet println
 	System.out.println(${0});
 snippet print
 	System.out.print(${0});
-snippet main
+snippet ma
 	public static void main(String[] args) {
 		${0}
 	}
-snippet ret
+snippet re
 	return ${0};
-snippet @pa
+snippet @p
 	@param ${0}
-snippet @re
+snippet @r
 	@return ${0}
-snipper @th
+snippet @t
 	@throws ${0}
+snippet /**
+	/**
+	 * ${0}
+	 */
+snippet /*
+	/*
+	 * ${0}
+	 */
+snippet if
+	if(${1}) {
+		${0}
+	}
+snippet eif
+	else if(${1}) {
+		${0}
+	}
+snippet el
+	else {
+		${0}
+	}
