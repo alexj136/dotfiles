@@ -14,12 +14,10 @@ ln -s --verbose $HOME/.dotfiles/bashrc $HOME/.bashrc
 ln -s --verbose $HOME/.dotfiles/xinitrc $HOME/.xinitrc
 ln -s --verbose $HOME/.dotfiles/Xresources $HOME/.Xresources
 ln -s --verbose $HOME/.dotfiles/gtkrc-2.0 $HOME/.gtkrc-2.0
-mkdir --parents --verbose $HOME/.config/fontconfig/
-ln -s --verbose $HOME/.dotfiles/fonts.conf $HOME/.config/fontconfig/fonts.conf
+ln -s --verbose $HOME/.dotfiles/fontconfig $HOME/.config/
 
 # i3WM config file
-mkdir --parents --verbose $HOME/.i3/
-ln -s --verbose $HOME/.dotfiles/i3config $HOME/.i3/config
+ln -s --verbose $HOME/.dotfiles/i3/ $HOME/.i3
 
 # XMonad related things
 mkdir --parents --verbose $HOME/.xmonad/
@@ -31,5 +29,4 @@ ln -s --verbose $HOME/.dotfiles/pypanelrc $HOME/.pypanelrc
 ln -s --verbose $HOME/.dotfiles/openbox/ $HOME/.config/
 
 # Other
-mkdir --parents --verbose $HOME/.config/zathura/
-ln -s --verbose $HOME/.dotfiles/zathurarc $HOME/.config/zathura/zathurarc
+ln -s --verbose $HOME/.dotfiles/zathura/ $HOME/.config/
