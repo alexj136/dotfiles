@@ -28,10 +28,7 @@ ln -s --verbose $HOME/.dotfiles/conkyrc $HOME/.conkyrc
 
 # Openbox related things
 ln -s --verbose $HOME/.dotfiles/pypanelrc $HOME/.pypanelrc
-mkdir --parents --verbose $HOME/.config/openbox/
-ln -s --verbose $HOME/.dotfiles/autostart $HOME/.config/openbox/autostart
-ln -s --verbose $HOME/.dotfiles/menu.xml $HOME/.config/openbox/menu.xml
-ln -s --verbose $HOME/.dotfiles/rc.xml $HOME/.config/openbox/rc.xml
+ln -s --verbose $HOME/.dotfiles/openbox/ $HOME/.config/
 
 # Other
 mkdir --parents --verbose $HOME/.config/zathura/
