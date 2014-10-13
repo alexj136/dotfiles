@@ -16,3 +16,6 @@ PS1='[\u@\h \W]\$ '
 
 # File extensions to ignore
 FIGNORE=".aux:.log:.dvi:.class:.o:.pyc:.hi:.swp:"
+
+# Add my scripts directory to the path variable
+export PATH=$PATH:/home/$USER/scripts/
