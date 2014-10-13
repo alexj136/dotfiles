@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# Creates required directories and symbolic links to the files in this
-# repository, in the required locations. Run with 'sh links.sh'. This script
-# requires that the git repo exist at '$HOME/.dotfiles/'.
+# Creates required symbolic links to the files in this repository, in the
+# required locations. Run with 'sh links.sh'. This script requires that the git
+# repo exist at '$HOME/.dotfiles/'.
 
 # Command-line related things
 ln -s --verbose $HOME/.dotfiles/gitconfig $HOME/.gitconfig
@@ -17,11 +17,14 @@ ln -s --verbose $HOME/.dotfiles/gtkrc-2.0 $HOME/.gtkrc-2.0
 ln -s --verbose $HOME/.dotfiles/fontconfig $HOME/.config/
 
 # i3WM config file
-ln -s --verbose $HOME/.dotfiles/i3/ $HOME/.i3
+if [ ! -d "$HOME/.i3" ]; then # Conditional guard prevents a recursive symlink
+    ln -s --verbose $HOME/.dotfiles/i3/ $HOME/.i3
+fi
 
 # XMonad related things
-mkdir --parents --verbose $HOME/.xmonad/
-ln -s --verbose $HOME/.dotfiles/xmonad.hs $HOME/.xmonad/xmonad.hs
+if [ ! -d "$HOME/.xmonad" ]; then
+    ln -s --verbose $HOME/.dotfiles/xmonad/ $HOME/.xmonad
+fi
 ln -s --verbose $HOME/.dotfiles/conkyrc $HOME/.conkyrc
 
 # Openbox related things
