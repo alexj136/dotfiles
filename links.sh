@@ -17,15 +17,12 @@ ln -s --verbose $HOME/.dotfiles/gtkrc-2.0 $HOME/.gtkrc-2.0
 ln -s --verbose $HOME/.dotfiles/fontconfig $HOME/.config/
 
 # i3WM config file
-if [ ! -d "$HOME/.i3" ]; then # Conditional guard prevents a recursive symlink
-    ln -s --verbose $HOME/.dotfiles/i3/ $HOME/.i3
-fi
+ln -s --verbose $HOME/.dotfiles/i3/ $HOME/.config/
 
-# XMonad related things
+# XMonad related things - conditional guard prevents a recursive symlink
 if [ ! -d "$HOME/.xmonad" ]; then
     ln -s --verbose $HOME/.dotfiles/xmonad/ $HOME/.xmonad
 fi
-ln -s --verbose $HOME/.dotfiles/conkyrc $HOME/.conkyrc
 
 # Openbox related things
 ln -s --verbose $HOME/.dotfiles/pypanelrc $HOME/.pypanelrc

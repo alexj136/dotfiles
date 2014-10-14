@@ -2,3 +2,5 @@
 *.swo
 xmonad/*
 !xmonad/xmonad.hs
+!xmonad/autostart
+!xmonad/conkyrc

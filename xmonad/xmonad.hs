@@ -17,6 +17,7 @@ import Graphics.X11.ExtraTypes.XF86
 
 import System.Exit
 import System.IO (stderr)
+--import System.Process (runCommand)
 import System.Directory (getHomeDirectory)
 
 import qualified XMonad.StackSet               as W
@@ -271,6 +272,8 @@ main = do
     xmonadDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w "
         ++ show (screenWidth `div` 2) ++ " -bg '" ++ myLogBGColor
         ++ "' -fn \'Inconsolata:size=11'")
+
+    spawn ("sh " ++ homeDir ++ "/.xmonad/autostart")
 
     -- Launch Xmonad
     xmonad defaultConfig
