@@ -19,20 +19,17 @@ def focused_workspace_num(data):
 def next_workspace(existing, focused):
     """Determine what the 'next' workspace should be, i.e. the one to switch to
     next when switching through them with $mod+Tab"""
-    if existing[-1] == focused:
-        return existing[0]
-    else:
-        return existing[existing.index(focused) + 1]
+    if existing[-1] == focused: return existing[0]
+    else: return existing[existing.index(focused) + 1]
 
 def prev_workspace(existing, focused):
     """Determine what the 'previous' workspace should be, i.e. the one to switch
     to next when switching through them backwards with $mod+Shift+Tab"""
-    if focused == existing[0]:
-        return existing[-1]
-    else:
-        return existing[existing.index(focused) - 1]
+    if focused == existing[0]: return existing[-1]
+    else: return existing[existing.index(focused) - 1]
 
 def set_workspace(to_focus):
+    """Ask i3 to focus the given workspace"""
     subprocess.call(["i3-msg", "workspace", str(to_focus)])
 
 if __name__ in '__main__':
