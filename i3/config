@@ -159,23 +159,30 @@ bar {
     workspace_buttons yes
     status_command sh $HOME/.config/i3/startconky
     colors {
-        background $darkBG
-        # class            border     background text
-        focused_workspace  $lightBG   $lightBG   $lightText
-        active_workspace   #333333    #222222    #888888
-        inactive_workspace $darkBG    $darkBG    $lightText
-        urgent_workspace   $highlight $highlight $lightText
+        background $back_darker
+        # class            border        background    text
+        focused_workspace  $back_dark    $back_light   $text_darker
+        active_workspace   #333333       #222222       #888888
+        inactive_workspace $back_dark    $back_dark    $text_darker
+        urgent_workspace   $back_darker  $back_darker  $accent_blue
     }
 }
 
 # Colour configuration
-set $darkBG    #002b36
-set $lightText #eee8d5
-set $lightBG   #586e75
-set $highlight #268bd2
+set $text_darker  #586e75
+set $text_dark    #657b83
+set $text_light   #839496
+set $text_lighter #93a1a1
 
-# class                 border     background text       indicator
-client.focused          $lightBG   $lightBG   $lightText $lightBG
-client.focused_inactive $darkBG    $darkBG    $lightText $darkBG
-client.unfocused        $darkBG    $darkBG    $lightText $darkBG
-client.urgent           $highlight $highlight $lightText $highlight
+set $back_darker  #002b36
+set $back_dark    #073642
+set $back_light   #eee8d5
+set $back_lighter #fdf6e3
+
+set $accent_blue #268bd2
+
+# class                 border        background    text         indicator
+client.focused          $back_light   $back_light   $text_dark   $back_light
+client.focused_inactive $back_dark    $back_dark    $text_light  $back_dark 
+client.unfocused        $back_dark    $back_dark    $text_light  $back_dark 
+client.urgent           $accent_blue  $accent_blue  $text_light  $accent_blue
