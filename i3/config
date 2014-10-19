@@ -161,10 +161,10 @@ bar {
     colors {
         background $back_darker
         # class            border        background    text
-        focused_workspace  $back_dark    $back_light   $text_darker
+        focused_workspace  $back_darker  $back_light   $text_darker
         active_workspace   #333333       #222222       #888888
-        inactive_workspace $back_dark    $back_dark    $text_darker
-        urgent_workspace   $back_darker  $back_darker  $accent_blue
+        inactive_workspace $back_darker  $back_dark    $text_lighter
+        urgent_workspace   $back_darker  $accent_blue  $text_lighter
     }
 }
 
