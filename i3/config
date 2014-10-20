@@ -157,7 +157,7 @@ focus_follows_mouse no
 bar {
     position top
     workspace_buttons yes
-    status_command sh $HOME/.config/i3/startconky
+    status_command echo -e '{ "version" : 1 }\n[\n[],' ; conky --config=$HOME/.config/i3/conkyrc
     colors {
         background $back_darker
         # class            border        background    text
@@ -179,10 +179,17 @@ set $back_dark    #073642
 set $back_light   #eee8d5
 set $back_lighter #fdf6e3
 
-set $accent_blue #268bd2
+set $accent_yellow  #b58900
+set $accent_orange  #cb4b16
+set $accent_red     #dc322f
+set $accent_magenta #d33682
+set $accent_violet  #6c71c4
+set $accent_blue    #268bd2
+set $accent_cyan    #2aa198
+set $accent_green   #859900
 
-# class                 border        background    text         indicator
-client.focused          $back_light   $back_light   $text_dark   $back_light
-client.focused_inactive $back_dark    $back_dark    $text_light  $back_dark 
-client.unfocused        $back_dark    $back_dark    $text_light  $back_dark 
-client.urgent           $accent_blue  $accent_blue  $text_light  $accent_blue
+# class                 border         background     text          indicator
+client.focused          $accent_cyan   $accent_cyan   $back_dark    $accent_cyan
+client.focused_inactive $accent_blue   $accent_blue   $back_dark    $accent_blue
+client.unfocused        $accent_blue   $accent_blue   $back_dark    $accent_blue
+client.urgent           $accent_blue   $accent_blue   $text_light   $accent_blue
