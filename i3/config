@@ -138,10 +138,10 @@ bindsym $mod+Shift+x exec "i3-msg exit"
 
 # Resize window (mouse also works)
 mode "resize" {
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 3 ppt
+    bindsym j resize grow height 10 px or 3 ppt
+    bindsym k resize shrink height 10 px or 3 ppt
+    bindsym l resize grow width 10 px or 3 ppt
 
     # Return to normal mode with enter or escape
     bindsym Return mode "default"
@@ -161,10 +161,10 @@ bar {
     colors {
         background $back_darker
         # class            border        background    text
-        focused_workspace  $back_darker  $back_light   $text_darker
-        active_workspace   #333333       #222222       #888888
-        inactive_workspace $back_darker  $back_dark    $text_lighter
-        urgent_workspace   $back_darker  $accent_blue  $text_lighter
+        focused_workspace  $back_darker  $accent_cyan  $back_dark
+        active_workspace   $back_darker  $accent_blue  $back_dark
+        inactive_workspace $back_darker  $accent_blue  $back_dark
+        urgent_workspace   $back_darker  $accent_red   $back_dark
     }
 }
 
