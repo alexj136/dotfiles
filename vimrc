@@ -109,6 +109,10 @@ endif
 " Key Bindings
 " ============
 
+" Move cursor with display lines
+map j gj
+map k gk
+
 " English spellchecking - toggle with F6
 :nnoremap <F6> :call ToggleSpellCheck()<CR>
 
