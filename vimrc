@@ -125,23 +125,8 @@ function! ToggleSpellCheck()
   setlocal spell! spelllang=en_gb
 endfunction
 
-" Highlight characters past column 80. Toggle with F5
-:nnoremap <F5> :call ToggleHighlightLongLines()<CR>
-
-:match Search '\%>80v.\+'
-let s:highlightActive = 1 
-
-function! ToggleHighlightLongLines()
-  if s:highlightActive == 0
-    echo "Highlight Long Lines ON"
-    let s:highlightActive = 1 
-    match Search '\%>80v.\+'
-  else
-    echo "Highlight Long Lines OFF"
-    let s:highlightActive = 0 
-    match none
-  endif
-endfunction
+" Enable ruler.
+:set colorcolumn=81
 
 " Scroll through tabs with Ctrl + n/p, and scroll buffers with Ctrl N/P.
 :nnoremap <C-A-n> :bnext<CR>
