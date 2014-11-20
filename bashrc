@@ -17,5 +17,8 @@ PS1='[\u@\h \W]\$ '
 # File extensions to ignore
 FIGNORE=".aux:.log:.dvi:.class:.o:.pyc:.hi:.swp:"
 
+# Append to histfile when shell exits, rather than overwrite
+shopt -s histappend
+
 # Add my scripts directory to the path variable
 export PATH=$PATH:$HOME/scripts/

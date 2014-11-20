@@ -9,6 +9,7 @@ ln -s --verbose $HOME/.dotfiles/gitconfig $HOME/.gitconfig
 ln -s --verbose $HOME/.dotfiles/hgrc $HOME/.hgrc
 ln -s --verbose $HOME/.dotfiles/zshrc $HOME/.zshrc
 ln -s --verbose $HOME/.dotfiles/bashrc $HOME/.bashrc
+ln -s --verbose $HOME/.dotfiles/inputrc $HOME/.inputrc
 
 # X.Org related things
 ln -s --verbose $HOME/.dotfiles/xinitrc $HOME/.xinitrc
