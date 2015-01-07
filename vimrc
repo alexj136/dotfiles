@@ -133,7 +133,21 @@ endfunction
 :set colorcolumn=81
 
 " Scroll through tabs with Ctrl + n/p, and scroll buffers with Ctrl N/P.
-:nnoremap <C-A-n> :bnext<CR>
-:nnoremap <C-A-p> :bprevious<CR>
-:nnoremap <C-n> :tabnext<CR>
-:nnoremap <C-p> :tabprevious<CR>
+:nnoremap <C-n> :bnext<CR>
+:nnoremap <C-p> :bprevious<CR>
+
+" ==================
+" bufferline options
+" ==================
+
+" Enable the status line
+set laststatus=2
+
+" Put buffer info in the status line
+let g:bufferline_echo = 0
+autocmd VimEnter * let &statusline='%{bufferline#refresh_status()}'
+    \ .bufferline#get_status_string()
+
+let g:bufferline_active_buffer_left = ''
+let g:bufferline_active_buffer_right = ''
+let g:bufferline_show_bufnr = 0
