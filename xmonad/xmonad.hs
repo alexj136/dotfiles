@@ -181,17 +181,15 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 myLayout =
     smartBorders $ avoidStruts (
-        tiled1 ||| Mirror tiled1 ||| tiled2 ||| Mirror tiled2 ||| Full
+        tiled ||| Mirror tiled ||| Full
     )
     ||| Full
   where
-    tiled1   = ResizableTall nmaster1 delta ratio slaves
-    tiled2   = ResizableTall nmaster2 delta ratio slaves
-    nmaster1 = 1        -- The default number of windows in the master pane
-    nmaster2 = 2
-    delta    = 3/100    -- Percent of screen to increment by when resizing panes
-    ratio    = 1/2      -- Default proportion of screen occupied by master pane
-    slaves   = [1]
+    tiled   = ResizableTall nmaster delta ratio slaves
+    nmaster = 1        -- The default number of windows in the master pane
+    delta   = 3/100    -- Percent of screen to increment by when resizing panes
+    ratio   = 1/2      -- Default proportion of screen occupied by master pane
+    slaves  = [1]
  
 ------------------------------------------------------------------------
 -- Window rules
