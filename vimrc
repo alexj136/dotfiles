@@ -30,7 +30,8 @@ set background=dark
 
 " Jump to the last position when reopening a file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
+  \ | exe "normal! g'\"" | endif
 endif
 
 " Load indentation rules and plugins according to the detected filetype.
@@ -54,33 +55,41 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
+" Spell-checking for txt, md and tex files
+autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_au
+autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_au
+autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_au
+
 " ===================
 " Indentation Options
 " ===================
 
-:set tabstop=4     " Set tab width to 4
-:set expandtab     " Always use spaces instead of tabs
-:set softtabstop=4 " Insert 4 spaces when tab is pressed
-:set shiftwidth=4  " An indent is always 4 spaces
-:set smarttab      " Indent instead of tab at the start of a line
-:set shiftround    " Round spaces to the nearest shiftwidth multiple
-:set nojoinspaces  " Don't convert spaces to tabs
+set tabstop=4     " Set tab width to 4
+set expandtab     " Always use spaces instead of tabs
+set softtabstop=4 " Insert 4 spaces when tab is pressed
+set shiftwidth=4  " An indent is always 4 spaces
+set smarttab      " Indent instead of tab at the start of a line
+set shiftround    " Round spaces to the nearest shiftwidth multiple
+set nojoinspaces  " Don't convert spaces to tabs
 
 " ===================
 " Appearence Settings
 " ===================
 
+" Enable ruler.
+set colorcolumn=81
+
 " Disable menu bar & toolbar in gvim
-:set guioptions=a
+set guioptions=a
 
 " Font for gvim
-:set guifont=Inconsolata\ 11
+set guifont=Inconsolata\ 11
 
 " Show line numbers at launch
-:set nu
+set nu
 
 " Wrap long lines only between separate words, do not wrap within a word
-:set wrap lbr
+set wrap lbr
 
 " Color schemes - if we're in gvim, or a terminal that supports 256 colors,
 " use molokai. Otherwise, use the default color scheme.
@@ -113,28 +122,9 @@ endif
 map j gj
 map k gk
 
-" English spellchecking - toggle with F6
-:nnoremap <F6> :call ToggleSpellCheck()<CR>
-
-let s:spellCheckActive = 0 
-
-function! ToggleSpellCheck()
-  if s:spellCheckActive == 0
-    echo "Spell-Checking ON"
-    let s:spellCheckActive = 1 
-  else
-    echo "Spell-Checking OFF"
-    let s:spellCheckActive = 0 
-  endif
-  setlocal spell! spelllang=en_gb
-endfunction
-
-" Enable ruler.
-:set colorcolumn=81
-
 " Scroll through tabs with Ctrl + n/p, and scroll buffers with Ctrl N/P.
-:nnoremap <C-n> :bnext<CR>
-:nnoremap <C-p> :bprevious<CR>
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprevious<CR>
 
 " ==================
 " bufferline options
