@@ -125,3 +125,19 @@ map k gk
 " Scroll through tabs with Ctrl + n/p, and scroll buffers with Ctrl N/P.
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
+
+" ================
+" Airline Settings
+" ================
+
+" Always show the statusbar (with airline)
+set laststatus=2
+
+" Disable angled separators, because who's got time for patched fonts?
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+
+" Enable the tab line
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_tabs = 0
