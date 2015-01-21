@@ -25,14 +25,20 @@ export PATH=$PATH:$HOME/scripts/
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
         -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
-# A helpful function to separate text on the terminal
+# A helpful function to separate text on the terminal. Prints two lines of
+# equal signs, and if any arguments are given, the appear between the lines.
 function divider {
-    for i in {1..2}
-    do
+    function line {
         for j in {1..80}
         do
             printf "="
         done
         printf "\n"
-    done
+    }
+    line
+    if [ "$#" -gt "0" ]; then
+        echo "$@"
+    fi
+    line
+    unset line
 }
