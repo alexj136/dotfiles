@@ -269,7 +269,7 @@ main = do
     -- the screen
     xmonadDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w "
         ++ show (screenWidth `div` 2) ++ " -bg '" ++ myLogBGColor
-        ++ "' -fn \'Inconsolata:size=11'")
+        ++ "' -fn 'Inconsolata:size=11' -e 'button3=scrollhome'")
 
     spawn ("sh " ++ homeDir ++ "/.xmonad/autostart")
 

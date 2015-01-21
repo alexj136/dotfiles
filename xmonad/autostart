@@ -10,7 +10,7 @@ screenwidth=$(<$HOME/.screenwidth)
 # system tray.
 exec conky --config=$HOME/.xmonad/conkyrc | dzen2 -x $((screenwidth / 2)) -y 0 \
     -w $(((screenwidth / 2) - 20)) -ta r -bg '#002b36' \
-    -fn 'Inconsolata:size=11' &
+    -fn 'Inconsolata:size=11' -e 'button3=scrollhome' &
 
 # System tray
 exec trayer --edge top --align right --height 18 --widthtype pixel \

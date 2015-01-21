@@ -24,3 +24,15 @@ export PATH=$PATH:$HOME/scripts/
 # Set some java options to enable antialiasing, etcetera
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
         -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+
+# A helpful function to separate text on the terminal
+function divider {
+    for i in {1..2}
+    do
+        for j in {1..80}
+        do
+            printf "="
+        done
+        printf "\n"
+    done
+}
