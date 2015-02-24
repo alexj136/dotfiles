@@ -48,38 +48,38 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_t     ), spawn $ XMonad.terminal conf)
 
     -- launch firefox
-    , ((modm,               xK_y     ), spawn "firefox" )
+    , ((modm              , xK_y     ), spawn "firefox" )
 
     -- launch zathura
-    , ((modm,               xK_u     ), spawn "zathura" )
+    , ((modm              , xK_u     ), spawn "zathura" )
 
     -- launch dmenu
-    , ((modm,               xK_d     ), spawn "exe=`dmenu_run -b` && eval \"exec $exe\"")
+    , ((modm              , xK_d     ), spawn "exe=`dmenu_run -b` && eval \"exec $exe\"")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_q     ), kill)
 
      -- Rotate through the available layout algorithms
-    , ((modm,               xK_space ), sendMessage NextLayout)
+    , ((modm              , xK_space ), sendMessage NextLayout)
 
     --  Reset the layouts on the current workspace to default
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
 
     -- Resize viewed windows to the correct size
-    , ((modm,               xK_n     ), refresh)
+    , ((modm              , xK_n     ), refresh)
 
     -- Cycle non-empty workspaces with mod+tab or mod+shift+tab
-    , ((modm,               xK_Tab   ), moveTo Next NonEmptyWS)
+    , ((modm              , xK_Tab   ), moveTo Next NonEmptyWS)
     , ((modm .|. shiftMask, xK_Tab   ), moveTo Prev NonEmptyWS)
 
     -- Move focus to the next window
-    , ((modm,               xK_j     ), windows W.focusDown)
+    , ((modm              , xK_j     ), windows W.focusDown)
 
     -- Move focus to the previous window
-    , ((modm,               xK_k     ), windows W.focusUp)
+    , ((modm              , xK_k     ), windows W.focusUp)
 
     -- Move focus to the master window
-    , ((modm,               xK_m     ), windows W.focusMaster)
+    , ((modm              , xK_m     ), windows W.focusMaster)
 
     -- Swap the focused window and the master window
     , ((modm .|. shiftMask, xK_Return), windows W.swapMaster)
@@ -117,6 +117,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xF86XK_AudioLowerVolume   ), spawn myAudioLowerCommand)
     , ((0, xF86XK_AudioRaiseVolume   ), spawn myAudioRaiseCommand)
     , ((0, xF86XK_AudioMute          ), spawn myAudioMuteCommand)
+
+    -- ThinkVantage button launches firefox
+    , ((0, 0x1008FF41                ), spawn "firefox" )
 
     , ((modm              , xK_minus ), spawn myAudioLowerCommand)
     , ((modm              , xK_equal ), spawn myAudioRaiseCommand)
