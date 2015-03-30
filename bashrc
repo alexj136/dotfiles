@@ -10,7 +10,7 @@
 alias ls='ls --color=auto'  # Pretty colours for ls
 
 # Prompt style
-PS1='[\u@\h \W]\$ '
+PS1='[\u@\h \A \D{%d-%m-%y} \W]\$ '
 
 # File extensions to ignore
 FIGNORE=".aux:.log:.dvi:.class:.o:.pyc:.hi:.swp:"
