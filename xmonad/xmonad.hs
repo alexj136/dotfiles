@@ -113,17 +113,22 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Restart xmonad
     , ((modm .|. shiftMask, xK_c     ), restart "xmonad" True)
 
-    -- Volume keys
+    -- Volume keys - with dedicated buttons
     , ((0, xF86XK_AudioLowerVolume   ), spawn myAudioLowerCommand)
     , ((0, xF86XK_AudioRaiseVolume   ), spawn myAudioRaiseCommand)
     , ((0, xF86XK_AudioMute          ), spawn myAudioMuteCommand)
 
-    -- ThinkVantage button launches firefox
-    , ((0, 0x1008FF41                ), spawn "firefox" )
-
+    -- Volume keys - with keyboard bindings
     , ((modm              , xK_minus ), spawn myAudioLowerCommand)
     , ((modm              , xK_equal ), spawn myAudioRaiseCommand)
     , ((modm              , xK_0     ), spawn myAudioMuteCommand)
+
+    -- ThinkVantage button launches firefox
+    , ((0, 0x1008FF41                ), spawn "firefox" )
+
+    -- Brightness controls
+    , ((0, xF86XK_MonBrightnessDown  ), spawn "xbacklight -dec 5")
+    , ((0, xF86XK_MonBrightnessUp    ), spawn "xbacklight -inc 5")
 
     -- Lock the screen
     , ((modm .|. shiftMask, xK_z     ), spawn "xscreensaver-command --lock")
