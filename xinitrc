@@ -21,7 +21,7 @@ exec nm-applet &
 exec xscreensaver -no-splash &
 
 # Set desktop wallpaper
-exec feh --bg-fill '/home/alex/docs/Gran_Canaria_by_ALF.jpg' &
+exec feh --bg-fill '~/Pictures/Gran_Canaria_by_ALF.jpg' &
 
 # Run window manager selected by SLiM
 exec $1

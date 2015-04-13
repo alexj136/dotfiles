@@ -41,7 +41,7 @@ myFocusFollowsMouse  = True
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 
-myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
     [ ((modm              , xK_Return), spawn $ XMonad.terminal conf)
@@ -125,6 +125,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- ThinkVantage button launches firefox
     , ((0, 0x1008FF41                ), spawn "firefox" )
+
+    -- Take a screenshot
+    , ((0, xK_Print                  ), spawn ("sh $HOME/.dotfiles/screenshot.sh"))
 
     -- Brightness controls
     , ((0, xF86XK_MonBrightnessDown  ), spawn "xbacklight -dec 5")
@@ -289,7 +292,7 @@ main = do
         , workspaces         = myWorkspaces
         , normalBorderColor  = myNormalBorderColor
         , focusedBorderColor = myFocusedBorderColor
-        , keys               = myKeys
+        , keys               = myKeys homeDir
         , mouseBindings      = myMouseBindings
         , layoutHook         = myLayout
         , manageHook         = myManageHook
