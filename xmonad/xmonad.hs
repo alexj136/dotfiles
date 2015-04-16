@@ -124,7 +124,10 @@ myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_0     ), spawn myAudioMuteCommand)
 
     -- ThinkVantage button launches firefox
-    , ((0, 0x1008FF41                ), spawn "firefox" )
+    , ((0, 0x1008FF41                ), spawn "firefox")
+
+    -- ThinkPad mic mute button mutes mic
+    , ((0, 0x1008FFB2                ), spawn myMicMuteCommand)
 
     -- Take a screenshot
     , ((0, xK_Print                  ), spawn ("sh $HOME/.dotfiles/screenshot.sh"))
@@ -135,6 +138,7 @@ myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Lock the screen
     , ((modm .|. shiftMask, xK_z     ), spawn "xscreensaver-command --lock")
+    , ((0, xF86XK_ScreenSaver        ), spawn "xscreensaver-command --lock")
     ]
     ++
 
@@ -158,6 +162,7 @@ myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 myAudioRaiseCommand = "amixer -M set Master 5%+"
 myAudioLowerCommand = "amixer -M set Master 5%-"
 myAudioMuteCommand  = "amixer set Master toggle"
+myMicMuteCommand    = "amixer set Capture toggle"
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
