@@ -234,11 +234,9 @@ myLogHook h = dynamicLogWithPP $ dzenPP
     , ppVisible = colorizeFlipped . pad
     , ppHidden  = colorizeFlipped . pad
     , ppOutput  = \s -> hPutStrLn h (s ++ " ")
-    , ppLayout  = colorizeFlipped . cleanLayout
+    , ppLayout  = colorizeFlipped . cleanPPLayout
     , ppSep     = " "
-    , ppTitle   = \s -> if all (== ' ') s
-                            then ""
-                            else colorize $ pad s
+    , ppTitle s = if all (== ' ') s then "" else colorize (pad s)
     }
   where
     pad :: String -> String
@@ -250,8 +248,8 @@ myLogHook h = dynamicLogWithPP $ dzenPP
     colorizeFlipped :: String -> String
     colorizeFlipped = dzenColor myLogFG2Color myLogFG1Color
 
-    cleanLayout :: String -> String
-    cleanLayout s = case s of
+    cleanPPLayout :: String -> String
+    cleanPPLayout s = case s of
         "ResizableTall"        -> " RT "
         "Tall"                 -> " T "
         "Mirror Tall"          -> " MT "

@@ -14,4 +14,4 @@ exec batti &
 exec volumeicon &
 
 # Restore the wallpaper
-exec sh ~/.fehbg &
+exec feh --bg-fill $HOME/Pictures/Gran_Canaria_by_ALF.jpg &
