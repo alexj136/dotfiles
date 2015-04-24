@@ -236,7 +236,7 @@ myLogHook h = dynamicLogWithPP $ dzenPP
     , ppOutput  = \s -> hPutStrLn h (s ++ " ")
     , ppLayout  = colorizeFlipped . cleanPPLayout
     , ppSep     = " "
-    , ppTitle s = if all (== ' ') s then "" else colorize (pad s)
+    , ppTitle   = \s -> if all (== ' ') s then "" else colorize (pad s)
     }
   where
     pad :: String -> String
