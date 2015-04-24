@@ -27,7 +27,7 @@ import qualified Data.Map                      as M
 ------------------------------------------------------------------------
 -- Simple settings
 
-myTerminal           = "uxterm"
+myTerminal           = "xterm"
 myBorderWidth        = 2         -- Blue/White Scheme
 myNormalBorderColor  = "#002b36" -- "#111111"
 myFocusedBorderColor = "#268bd2" -- "#3333aa"
