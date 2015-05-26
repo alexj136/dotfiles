@@ -41,11 +41,9 @@ endif
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
-"set showcmd		" Show (partial) command in status line.
 "set showmatch		" Show matching brackets.
 "set ignorecase		" Do case insensitive matching
 "set smartcase		" Do smart case matching
-"set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
 "set hidden         " Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
@@ -88,8 +86,8 @@ set guifont=Inconsolata\ 11
 " Show line numbers at launch
 set nu
 
-" Wrap long lines only between separate words, do not wrap within a word
-set wrap lbr
+" Show current command info in status line
+set showcmd
 
 " Color schemes - if we're in gvim, or a terminal that supports 256 colors,
 " use molokai. Otherwise, use the default color scheme.
@@ -110,7 +108,7 @@ endif
 
 if has ("wildmenu")
     set wildmenu
-    set wildmode=longest,full
+    set wildmode=longest,list
     set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.log,*.dvi
 endif
 
@@ -141,3 +139,23 @@ let g:airline_right_sep=''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#show_tabs = 0
+
+" =============
+" Misc Settings
+" =============
+
+" Enable incremental search (submit search after each keypress while searching
+set incsearch
+
+" Highlight search matches, and clear them by pressing return
+set hlsearch
+nnoremap <silent> <CR> :nohlsearch<CR><CR>
+
+" Wrap long lines only between separate words, do not wrap within a word
+set wrap lbr
+
+" Allow movement past the end of a line in visual block mode
+set virtualedit=block
+
+" Disable entering ex mode with Q - I never use ex mode
+nnoremap Q <nop>
