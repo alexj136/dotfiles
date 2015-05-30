@@ -1,19 +1,6 @@
-" All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
-" /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime
-" you can find below.  If you wish to change any of those settings, you should
-" do it in this file (/etc/vim/vimrc), since debian.vim will be overwritten
-" everytime an upgrade of the vim packages is performed.  It is recommended to
-" make changes after sourcing debian.vim since it alters the value of the
-" 'compatible' option.
-
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
 runtime! debian.vim
-
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
 
 " Load Pathogen (package manager).
 execute pathogen#infect()
@@ -54,9 +41,9 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 " Spell-checking for txt, md and tex files
-autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_au
-autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_au
-autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_au
+autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_gb
+autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_gb
+autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_gb
 
 " ===================
 " Indentation Options
@@ -74,20 +61,11 @@ set nojoinspaces  " Don't convert spaces to tabs
 " Appearence Settings
 " ===================
 
-" Enable ruler.
-set colorcolumn=81
-
-" Disable menu bar & toolbar in gvim
-set guioptions=a
-
-" Font for gvim
-set guifont=Inconsolata\ 11
-
-" Show line numbers at launch
-set nu
-
-" Show current command info in status line
-set showcmd
+set colorcolumn=81          " Enable ruler.
+set guioptions=a            " Disable menu bar & toolbar in gvim
+set guifont=Inconsolata\ 11 " Font for gvim
+set nu                      " Show line numbers at launch
+set showcmd                 " Show current command info in status line
 
 " Color schemes - if we're in gvim, or a terminal that supports 256 colors,
 " use molokai. Otherwise, use the default color scheme.
@@ -120,25 +98,12 @@ endif
 map j gj
 map k gk
 
-" Scroll through tabs with Ctrl + n/p, and scroll buffers with Ctrl N/P.
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprevious<CR>
+" Scroll through tabs with Ctrl + n/p, and scroll buffers with Ctrl N/P
+nnoremap <C-n>   :bnext<CR>
+nnoremap <C-S-n> :bprevious<CR>
 
-" ================
-" Airline Settings
-" ================
-
-" Always show the statusbar (with airline)
-set laststatus=2
-
-" Disable angled separators, because who's got time for patched fonts?
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-
-" Enable the tab line
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#show_tabs = 0
+" List buffers and give a prompt to change with a number by pressing F12
+nnoremap <F12>   :buffers<CR>:buffer 
 
 " =============
 " Misc Settings
@@ -157,5 +122,5 @@ set wrap lbr
 " Allow movement past the end of a line in visual block mode
 set virtualedit=block
 
-" Disable entering ex mode with Q - I never use ex mode
+" Disable entering ex mode with Shift+Q - I never use ex mode
 nnoremap Q <nop>

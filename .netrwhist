@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/alex/javacc-6.0/examples/Interpreter'
-let g:netrw_dirhist_2='/home/alex/javacc-6.0/examples/MailProcessing'
-let g:netrw_dirhist_3='/home/alex/javacc-6.0/examples/Transformer'
-let g:netrw_dirhist_4='/home/alex/.vim/bundle/tlib_vim'
-let g:netrw_dirhist_5='/home/alex/.vim/snippets'
