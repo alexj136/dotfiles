@@ -86,15 +86,18 @@ endif
 map j gj
 map k gk
 
-" Scroll through tabs with Ctrl + n/p, and scroll buffers with Ctrl N/P
-nnoremap <C-n>   :bnext<CR>
+" Scroll through buffers with Ctrl+N and Ctrl+Shift+N
+nnoremap <C-n> :bnext<CR>
 nnoremap <C-S-n> :bprevious<CR>
 
 " List buffers and give a prompt to change with a number by pressing F12
-nnoremap <F12>   :buffers<CR>:buffer 
+nnoremap <F12> :buffers<CR>:buffer 
 
 " Disable entering ex mode with Shift+Q - I never use ex mode
 nnoremap Q <nop>
+
+" Toggle spell-check with F5
+map <F5> :setlocal spell! spelllang=en_gb<CR>
 
 " =============
 " Misc Settings
@@ -103,11 +106,6 @@ nnoremap Q <nop>
 " Jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
 \ | exe "normal! g'\"" | endif
-
-" Spell-checking for txt, md and tex files
-autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_gb
-autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_gb
-autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_gb
 
 " Enable incremental search (submit search after each keypress while searching)
 set incsearch
@@ -128,10 +126,11 @@ set virtualedit=block
 " Do not auto insert carriage returns at long lines
 set textwidth=0
 
-" The following are commented out as they cause vim to behave a lot
-" differently from regular Vi. They are highly recommended though.
-"set showmatch		" Show matching brackets.
-"set ignorecase		" Do case insensitive matching
-"set autowrite		" Automatically save before commands like :next and :make
-"set hidden         " Hide buffers when they are abandoned
-"set mouse=a		" Enable mouse usage (all modes)
+" Allow hiding of unsaved modified buffers
+set hidden
+
+" When inserting a bracket, breifly move the cursor to its matching bracket
+set showmatch
+
+" Enable mouse usage in console vim
+set mouse=a
