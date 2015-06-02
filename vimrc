@@ -1,3 +1,7 @@
+" ==============================================================================
+"                                ALEX'S VIMRC
+" ==============================================================================
+
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
 runtime! debian.vim
@@ -16,7 +20,10 @@ filetype off
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Vundle manages itself
 Plugin 'gmarik/Vundle.vim'
+
+" Snipmate + dependencies
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
@@ -102,7 +109,7 @@ autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_gb
 autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_gb
 autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_gb
 
-" Enable incremental search (submit search after each keypress while searching
+" Enable incremental search (submit search after each keypress while searching)
 set incsearch
 
 " Highlight search matches, and clear them by pressing return
@@ -112,11 +119,14 @@ nnoremap <silent> <CR> :nohlsearch<CR><CR>
 " Do smart case matching when searching
 set smartcase
 
-" Wrap long lines only between separate words, do not wrap within a word
+" Wrap long display lines only between separate words, do not wrap within a word
 set wrap lbr
 
 " Allow movement past the end of a line in visual block mode
 set virtualedit=block
+
+" Do not auto insert carriage returns at long lines
+set textwidth=0
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
