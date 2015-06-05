@@ -75,7 +75,7 @@ endif
 if has ("wildmenu")
     set wildmenu
     set wildmode=longest,list
-    set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.log,*.dvi
+    set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.log,*.dvi,*.bbl,*.blg
 endif
 
 " ============
