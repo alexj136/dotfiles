@@ -28,6 +28,9 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 
+" Color schemes
+Plugin 'flazz/vim-colorschemes'
+
 call vundle#end()
 filetype plugin indent on
 
