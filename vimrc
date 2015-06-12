@@ -23,10 +23,11 @@ call vundle#begin()
 " Vundle manages itself
 Plugin 'gmarik/Vundle.vim'
 
-" Snipmate + dependencies
+" Snipmate + dependencies + snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 " Color schemes
 Plugin 'flazz/vim-colorschemes'
