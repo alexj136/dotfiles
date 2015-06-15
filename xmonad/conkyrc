@@ -17,20 +17,16 @@ use_spacer none
 #    purple       - 7e40a5
 #    pink         - ff0090
 
-# Understated color theme
-#    light - aaaaaa
-#    dark  - 666666
-
-# Solarized theme
+# Solarized dark theme
 #    light - eee8d5
 #    dark  - 839496
 
 TEXT
 
-^fg(\#eee8d5)HDD ${fs_used}^fg() \
+^fg(\#586e75)HDD ${fs_used}^fg() \
 ^fg(\#839496)CPU ${cpu cpu0}% ${acpitemp}C^fg() \
-^fg(\#eee8d5)VOL ${exec amixer get Master -M | grep -oE "[[:digit:]]*%" | sed -n '1 p'} ${exec amixer get Master | grep -oE "\[on]|\[off]" | tr '[:lower:]' '[:upper:]'| sed 's/^.\(.*\).$/\1/' | sed -n '1 p'}^fg() \
+^fg(\#586e75)VOL ${exec amixer get Master -M | grep -oE "[[:digit:]]*%" | sed -n '1 p'} ${exec amixer get Master | grep -oE "\[on]|\[off]" | tr '[:lower:]' '[:upper:]'| sed 's/^.\(.*\).$/\1/' | sed -n '1 p'}^fg() \
 ^fg(\#839496)RAM ${mem}^fg() \
-^fg(\#eee8d5)BAT ${battery_short}^fg() \
+^fg(\#586e75)BAT ${battery_short}^fg() \
 ^fg(\#839496)${time %a %d %b %Y}^fg() \
-^fg(\#eee8d5)${time %H:%M}^fg() \
+^fg(\#586e75)${time %H:%M}^fg() \

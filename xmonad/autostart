@@ -9,9 +9,9 @@ screenwidth=$(<$HOME/.screenwidth)
 # 20 pixels away from the right-hand-side of the screen, leaving room for the
 # system tray.
 exec conky --config=$HOME/.xmonad/conkyrc | dzen2 -x $((screenwidth / 2)) -y 0 \
-    -w $(((screenwidth / 2) - 20)) -ta r -bg '#002b36' \
+    -w $(((screenwidth / 2) - 20)) -ta r -bg '#eee8d5' \
     -fn 'Inconsolata:size=11' -e 'button3=scrollhome' &
 
 # System tray
 exec trayer --edge top --align right --height 18 --widthtype pixel \
-    --width 20 --expand true --transparent true --alpha 0 --tint 0x002b36 &
+    --width 20 --expand true --transparent true --alpha 0 --tint 0xeee8d5 &

@@ -1,6 +1,6 @@
--- Alex's Xmonad Configuration File
-
-------------------------------------------------------------------------
+{-------------------------------------------------------------------------------
+        ALEX'S XMONAD CONFIGURATION FILE
+-------------------------------------------------------------------------------}
 -- Required imports
 
 import XMonad
@@ -24,22 +24,86 @@ import qualified XMonad.StackSet               as W
 import qualified XMonad.Actions.FlexibleResize as F
 import qualified Data.Map                      as M
 
-------------------------------------------------------------------------
--- Simple settings
+{-------------------------------------------------------------------------------
+        COLOUR DEFINITIONS
+-------------------------------------------------------------------------------}
+
+data ColorKind = Background | Middle | Foreground | Highlight
+
+molokaiColors :: ColorKind -> String
+molokaiColors = \c -> case c of
+    Background -> molokai_black
+    Middle     -> molokai_lightgrey
+    Foreground -> molokai_white
+    Highlight  -> molokai_turquoise
+molokai_black       = "#101010" :: String
+molokai_darkgrey    = "#303030" :: String
+molokai_lightgrey   = "#9999aa" :: String
+molokai_white       = "#d0d0d0" :: String
+molokai_darkgreen   = "#66aa11" :: String
+molokai_lightgreen  = "#80ff00" :: String
+molokai_darkblue    = "#30309b" :: String
+molokai_lightblue   = "#3579a8" :: String
+molokai_turquoise   = "#5f5fee" :: String
+molokai_brightblue  = "#4eb4fa" :: String
+molokai_darkpurple  = "#7e40a5" :: String
+molokai_magenta     = "#960050" :: String
+molokai_lightpurple = "#bb88dd" :: String
+molokai_pink        = "#ff0090" :: String
+molokai_peach       = "#ffba68" :: String
+molokai_orange      = "#c47f2c" :: String
+
+solarizedDarkColors :: ColorKind -> String
+solarizedDarkColors = \c -> case c of
+    Background -> solarized_dark_base03
+    Middle     -> solarized_light_base1
+    Foreground -> solarized_light_base02
+    Highlight  -> solarized_blue
+solarizedLightColors :: ColorKind -> String
+solarizedLightColors = \c -> case c of
+    Background -> solarized_light_base02
+    Middle     -> solarized_light_base1
+    Foreground -> solarized_dark_base03
+    Highlight  -> solarized_blue
+solarized_yellow       = "#b58900" :: String
+solarized_orange       = "#cb4b16" :: String
+solarized_red          = "#dc322f" :: String
+solarized_magenta      = "#d33682" :: String
+solarized_violet       = "#6c71c4" :: String
+solarized_blue         = "#268bd2" :: String
+solarized_cyan         = "#2aa198" :: String
+solarized_green        = "#859900" :: String
+solarized_dark_base03  = "#002b36" :: String
+solarized_dark_base02  = "#073642" :: String
+solarized_dark_base01  = "#586e75" :: String
+solarized_dark_base00  = "#657b83" :: String
+solarized_dark_base0   = "#839496" :: String
+solarized_dark_base1   = "#93a1a1" :: String
+solarized_dark_base2   = "#eee8d5" :: String
+solarized_dark_base3   = "#fdf6e3" :: String
+solarized_light_base03 = "#fdf6e3" :: String
+solarized_light_base02 = "#eee8d5" :: String
+solarized_light_base01 = "#93a1a1" :: String
+solarized_light_base00 = "#839496" :: String
+solarized_light_base0  = "#657b83" :: String
+solarized_light_base1  = "#586e75" :: String
+solarized_light_base2  = "#073642" :: String
+solarized_light_base3  = "#002b36" :: String
+
+{-------------------------------------------------------------------------------
+        SIMPLE SETTINGS
+-------------------------------------------------------------------------------}
 
 myTerminal           = "xterm"
-myBorderWidth        = 2         -- Blue/White Scheme
-myNormalBorderColor  = "#002b36" -- "#111111"
-myFocusedBorderColor = "#268bd2" -- "#3333aa"
-myLogFG1Color        = "#eee8d5" -- "#3333aa"
-myLogFG2Color        = "#586e75" -- "#eeeeee"
-myLogBGColor         = "#002b36" -- "#111111"
+myBorderWidth        = 2
+myColors             = solarizedLightColors
 myModMask            = mod4Mask
 myWorkspaces         = map show [1..9]
 myFocusFollowsMouse  = True
 
-------------------------------------------------------------------------
--- Key bindings. Add, modify or remove key bindings here.
+{-------------------------------------------------------------------------------
+        KEY BINDINGS. ADD, MODIFY OR REMOVE KEY BINDINGS HERE.
+-------------------------------------------------------------------------------}
 
 myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
@@ -155,17 +219,19 @@ myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
-------------------------------------------------------------------------
--- Volume commands: commands that are issued when a key combination is
--- activated to adjust volume
+{-------------------------------------------------------------------------------
+        VOLUME COMMANDS: COMMANDS THAT ARE ISSUED WHEN A KEY COMBINATION IS
+        ACTIVATED TO ADJUST VOLUME
+-------------------------------------------------------------------------------}
 
 myAudioRaiseCommand = "amixer -M set Master 5%+"
 myAudioLowerCommand = "amixer -M set Master 5%-"
 myAudioMuteCommand  = "amixer set Master toggle"
 myMicMuteCommand    = "amixer set Capture toggle"
 
-------------------------------------------------------------------------
--- Mouse bindings: default actions bound to mouse events
+{-------------------------------------------------------------------------------
+        MOUSE BINDINGS: DEFAULT ACTIONS BOUND TO MOUSE EVENTS
+-------------------------------------------------------------------------------}
 
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 
@@ -183,8 +249,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, button5), (\w -> moveTo Next NonEmptyWS))
     ]
 
-------------------------------------------------------------------------
--- Layouts
+{-------------------------------------------------------------------------------
+        LAYOUTS
+-------------------------------------------------------------------------------}
 
 -- You can specify and transform your layouts by modifying these values.
 -- If you change layout bindings be sure to use 'mod-shift-space' after
@@ -206,8 +273,9 @@ myLayout =
     ratio   = 1/2      -- Default proportion of screen occupied by master pane
     slaves  = [1]
 
-------------------------------------------------------------------------
--- Window rules
+{-------------------------------------------------------------------------------
+        WINDOW RULES
+-------------------------------------------------------------------------------}
 
 -- Execute arbitrary actions and WindowSet manipulations when managing
 -- a new window. You can use this to, for example, always float a
@@ -226,8 +294,9 @@ myManageHook = composeAll
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)
     , manageDocks ]
 
-------------------------------------------------------------------------
--- Status bars and logging
+{-------------------------------------------------------------------------------
+        STATUS BARS AND LOGGING
+-------------------------------------------------------------------------------}
 
 myLogHook h = dynamicLogWithPP $ dzenPP
     { ppCurrent = colorize . pad
@@ -243,10 +312,10 @@ myLogHook h = dynamicLogWithPP $ dzenPP
     pad str = ' ' : str ++ " "
 
     colorize :: String -> String
-    colorize = dzenColor myLogFG1Color myLogFG2Color
+    colorize = dzenColor (myColors Foreground) (myColors Middle)
 
     colorizeFlipped :: String -> String
-    colorizeFlipped = dzenColor myLogFG2Color myLogFG1Color
+    colorizeFlipped = dzenColor (myColors Middle) (myColors Foreground)
 
     cleanPPLayout :: String -> String
     cleanPPLayout s = case s of
@@ -258,8 +327,9 @@ myLogHook h = dynamicLogWithPP $ dzenPP
         "Full"                 -> " F "
         _                      -> " U "
 
-------------------------------------------------------------------------
--- Startup hook
+{-------------------------------------------------------------------------------
+        STARTUP HOOK
+-------------------------------------------------------------------------------}
 
 -- Perform an arbitrary action each time xmonad starts or is restarted. Used,
 -- for example, by XMonad.Layout.PerWorkspace to initialize per-workspace layout
@@ -268,8 +338,9 @@ myLogHook h = dynamicLogWithPP $ dzenPP
 -- Set the window manager name to LG3D to make Java Swing apps cooperate
 myStartupHook = setWMName "LG3D"
 
-------------------------------------------------------------------------
--- Now run xmonad with the appropriate defaults
+{-------------------------------------------------------------------------------
+        NOW RUN XMONAD WITH THE APPROPRIATE DEFAULTS
+-------------------------------------------------------------------------------}
 
 main = do
 
@@ -281,7 +352,7 @@ main = do
     -- Run the XMonad status bar from the left-hand edge to the exact middle of
     -- the screen
     xmonadDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w "
-        ++ show (screenWidth `div` 2) ++ " -bg '" ++ myLogBGColor
+        ++ show (screenWidth `div` 2) ++ " -bg '" ++ (myColors Background)
         ++ "' -fn 'Inconsolata:size=11' -e 'button3=scrollhome'")
 
     spawn ("sh " ++ homeDir ++ "/.xmonad/autostart")
@@ -293,8 +364,8 @@ main = do
         , borderWidth        = myBorderWidth
         , modMask            = myModMask
         , workspaces         = myWorkspaces
-        , normalBorderColor  = myNormalBorderColor
-        , focusedBorderColor = myFocusedBorderColor
+        , normalBorderColor  = myColors Background
+        , focusedBorderColor = myColors Highlight
         , keys               = myKeys homeDir
         , mouseBindings      = myMouseBindings
         , layoutHook         = myLayout
