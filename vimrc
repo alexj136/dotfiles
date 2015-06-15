@@ -56,7 +56,7 @@ set colorcolumn=81          " Enable ruler
 set guioptions=a            " Disable menu bar & toolbar in gvim
 set number                  " Show line numbers at launch
 set showcmd                 " Show current command info in status line
-set background=dark         " Use a dark background
+set background=light        " Use a light background
 set guifont=Inconsolata\ 11 " Use Inconsolata font at size 11
 
 " Color schemes - if we're in gvim, or a terminal that supports 256 colors,
