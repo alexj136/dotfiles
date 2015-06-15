@@ -14,7 +14,7 @@ PS1='\[\e[0;34m\][\[\e[m\]\u@\h\[\e[0;34m\]] [\[\e[m\]\A \D{%d-%m-%y}\
 \[\e[0;34m\]] [\[\e[m\]\W\[\e[0;34m\]]\[\e[m\] \$ '
 
 # File extensions to ignore
-FIGNORE=".aux:.log:.dvi:.class:.o:.pyc:.hi:.swp:"
+FIGNORE=".aux:.log:.dvi:.class:.o:.pyc:.hi:.swp:.bbl:.blg:"
 
 # Append to histfile when shell exits, rather than overwrite
 shopt -s histappend
