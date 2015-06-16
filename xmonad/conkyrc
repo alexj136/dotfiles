@@ -7,26 +7,12 @@ use_spacer none
 
 #^fg(\#aaaaaa)NET ${wireless_essid wlp12s0}^fg() \
 
-# Molokai colours
-#    light blue   - 4eb4fa
-#    mid blue     - 3579a8
-#    dark blue    - 30309b
-#    maroon       - 960050
-#    orange       - c47f2c
-#    bright green - 80ff00
-#    purple       - 7e40a5
-#    pink         - ff0090
-
-# Solarized dark theme
-#    light - eee8d5
-#    dark  - 839496
-
 TEXT
 
-^fg(\#586e75)HDD ${fs_used}^fg() \
-^fg(\#839496)CPU ${cpu cpu0}% ${acpitemp}C^fg() \
-^fg(\#586e75)VOL ${exec amixer get Master -M | grep -oE "[[:digit:]]*%" | sed -n '1 p'} ${exec amixer get Master | grep -oE "\[on]|\[off]" | tr '[:lower:]' '[:upper:]'| sed 's/^.\(.*\).$/\1/' | sed -n '1 p'}^fg() \
-^fg(\#839496)RAM ${mem}^fg() \
-^fg(\#586e75)BAT ${battery_short}^fg() \
-^fg(\#839496)${time %a %d %b %Y}^fg() \
-^fg(\#586e75)${time %H:%M}^fg() \
+^fg(\#cb4b16)HDD ${fs_used}^fg() \
+^fg(\#dc322f)CPU ${cpu cpu0}% ${acpitemp}C^fg() \
+^fg(\#d33682)VOL ${exec amixer get Master -M | grep -oE "[[:digit:]]*%" | sed -n '1 p'} ${exec amixer get Master | grep -oE "\[on]|\[off]" | tr '[:lower:]' '[:upper:]'| sed 's/^.\(.*\).$/\1/' | sed -n '1 p'}^fg() \
+^fg(\#6c71c4)RAM ${mem}^fg() \
+^fg(\#268bd2)BAT ${battery_short}^fg() \
+^fg(\#2aa198)${time %a %d %b %Y}^fg() \
+^fg(\#859900)${time %H:%M}^fg() \

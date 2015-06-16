@@ -55,40 +55,32 @@ molokai_orange      = "#c47f2c" :: String
 
 solarizedDarkColors :: ColorKind -> String
 solarizedDarkColors = \c -> case c of
-    Background -> solarized_dark_base03
-    Middle     -> solarized_light_base1
-    Foreground -> solarized_light_base02
+    Background -> solarized_darkest
+    Middle     -> solarized_dark
+    Foreground -> solarized_lighter
     Highlight  -> solarized_blue
 solarizedLightColors :: ColorKind -> String
 solarizedLightColors = \c -> case c of
-    Background -> solarized_light_base02
-    Middle     -> solarized_light_base1
-    Foreground -> solarized_dark_base03
-    Highlight  -> solarized_blue
-solarized_yellow       = "#b58900" :: String
-solarized_orange       = "#cb4b16" :: String
-solarized_red          = "#dc322f" :: String
-solarized_magenta      = "#d33682" :: String
-solarized_violet       = "#6c71c4" :: String
-solarized_blue         = "#268bd2" :: String
-solarized_cyan         = "#2aa198" :: String
-solarized_green        = "#859900" :: String
-solarized_dark_base03  = "#002b36" :: String
-solarized_dark_base02  = "#073642" :: String
-solarized_dark_base01  = "#586e75" :: String
-solarized_dark_base00  = "#657b83" :: String
-solarized_dark_base0   = "#839496" :: String
-solarized_dark_base1   = "#93a1a1" :: String
-solarized_dark_base2   = "#eee8d5" :: String
-solarized_dark_base3   = "#fdf6e3" :: String
-solarized_light_base03 = "#fdf6e3" :: String
-solarized_light_base02 = "#eee8d5" :: String
-solarized_light_base01 = "#93a1a1" :: String
-solarized_light_base00 = "#839496" :: String
-solarized_light_base0  = "#657b83" :: String
-solarized_light_base1  = "#586e75" :: String
-solarized_light_base2  = "#073642" :: String
-solarized_light_base3  = "#002b36" :: String
+    Background -> solarized_lightest
+    Middle     -> solarized_darker
+    Foreground -> solarized_light
+    Highlight  -> solarized_yellow
+solarized_yellow   = "#b58900" :: String
+solarized_orange   = "#cb4b16" :: String
+solarized_red      = "#dc322f" :: String
+solarized_magenta  = "#d33682" :: String
+solarized_violet   = "#6c71c4" :: String
+solarized_blue     = "#268bd2" :: String
+solarized_cyan     = "#2aa198" :: String
+solarized_green    = "#859900" :: String
+solarized_lightest = "#fdf6e3" :: String
+solarized_lighter  = "#eee8d5" :: String
+solarized_light    = "#93a1a1" :: String
+solarized_lightish = "#839496" :: String
+solarized_darkish  = "#657b83" :: String
+solarized_dark     = "#586e75" :: String
+solarized_darker   = "#073642" :: String
+solarized_darkest  = "#002b36" :: String
 
 {-------------------------------------------------------------------------------
         SIMPLE SETTINGS
