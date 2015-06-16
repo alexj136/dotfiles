@@ -13,6 +13,9 @@ import XMonad.Util.Run
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 
+import XMonad.Prompt
+import XMonad.Prompt.Shell
+
 import Graphics.X11.ExtraTypes.XF86
 
 import System.Exit
@@ -109,8 +112,8 @@ myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch zathura
     , ((modm              , xK_u     ), spawn "zathura" )
 
-    -- launch dmenu
-    , ((modm              , xK_d     ), spawn "exe=`dmenu_run -b` && eval \"exec $exe\"")
+    -- Run application launcher
+    , ((modm              , xK_d     ), shellPrompt myXPConfig)
 
     -- close focused window
     , ((modm .|. shiftMask, xK_q     ), kill)
@@ -318,6 +321,27 @@ myLogHook h = dynamicLogWithPP $ dzenPP
         "Grid"                 -> " G "
         "Full"                 -> " F "
         _                      -> " U "
+
+{-------------------------------------------------------------------------------
+        PROMPT SETTINGS
+-------------------------------------------------------------------------------}
+
+myXPConfig :: XPConfig
+myXPConfig = defaultXPConfig
+    { font                = "xft:Inconsolata:size=11"
+    , borderColor         = myColors Highlight
+    , fgColor             = myColors Foreground
+    , bgColor             = myColors Middle
+    , fgHLight            = myColors Background
+    , bgHLight            = myColors Foreground
+    , promptBorderWidth   = 0
+    , alwaysHighlight     = False
+    , height              = 18
+    , historySize         = 256
+    , showCompletionOnTab = False
+    , autoComplete        = Nothing
+    , position            = Top
+    }
 
 {-------------------------------------------------------------------------------
         STARTUP HOOK
