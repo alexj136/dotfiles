@@ -113,7 +113,7 @@ myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_u     ), spawn "zathura" )
 
     -- Run application launcher
-    , ((modm              , xK_d     ), shellPrompt myXPConfig)
+    , ((modm              , xK_d     ), myShellPrompt myXPConfig)
 
     -- close focused window
     , ((modm .|. shiftMask, xK_q     ), kill)
@@ -326,6 +326,9 @@ myLogHook h = dynamicLogWithPP $ dzenPP
         PROMPT SETTINGS
 -------------------------------------------------------------------------------}
 
+myPromptText :: String
+myPromptText = ">>= "
+
 myXPConfig :: XPConfig
 myXPConfig = defaultXPConfig
     { font                = "xft:Inconsolata:size=11"
@@ -342,6 +345,27 @@ myXPConfig = defaultXPConfig
     , autoComplete        = Nothing
     , position            = Top
     }
+
+-- The code below is a bit of a hack. It's a copy-paste from the
+-- XMonad.Prompt.Shell source code whose purpose is entirely to allow me to
+-- change the prompt text when running the prompt.
+data MyShell = MyShell
+instance XPrompt MyShell where
+    showXPrompt         _ = myPromptText
+    completionToCommand _ = escape
+
+myShellPrompt partCmd = do
+    cmds <- io getCommands
+    mkXPrompt MyShell partCmd (getShellCompl cmds) spawn
+
+escape :: String -> String
+escape []       = ""
+escape (x:xs)
+    | isSpecialChar x = '\\' : x : escape xs
+    | otherwise       = x : escape xs
+
+isSpecialChar :: Char -> Bool
+isSpecialChar =  flip elem " &\\@\"'#?$*()[]{};"
 
 {-------------------------------------------------------------------------------
         STARTUP HOOK
