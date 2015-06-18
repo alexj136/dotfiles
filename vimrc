@@ -67,6 +67,7 @@ elseif match ($TERM, "xterm-256color")  != -1 ||
      \ match ($TERM, "xterm")           != -1 ||
      \ match ($TERM, "screen-256color") != -1
   set t_Co=256
+  set background=dark " Not sure why console vim likes to go dark without this
   colorscheme solarized
 else
   colorscheme default
