@@ -81,11 +81,9 @@ endif
 " WildMenu Options
 " ================
 
-if has ("wildmenu")
-    set wildmenu
-    set wildmode=longest,list
-    set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.log,*.dvi,*.bbl,*.blg
-endif
+set wildmenu
+set wildmode=longest,list
+set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.log,*.dvi,*.bbl,*.blg
 
 " ============
 " Key Bindings
@@ -96,11 +94,12 @@ map j gj
 map k gk
 
 " Scroll through buffers with Ctrl+N and Ctrl+Shift+N
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-S-n> :bprevious<CR>
+nnoremap <silent> <F10> :bprevious<CR>
+nnoremap <silent> <F11> :bnext<CR>
 
 " List buffers and give a prompt to change with a number by pressing F12
-nnoremap <F12> :buffers<CR>:buffer 
+nnoremap <F12> :ls<CR>:b
+cnoremap <F12> <ESC><ESC>
 
 " Disable entering ex mode with Shift+Q - I never use ex mode
 nnoremap Q <nop>
