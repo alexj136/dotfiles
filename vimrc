@@ -60,6 +60,9 @@ set background=light        " Use a light background
 set guifont=Inconsolata\ 11 " Use Inconsolata font at size 11
 set laststatus=2            " Always show status line
 
+" Status line showing buffer number, file path, readonly, modified, position
+set statusline=\ %n:\ %-30.30F\ %-5.5r%-4.4m%=line\ %l\ of\ %L,\ column\ %c\ 
+
 " Color schemes - if we're in gvim, or a terminal that supports 256 colors,
 " use solarized. Otherwise, use the default color scheme.
 if has ("gui_running")
