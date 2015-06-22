@@ -106,8 +106,8 @@ myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm              , xK_Return), spawn $ XMonad.terminal conf)
     , ((modm              , xK_t     ), spawn $ XMonad.terminal conf)
 
-    -- launch firefox
-    , ((modm              , xK_y     ), spawn "firefox" )
+    -- launch chrome
+    , ((modm              , xK_y     ), spawn "google-chrome-stable" )
 
     -- launch zathura
     , ((modm              , xK_u     ), spawn "zathura" )
@@ -182,8 +182,8 @@ myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_equal ), spawn myAudioRaiseCommand)
     , ((modm              , xK_0     ), spawn myAudioMuteCommand)
 
-    -- ThinkVantage button launches firefox
-    , ((0, 0x1008FF41                ), spawn "firefox")
+    -- ThinkVantage button launches chrome
+    , ((0, 0x1008FF41                ), spawn "google-chrome-stable")
 
     -- ThinkPad mic mute button mutes mic
     , ((0, 0x1008FFB2                ), spawn myMicMuteCommand)
