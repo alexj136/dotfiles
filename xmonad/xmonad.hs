@@ -113,7 +113,8 @@ myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_u     ), spawn "zathura" )
 
     -- Run application launcher
-    , ((modm              , xK_d     ), myShellPrompt myXPConfig)
+    , ((modm              , xK_d     ), runPrompt           myXPConfig)
+    , ((modm              , xK_f     ), runInTerminalPrompt myXPConfig)
 
     -- close focused window
     , ((modm .|. shiftMask, xK_q     ), kill)
@@ -326,8 +327,11 @@ myLogHook h = dynamicLogWithPP $ dzenPP
         PROMPT SETTINGS
 -------------------------------------------------------------------------------}
 
-myPromptText :: String
-myPromptText = ">>= "
+myRunText :: String
+myRunText = "run $ "
+
+myRunInTerminalText :: String
+myRunInTerminalText = "run in terminal $ "
 
 myXPConfig :: XPConfig
 myXPConfig = defaultXPConfig
@@ -349,15 +353,29 @@ myXPConfig = defaultXPConfig
 -- The code below is a bit of a hack. It's a copy-paste from the
 -- XMonad.Prompt.Shell source code whose purpose is entirely to allow me to
 -- change the prompt text when running the prompt.
-data MyShell = MyShell
-instance XPrompt MyShell where
-    showXPrompt         _ = myPromptText
+
+-- Code for a standard dmenu-style prompt
+data RunPrompt = RunPrompt
+instance XPrompt RunPrompt where
+    showXPrompt         _ = myRunText
     completionToCommand _ = escape
 
-myShellPrompt partCmd = do
+runPrompt partCmd = do
     cmds <- io getCommands
-    mkXPrompt MyShell partCmd (getShellCompl cmds) spawn
+    mkXPrompt RunPrompt partCmd (getShellCompl cmds) spawn
 
+-- Code for a special prompt that runs the given command inside a terminal
+data RunInTerminalPrompt = RunInTerminalPrompt
+instance XPrompt RunInTerminalPrompt where
+    showXPrompt         _ = myRunInTerminalText
+    completionToCommand _ = escape
+
+runInTerminalPrompt partCmd = do
+    cmds <- io getCommands
+    mkXPrompt RunInTerminalPrompt partCmd (getShellCompl cmds)
+                            (\s -> spawn $ "xterm -e \"" ++ s ++ " ; bash\"")
+
+-- Code common to both prompts
 escape :: String -> String
 escape []       = ""
 escape (x:xs)
