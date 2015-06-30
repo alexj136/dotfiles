@@ -134,29 +134,31 @@ myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Move focus to the next window
     , ((modm              , xK_j     ), windows W.focusDown)
+    , ((modm              , xK_Down  ), windows W.focusDown)
 
     -- Move focus to the previous window
     , ((modm              , xK_k     ), windows W.focusUp)
-
-    -- Move focus to the master window
-    , ((modm              , xK_m     ), windows W.focusMaster)
-
-    -- Swap the focused window and the master window
-    , ((modm .|. shiftMask, xK_Return), windows W.swapMaster)
+    , ((modm              , xK_Up    ), windows W.focusUp)
 
     -- Swap the focused window with the next window
     , ((modm .|. shiftMask, xK_j     ), windows W.swapDown)
+    , ((modm .|. shiftMask, xK_Down  ), windows W.swapDown)
 
     -- Swap the focused window with the previous window
     , ((modm .|. shiftMask, xK_k     ), windows W.swapUp)
+    , ((modm .|. shiftMask, xK_Up    ), windows W.swapUp)
 
     -- Shrink/Expand the master area
     , ((modm              , xK_h     ), sendMessage Shrink)
+    , ((modm              , xK_Right ), sendMessage Shrink)
     , ((modm              , xK_l     ), sendMessage Expand)
+    , ((modm              , xK_Left  ), sendMessage Expand)
 
     -- Shrink/Expand child areas
     , ((modm .|. shiftMask, xK_h     ), sendMessage MirrorShrink)
+    , ((modm .|. shiftMask, xK_Right ), sendMessage MirrorShrink)
     , ((modm .|. shiftMask, xK_l     ), sendMessage MirrorExpand)
+    , ((modm .|. shiftMask, xK_Left  ), sendMessage MirrorExpand)
 
     -- Push window back into tiling
     , ((modm              , xK_i     ), withFocused $ windows . W.sink)
