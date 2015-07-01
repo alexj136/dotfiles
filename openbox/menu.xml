@@ -60,9 +60,9 @@
       </startupnotify>
     </action>
   </item>
-  <item label="Firefox">
+  <item label="Chrome">
     <action name="Execute">
-      <command>firefox</command>
+      <command>google-chrome-stable</command>
       <startupnotify>
         <enabled>yes</enabled>
         <wmclass>Firefox</wmclass>
