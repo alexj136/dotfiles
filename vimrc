@@ -67,7 +67,7 @@ set statusline=\ %n:\ %-50.50F\ %-5.5r%-4.4m%=%l/%L,%c\
 if has ("gui_running")
   colorscheme solarized
   set guifont=Inconsolata\ 11
-if has ("gui_macvim")
+elseif has ("gui_macvim")
   colorscheme solarized
   set guifont=Inconsolata:h14
 elseif match ($TERM, "xterm-256color")  != -1 ||
