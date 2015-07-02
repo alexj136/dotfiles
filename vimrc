@@ -57,7 +57,6 @@ set guioptions=a            " Disable menu bar & toolbar in gvim
 set number                  " Show line numbers at launch
 set showcmd                 " Show current command info in status line
 set background=light        " Use a light background
-set guifont=Inconsolata\ 11 " Use Inconsolata font at size 11
 set laststatus=2            " Always show status line
 
 " Status line showing buffer number, file path, readonly, modified, position
@@ -67,6 +66,10 @@ set statusline=\ %n:\ %-50.50F\ %-5.5r%-4.4m%=%l/%L,%c\
 " use solarized. Otherwise, use the default color scheme.
 if has ("gui_running")
   colorscheme solarized
+  set guifont=Inconsolata\ 11
+if has ("gui_macvim")
+  colorscheme solarized
+  set guifont=Inconsolata:h14
 elseif match ($TERM, "xterm-256color")  != -1 ||
      \ match ($TERM, "xterm")           != -1 ||
      \ match ($TERM, "screen-256color") != -1
