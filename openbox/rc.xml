@@ -319,7 +319,7 @@
   </keybind>
 
   <!-- Keybindings for running applications -->
-  <keybind key="W-return">
+  <keybind key="W-Return">
     <action name="Execute">
       <startupnotify>
         <enabled>true</enabled>
