@@ -5,10 +5,10 @@
 # This script runs when Openbox is started
 
 # Start PyPanel
-exec pypanel &
+exec lxpanel &
 
 # Start batti (battery level indicator)
-exec batti &
+exec cbatticon &
 
 # Start volumeicon (volume systray applet)
 exec volumeicon &
