@@ -52,7 +52,7 @@ TRAY_I_WIDTH    = 24            # System tray icon width  (usually 16 or 24)
 #------------------------------------------------------------------------------
 # Panel Clock Format: 'man strftime' for detailed formatting options and help
 #------------------------------------------------------------------------------
-CLOCK_FORMAT    = "%Y-%m-%d %H:%M"    # Ex: 2004-09-25 17:45 
+CLOCK_FORMAT    = "[%a %d %b %Y] [%H:%M]"    # Ex: 2004-09-25 17:45 
 
 #------------------------------------------------------------------------------
 # Clock Delay: Seconds between each clock update during periods of inactivity
@@ -76,7 +76,7 @@ HIDDEN_SIZE     = 2
 # Ex: "-schumacher-clean-medium-r-normal-*-12-*-*-*-*-*-*-*"
 #     "aquafont-8" 
 #------------------------------------------------------------------------------
-FONT            = "Droid Sans:size=10"
+FONT            = "Inconsolata:size=11"
 
 #------------------------------------------------------------------------------
 # Show All Applications: Show apps from all desktops or just the current

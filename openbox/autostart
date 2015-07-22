@@ -5,12 +5,10 @@
 # This script runs when Openbox is started
 
 # Start PyPanel
-exec lxpanel &
+exec pypanel &
 
-# Start batti (battery level indicator)
+# Tray icons
 exec cbatticon &
-
-# Start volumeicon (volume systray applet)
 exec volumeicon &
 
 # Restore the wallpaper
