@@ -11,14 +11,14 @@ VERSION         = 2.4           # Config file version
 #------------------------------------------------------------------------------
 # Colors: Format is hex triplet - 0xrrggbb
 #------------------------------------------------------------------------------
-BG_COLOR        = "0xddddd6"    # Panel background and tinting color
-TASK_COLOR      = "0x000000"    # Normal task name color 
-FOCUSED_COLOR   = "0x1826de"    # Focused task name color
-SHADED_COLOR    = "0x808080"    # Shaded task name color 
-MINIMIZED_COLOR = "0x808080"    # Minimized task name color 
-DESKTOP_COLOR   = "0x000000"    # Desktop name color
-CLOCK_COLOR     = "0x000000"    # Clock text color
-LINE_COLOR      = "0x606060"    # Vertical line color
+BG_COLOR        = "0xfdf6e3"    # Panel background and tinting color
+TASK_COLOR      = "0x073642"    # Normal task name color 
+FOCUSED_COLOR   = "0x002b36"    # Focused task name color
+SHADED_COLOR    = "0xdc322f"    # Shaded task name color 
+MINIMIZED_COLOR = "0x839496"    # Minimized task name color 
+DESKTOP_COLOR   = "0x073642"    # Desktop name color
+CLOCK_COLOR     = "0x073642"    # Clock text color
+LINE_COLOR      = "0x073642"    # Vertical line color
 
 # Text Shadow Colors
 TASK_SHADOW_COLOR      = "0xffffff"
@@ -52,7 +52,7 @@ TRAY_I_WIDTH    = 24            # System tray icon width  (usually 16 or 24)
 #------------------------------------------------------------------------------
 # Panel Clock Format: 'man strftime' for detailed formatting options and help
 #------------------------------------------------------------------------------
-CLOCK_FORMAT    = "[%a %d %b %Y] [%H:%M]"    # Ex: 2004-09-25 17:45 
+CLOCK_FORMAT    = "%a %d %b %Y %H:%M"    # Ex: 2004-09-25 17:45 
 
 #------------------------------------------------------------------------------
 # Clock Delay: Seconds between each clock update during periods of inactivity
@@ -246,10 +246,11 @@ def taskButtonEvent(pp, button, task):
     """ Button event handler for the panel's tasks """
     
     if button == 1:
-        pp.taskFocus(task)
+        #pp.taskFocus(task)
+        pp.toggleMinimize(task)
     elif button == 2:
-        # Destroy the application
-        task.obj.destroy()
+        #task.obj.destroy() # Destroy the application
+        pass
     elif button == 3:
         # Ex. - XMMS doesn't shade, so we want to minimize it instead and
         #       still use button 3 to shade other applications

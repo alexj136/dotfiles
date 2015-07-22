@@ -238,9 +238,6 @@
   <keybind key="W-9">
     <action name="GoToDesktop"><to>9</to></action>
   </keybind> -->
-  <keybind key="W-d">
-    <action name="ToggleShowDesktop"/>
-  </keybind>
 
   <!-- Keybindings for windows -->
   <keybind key="A-F4">
@@ -293,6 +290,37 @@
         <action name="Raise"/>
         <action name="Unshade"/>
       </finalactions>
+    </action>
+  </keybind>
+
+  <!-- Snap windows to left and right edge of screen -->
+  <keybind key="W-h">
+    <action name="UnmaximizeFull"/>
+    <action name="MaximizeVert"/>
+    <action name="MoveResizeTo">
+        <width>683</width>
+    </action>
+    <action name="MoveToEdgeWest"/>
+  </keybind>
+  <keybind key="W-l">
+    <action name="UnmaximizeFull"/>
+    <action name="MaximizeVert"/>
+    <action name="MoveResizeTo">
+        <width>683</width>
+    </action>
+    <action name="MoveToEdgeEast"/>
+  </keybind>
+
+  <!-- Reconfigure, Restart, Exit -->
+  <keybind key="W-S-v">
+    <action name="Reconfigure"/>
+  </keybind>
+  <keybind key="W-S-c">
+    <action name="Restart"/>
+  </keybind>
+  <keybind key="W-S-x">
+    <action name="Exit">
+      <prompt>no</prompt>
     </action>
   </keybind>
 
@@ -353,6 +381,11 @@
         <name>Zathura</name>
       </startupnotify>
       <command>zathura</command>
+    </action>
+  </keybind>
+  <keybind key="W-d">
+    <action name="Execute">
+      <command>dmenu_run -b</command>
     </action>
   </keybind>
 </keyboard>

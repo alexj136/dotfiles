@@ -81,6 +81,12 @@
       <prompt>yes</prompt>
     </action>
   </item>
+  <item label="Power Off">
+    <action name="Execute">
+      <prompt>Are you sure you want to power off the computer?</prompt>
+      <command>poweroff</command>
+    </action>
+  </item>
 </menu>
 
 </openbox_menu>
