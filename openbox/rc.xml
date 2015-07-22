@@ -316,7 +316,7 @@
     <action name="ToggleMaximize"/>
   </keybind>
 
-  <!-- Reconfigure, Restart, Exit -->
+  <!-- Reconfigure, Restart, Exit, Lock -->
   <keybind key="W-S-v">
     <action name="Reconfigure"/>
   </keybind>
@@ -328,6 +328,48 @@
       <prompt>no</prompt>
     </action>
   </keybind>
+  <keybind key="XF86ScreenSaver">
+    <action name="Execute">
+      <command>xscreensaver-command --lock</command>
+    </action>
+  </keybind>
+  <keybind key="W-S-z">
+    <action name="Execute">
+      <command>xscreensaver-command --lock</command>
+    </action>
+  </keybind>
+
+  <!-- Volume control -->
+  <keybind key="XF86AudioMute">
+    <action name="Execute">
+      <command>amixer set Master toggle</command>
+    </action>
+  </keybind>
+  <!--<keybind key="W-0">
+    <action name="Execute">
+      <command>amixer set Master toggle</command>
+    </action>
+  </keybind>-->
+  <keybind key="XF86AudioLowerVolume">
+    <action name="Execute">
+      <command>amixer -M set Master 5%-</command>
+    </action>
+  </keybind>
+  <!--<keybind key="W-minus">
+    <action name="Execute">
+      <command>amixer -M set Master 5%-</command>
+    </action>
+  </keybind>-->
+  <keybind key="XF86AudioRaiseVolume">
+    <action name="Execute">
+      <command>amixer -M set Master 5%+</command>
+    </action>
+  </keybind>
+  <!--<keybind key="W-plus">
+    <action name="Execute">
+      <command>amixer -M set Master 5%+</command>
+    </action>
+  </keybind>-->
 
   <!-- Keybindings for window switching with the arrow keys -->
   <keybind key="W-S-Right">
@@ -354,43 +396,39 @@
   <!-- Keybindings for running applications -->
   <keybind key="W-Return">
     <action name="Execute">
-      <startupnotify>
-        <enabled>true</enabled>
-        <name>XTerm</name>
-      </startupnotify>
       <command>xterm -geometry 90x22</command>
     </action>
   </keybind>
   <keybind key="W-t">
     <action name="Execute">
-      <startupnotify>
-        <enabled>true</enabled>
-        <name>XTerm</name>
-      </startupnotify>
       <command>xterm -geometry 90x22</command>
     </action>
   </keybind>
   <keybind key="W-y">
     <action name="Execute">
-      <startupnotify>
-        <enabled>true</enabled>
-        <name>Chrome</name>
-      </startupnotify>
       <command>google-chrome-stable</command>
     </action>
   </keybind>
   <keybind key="W-u">
     <action name="Execute">
-      <startupnotify>
-        <enabled>true</enabled>
-        <name>Zathura</name>
-      </startupnotify>
       <command>zathura</command>
     </action>
   </keybind>
   <keybind key="W-d">
     <action name="Execute">
       <command>dmenu_run -b</command>
+    </action>
+  </keybind>
+
+  <!-- Brightness control -->
+  <keybind key="XF86MonBrightnessUp">
+    <action name="Execute">
+      <command>xbacklight -inc 5</command>
+    </action>
+  </keybind>
+  <keybind key="XF86MonBrightnessDown">
+    <action name="Execute">
+      <command>xbacklight -dec 5</command>
     </action>
   </keybind>
 </keyboard>
