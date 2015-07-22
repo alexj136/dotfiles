@@ -311,6 +311,11 @@
     <action name="MoveToEdgeEast"/>
   </keybind>
 
+  <!-- Toggle maxmize with W-f -->
+  <keybind key="W-f">
+    <action name="ToggleMaximize"/>
+  </keybind>
+
   <!-- Reconfigure, Restart, Exit -->
   <keybind key="W-S-v">
     <action name="Reconfigure"/>
