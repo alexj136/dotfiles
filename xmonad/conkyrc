@@ -13,6 +13,6 @@ TEXT
 ^fg(\#dc322f)CPU ${cpu cpu0}% ${acpitemp}C^fg() \
 ^fg(\#d33682)VOL ${exec amixer get Master -M | grep -oE "[[:digit:]]*%" | sed -n '1 p'} ${exec amixer get Master | grep -oE "\[on]|\[off]" | tr '[:lower:]' '[:upper:]'| sed 's/^.\(.*\).$/\1/' | sed -n '1 p'}^fg() \
 ^fg(\#6c71c4)RAM ${mem}^fg() \
-^fg(\#268bd2)BAT ${battery_short}^fg() \
+^fg(\#268bd2)BAT ${exec acpi -a | grep -oE "\on|\off" | sed 's/on/P/g' | sed 's/off/U/g'} ${battery_percent}%^fg() \
 ^fg(\#2aa198)${time %a %d %b %Y}^fg() \
 ^fg(\#859900)${time %H:%M}^fg() \
