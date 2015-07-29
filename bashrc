@@ -8,6 +8,7 @@
 
 # Aliases
 alias ls='ls --color=auto'  # Pretty colours for ls
+alias :q='exit'             # Quit like it's vim
 
 # Prompt style
 PS1='\[\e[0;34m\][\[\e[m\]\u@\h\[\e[0;34m\]] [\[\e[m\]\A \D{%d-%m-%y}\
