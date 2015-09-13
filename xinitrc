@@ -18,7 +18,7 @@ exec xrdb -merge ~/.Xresources &
 exec nm-applet &
 
 # Launch the screensaver daemon
-exec xscreensaver -no-splash &
+exec xautolock -time 20 -locker i3lock &
 
 # Set desktop wallpaper
 exec feh --bg-fill $HOME/Pictures/Gran_Canaria_by_ALF.jpg &

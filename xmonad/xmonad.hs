@@ -199,8 +199,8 @@ myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xF86XK_MonBrightnessUp    ), spawn "xbacklight -inc 5")
 
     -- Lock the screen
-    , ((modm .|. shiftMask, xK_z     ), spawn "xscreensaver-command --lock")
-    , ((0, xF86XK_ScreenSaver        ), spawn "xscreensaver-command --lock")
+    , ((modm .|. shiftMask, xK_z     ), spawn "i3lock")
+    , ((0, xF86XK_ScreenSaver        ), spawn "i3lock")
     ]
     ++
 
