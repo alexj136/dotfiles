@@ -89,7 +89,7 @@ solarized_darkest  = "#002b36" :: String
         SIMPLE SETTINGS
 -------------------------------------------------------------------------------}
 
-myTerminal           = "xterm"
+myTerminal           = "urxvt"
 myBorderWidth        = 2
 myColors             = solarizedLightColors
 myModMask            = mod4Mask
@@ -375,7 +375,7 @@ instance XPrompt RunInTerminalPrompt where
 runInTerminalPrompt partCmd = do
     cmds <- io getCommands
     mkXPrompt RunInTerminalPrompt partCmd (getShellCompl cmds)
-                            (\s -> spawn $ "xterm -e \"" ++ s ++ " ; bash\"")
+                            (\s -> spawn $ "urxvt -e \"" ++ s ++ " ; bash\"")
 
 -- Code common to both prompts
 escape :: String -> String

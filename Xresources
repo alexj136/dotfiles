@@ -1,46 +1,4 @@
-! Set the font as Inconsolata
-xterm*faceName: Inconsolata
-xterm*faceSize: 11
-
-! Every shell is a login shell by default (for inclusion of all necessary environment variables)
-xterm*loginshell: true
-
-! Lines of scrollback
-xterm*savelines: 16384
-
-! Enable 256 colour support
-xterm*termName: xterm-256color
-
-! Double-click to select whole URLs
-xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
-
-! Enable cursor blinking
-xterm*cursorBlink: true
-
-! Molokai theme
-!xterm*background: #101010
-!xterm*foreground: #d0d0d0
-!xterm*cursorColor: #d0d0d0
-!xterm*color0: #101010
-!xterm*color1: #960050
-!xterm*color2: #66aa11
-!xterm*color3: #c47f2c
-!xterm*color4: #30309b
-!xterm*color5: #7e40a5
-!xterm*color6: #3579a8
-!xterm*color7: #9999aa
-!xterm*color8: #303030
-!xterm*color9: #ff0090
-!xterm*color10: #80ff00
-!xterm*color11: #ffba68
-!xterm*color12: #5f5fee
-!xterm*color13: #bb88dd
-!xterm*color14: #4eb4fa
-!xterm*color15: #d0d0d0
-
-! ---------------
-! SOLARIZED THEME
-! ---------------
+! SOLARIZED COLOUR THEME
 ! Common colours
 #define S_yellow #b58900
 #define S_orange #cb4b16
@@ -68,7 +26,21 @@ xterm*cursorBlink: true
 #define S_base1 #586e75
 #define S_base2 #073642
 #define S_base3 #002b36
-! Set attributes
+
+! XTERM Settings
+xterm*faceName: Inconsolata
+xterm*faceSize: 11
+xterm*loginshell: true
+xterm*termName: xterm-256color
+xterm*cursorBlink: true
+xterm*scrollTtyOutput: false
+xterm*scrollKey: true
+xterm*savelines: 16384
+
+! Double-click to select whole URLs
+xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+! XTERM Colours
 xterm*background: S_base03
 xterm*foreground: S_base0
 xterm*fading: 40
@@ -84,8 +56,8 @@ xterm*color4: S_blue
 xterm*color5: S_magenta
 xterm*color6: S_cyan
 xterm*color7: S_base2
-xterm*color9: S_orange
 xterm*color8: S_base03
+xterm*color9: S_orange
 xterm*color10: S_base01
 xterm*color11: S_base00
 xterm*color12: S_base0
@@ -93,9 +65,41 @@ xterm*color13: S_violet
 xterm*color14: S_base1
 xterm*color15: S_base3
 
-! Stop output to terminal from jumping down to bottom of scroll again
-xterm*scrollTtyOutput: false
-xterm*scrollKey: true
+! URXVT Settings
+URxvt.scrollBar: false
+URxvt.font: xft:Inconsolata:size=11
+URxvt.letterSpace: -2
+URxvt.fading:  0
+URxvt*loginShell: true
+URxvt*cursorBlink: true
+URxvt*scrollTtyOutput: false
+URxvt*scrollTtyKeypress: true
+URxvt*saveLines: 16384
+
+! URXVT Colours
+URxvt*background: S_base03
+URxvt*foreground: S_base0
+URxvt*fading: 40
+URxvt*fadeColor: S_base03
+URxvt*cursorColor: S_base1
+URxvt*pointerColorBackground: S_base01
+URxvt*pointerColorForeground: S_base1
+URxvt*color0: S_base02
+URxvt*color1: S_red
+URxvt*color2: S_green
+URxvt*color3: S_yellow
+URxvt*color4: S_blue
+URxvt*color5: S_magenta
+URxvt*color6: S_cyan
+URxvt*color7: S_base2
+URxvt*color8: S_base03
+URxvt*color9: S_orange
+URxvt*color10: S_base01
+URxvt*color11: S_base00
+URxvt*color12: S_base0
+URxvt*color13: S_violet
+URxvt*color14: S_base1
+URxvt*color15: S_base3
 
 ! Font configuration
 Xft.dpi: 96
