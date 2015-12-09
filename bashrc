@@ -9,6 +9,16 @@
 # Aliases
 alias ls='ls --color=auto'  # Pretty colours for ls
 alias :q='exit'             # Quit like it's vim
+alias :e='vim'              # Edit like it's vim
+
+# Git command aliases
+alias gdf='git --no-pager diff'
+alias gst='git status -u'
+alias gpl='git pull'
+alias gps='git push'
+alias gad='git add -A'
+alias gcm='git commit -m'
+alias glg='git --no-pager log --reverse --pretty=format:'\''%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)'\'' --abbrev-commit'
 
 # Prompt style
 PS1='\[\e[0;34m\][\[\e[m\]\u@\h\[\e[0;34m\]] [\[\e[m\]\A \D{%d-%m-%y}\
