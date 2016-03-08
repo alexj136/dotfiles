@@ -67,7 +67,7 @@ set statusline=\ %n:\ %-50.50F\ %-5.5r%-4.4m%=%l/%L,%c\
 " use solarized. Otherwise, use the default color scheme.
 if has ("gui_running")
   colorscheme solarized
-  set guifont=Source\ Code\ Pro\ Medium\ 10
+  set guifont=Source\ Code\ Pro\ Medium\ 9.3
 elseif has ("gui_macvim")
   colorscheme solarized
   set guifont=Inconsolata:h14
