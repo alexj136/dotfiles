@@ -95,6 +95,7 @@ myColors             = solarizedLightColors
 myModMask            = mod4Mask
 myWorkspaces         = map show [1..9]
 myFocusFollowsMouse  = True
+myFont               = "xft:Inconsolata:size=11"
 
 {-------------------------------------------------------------------------------
         KEY BINDINGS. ADD, MODIFY OR REMOVE KEY BINDINGS HERE.
@@ -113,8 +114,7 @@ myKeys homeDir conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_u     ), spawn "zathura" )
 
     -- Run application launcher
-    , ((modm              , xK_d     ), runPrompt           myXPConfig)
-    , ((modm              , xK_f     ), runInTerminalPrompt myXPConfig)
+    , ((modm              , xK_d     ), shellPrompt myXPConfig)
 
     -- close focused window
     , ((modm .|. shiftMask, xK_q     ), kill)
@@ -329,15 +329,9 @@ myLogHook h = dynamicLogWithPP $ dzenPP
         PROMPT SETTINGS
 -------------------------------------------------------------------------------}
 
-myRunText :: String
-myRunText = "run $ "
-
-myRunInTerminalText :: String
-myRunInTerminalText = "run in terminal $ "
-
 myXPConfig :: XPConfig
 myXPConfig = defaultXPConfig
-    { font                = "xft:Inconsolata:size=11"
+    { font                = myFont
     , borderColor         = myColors Highlight
     , fgColor             = myColors Foreground
     , bgColor             = myColors Middle
@@ -351,41 +345,6 @@ myXPConfig = defaultXPConfig
     , autoComplete        = Nothing
     , position            = Top
     }
-
--- The code below is a bit of a hack. It's a copy-paste from the
--- XMonad.Prompt.Shell source code whose purpose is entirely to allow me to
--- change the prompt text when running the prompt.
-
--- Code for a standard dmenu-style prompt
-data RunPrompt = RunPrompt
-instance XPrompt RunPrompt where
-    showXPrompt         _ = myRunText
-    completionToCommand _ = escape
-
-runPrompt partCmd = do
-    cmds <- io getCommands
-    mkXPrompt RunPrompt partCmd (getShellCompl cmds) spawn
-
--- Code for a special prompt that runs the given command inside a terminal
-data RunInTerminalPrompt = RunInTerminalPrompt
-instance XPrompt RunInTerminalPrompt where
-    showXPrompt         _ = myRunInTerminalText
-    completionToCommand _ = escape
-
-runInTerminalPrompt partCmd = do
-    cmds <- io getCommands
-    mkXPrompt RunInTerminalPrompt partCmd (getShellCompl cmds)
-                            (\s -> spawn $ "urxvt -e \"" ++ s ++ " ; bash\"")
-
--- Code common to both prompts
-escape :: String -> String
-escape []       = ""
-escape (x:xs)
-    | isSpecialChar x = '\\' : x : escape xs
-    | otherwise       = x : escape xs
-
-isSpecialChar :: Char -> Bool
-isSpecialChar =  flip elem " &\\@\"'#?$*()[]{};"
 
 {-------------------------------------------------------------------------------
         STARTUP HOOK
@@ -413,7 +372,7 @@ main = do
     -- the screen
     xmonadDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w "
         ++ show (screenWidth `div` 2) ++ " -bg '" ++ (myColors Background)
-        ++ "' -fn 'Inconsolata:size=11' -e 'button3=scrollhome'")
+        ++ "' -fn '" ++ myFont ++ "' -e 'button3=scrollhome'")
 
     spawn ("sh " ++ homeDir ++ "/.xmonad/autostart")
 
