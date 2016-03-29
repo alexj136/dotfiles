@@ -1,2 +1,2 @@
 #!/bin/bash
-dmenu -b -fn "Ubuntu Mono:size=10"
+dmenu_run -p "\$" -b -fn "Ubuntu Mono:size=10"
