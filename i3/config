@@ -23,7 +23,7 @@ bindsym $mod+y exec google-chrome-stable
 bindsym $mod+u exec zathura
 
 # Run dmenu
-bindsym $mod+d exec dmenu_run -b
+bindsym $mod+d exec sh $HOME/.dotfiles/run_dmenu.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
