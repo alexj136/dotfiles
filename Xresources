@@ -67,8 +67,8 @@ xterm*color15: S_base3
 
 ! URXVT Settings
 URxvt.scrollBar: false
-URxvt.font: xft:Ubuntu Mono:size=10
-URxvt.letterSpace: -2
+URxvt.font: xft:Inconsolata:size=10
+URxvt.letterSpace: -1
 URxvt.fading:  0
 URxvt*loginShell: true
 URxvt*cursorBlink: true

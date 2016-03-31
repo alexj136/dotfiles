@@ -7,7 +7,7 @@ set $term urxvt
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Ubuntu Mono 10
+font pango:Inconsolata 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -151,25 +151,24 @@ bar {
     workspace_buttons yes
     status_command echo -e '{ "version" : 1 }\n[\n[],' ; conky --config=$HOME/.config/i3/conkyrc
     colors {
-        background $back_darker
+        background $dark_base03
         # class            border        background    text
-        focused_workspace  $back_darker  $accent_cyan  $back_dark
-        active_workspace   $back_darker  $accent_blue  $back_dark
-        inactive_workspace $back_darker  $accent_blue  $back_dark
-        urgent_workspace   $back_darker  $accent_red   $back_dark
+        focused_workspace  $dark_base03  $dark_base_2  $dark_base01
+        active_workspace   $dark_base03  $dark_base03  $dark_base_1
+        inactive_workspace $dark_base03  $dark_base03  $dark_base_1
+        urgent_workspace   $dark_base03  $accent_red   $dark_base03
     }
 }
 
 # Colour configuration
-set $text_darker  #586e75
-set $text_dark    #657b83
-set $text_light   #839496
-set $text_lighter #93a1a1
-
-set $back_darker  #002b36
-set $back_dark    #073642
-set $back_light   #eee8d5
-set $back_lighter #fdf6e3
+set $dark_base03 #002b36
+set $dark_base02 #073642
+set $dark_base01 #586e75
+set $dark_base00 #657b83
+set $dark_base_0 #839496
+set $dark_base_1 #93a1a1
+set $dark_base_2 #eee8d5
+set $dark_base_3 #fdf6e3
 
 set $accent_yellow  #b58900
 set $accent_orange  #cb4b16
@@ -180,8 +179,8 @@ set $accent_blue    #268bd2
 set $accent_cyan    #2aa198
 set $accent_green   #859900
 
-# class                 border         background     text          indicator
-client.focused          $accent_cyan   $accent_cyan   $back_dark    $accent_cyan
-client.focused_inactive $accent_blue   $accent_blue   $back_dark    $accent_blue
-client.unfocused        $accent_blue   $accent_blue   $back_dark    $accent_blue
-client.urgent           $accent_blue   $accent_blue   $text_light   $accent_blue
+# class                 border       background   text         indicator
+client.focused          $dark_base_2 $dark_base_2 $dark_base01 $dark_base_2
+client.focused_inactive $dark_base03 $dark_base03 $dark_base_1 $dark_base03
+client.unfocused        $dark_base03 $dark_base03 $dark_base_1 $dark_base03
+client.urgent           $dark_base03 $accent_red  $dark_base03 $dark_base03
