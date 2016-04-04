@@ -57,7 +57,6 @@ set colorcolumn=81          " Enable ruler
 set guioptions=a            " Disable menu bar & toolbar in gvim
 set number                  " Show line numbers at launch
 set showcmd                 " Show current command info in status line
-set background=light        " Use a light background
 set laststatus=2            " Always show status line
 
 " Status line showing buffer number, file path, readonly, modified, position
@@ -66,6 +65,7 @@ set statusline=\ %n:\ %-50.50F\ %-5.5r%-4.4m%=%l/%L,%c\
 " Color schemes - if we're in gvim, or a terminal that supports 256 colors,
 " use solarized. Otherwise, use the default color scheme.
 if has ("gui_running")
+  set background=light
   colorscheme solarized
   set guifont=Inconsolata\ 10
 elseif has ("gui_macvim")
@@ -75,8 +75,8 @@ elseif match ($TERM, "xterm-256color")        != -1 ||
      \ match ($TERM, "xterm")                 != -1 ||
      \ match ($TERM, "rxvt-unicode-256color") != -1 ||
      \ match ($TERM, "screen-256color")       != -1
-  let g:solarized_termcolors=256
-  set t_Co=256
+  set background=dark " For some reason terminal vim confuses solarized BGs
+  let g:solarized_termcolors=16
   colorscheme solarized
 else
   colorscheme default
