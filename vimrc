@@ -31,7 +31,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'derekwyatt/vim-scala'
 
 " Color schemes
-Plugin 'flazz/vim-colorschemes'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 filetype plugin indent on
