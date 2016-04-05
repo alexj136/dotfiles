@@ -2,6 +2,11 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# Run xtitle (AUR xtitle-git) and dzen2 to show the window title
+exec_always xtitle -s | dzen2 -x 165 -y 2 -w 500 -h 15 -fg '#93a1a1' -bg '#002b36' -fn 'Inconsolata:size=10' -ta l
+
+new_window pixel 2
+
 set $mod Mod4
 set $term urxvt
 
@@ -42,7 +47,7 @@ bindsym $mod+equal exec $raiseVol
 bindsym $mod+minus exec $lowerVol
 
 # Lock screen
-bindsym $mod+Shift+z exec i3lock
+bindsym $mod+Shift+z exec i3lock -e -c 002b36
 
 # change focus
 bindsym $mod+h focus left
