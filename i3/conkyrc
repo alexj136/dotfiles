@@ -9,7 +9,8 @@ max_text_width 0
 
 TEXT
 
-[{ "full_text" : "HDD ${fs_used}" , "color" : "\#cb4b16" , "separator" : false },
+[{ "full_text" : "${exec xtitle}" , "color" : "\#93a1a1" , "separator" : false },
+ { "full_text" : "HDD ${fs_used}" , "color" : "\#cb4b16" , "separator" : false },
  { "full_text" : "CPU ${cpu cpu0}% ${acpitemp}C" , "color" : "\#dc322f" , "separator" : false },
  { "full_text" : "VOL ${exec amixer get Master -M | grep -oE "[[:digit:]]*%" | sed -n '1 p'} ${exec amixer get Master | grep -oE "\[on]|\[off]" | tr '[:lower:]' '[:upper:]'| sed 's/^.\(.*\).$/\1/' | sed -n '1 p'}" , "color" : "\#d33682" , "separator" : false },
  { "full_text" : "RAM ${mem}" , "color" : "\#6c71c4" , "separator" : false },

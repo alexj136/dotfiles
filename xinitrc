@@ -19,7 +19,7 @@ exec nm-applet &
 exec volumeicon &
 
 # Launch the screensaver daemon
-exec xautolock -time 20 -locker i3lock -e -c 002b36 &
+exec xautolock -time 20 -locker "i3lock -e -c 002b36" &
 
 # Set desktop wallpaper
 exec nitrogen --restore &
