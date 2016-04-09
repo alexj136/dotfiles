@@ -8,11 +8,10 @@ own_window no
 max_text_width 0
 
 TEXT
-[{ "color" : "\#93a1a1" , "separator" : false , "full_text" : "${exec xprop -id $(xdotool getactivewindow) | grep _NET_WM_NAME | cut -d '"' -f2- | sed 's/"$//'}" },
- { "color" : "\#cb4b16" , "separator" : false , "full_text" : "HDD ${fs_used}" },
+[{ "color" : "\#cb4b16" , "separator" : false , "full_text" : "HDD ${fs_used}" },
  { "color" : "\#dc322f" , "separator" : false , "full_text" : "CPU ${cpu cpu0}% ${acpitemp}C" },
  { "color" : "\#d33682" , "separator" : false , "full_text" : "VOL ${exec amixer get Master | grep -oE "\[[[:digit:]]*%\] \[(on|off)\]" | tail -1 | sed -e "s/\[//g" -e "s/\]//g" -e "s/on/ON/g" -e "s/off/OFF/g"}" },
  { "color" : "\#6c71c4" , "separator" : false , "full_text" : "RAM ${mem}" },
- { "color" : "\#268bd2" , "separator" : false , "full_text" : "BAT ${exec acpi -a | grep -oE '\on|\off' | sed 's/on/P/' | sed 's/off/U/'} ${battery_percent}%" },
+ { "color" : "\#268bd2" , "separator" : false , "full_text" : "BAT ${exec acpi -a | grep -oE '\on|\off' | sed -e 's/on/P/' -e 's/off/U/'} ${battery_percent}%" },
  { "color" : "\#2aa198" , "separator" : false , "full_text" : "${time %a %d %b %Y}" },
  { "color" : "\#859900" , "separator" : false , "full_text" : "${time %H:%M}" }],
