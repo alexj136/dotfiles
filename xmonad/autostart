@@ -3,15 +3,15 @@
 # Stuff for xmonad to launch on startup
 
 # Get the screen width from $HOME/.screenwidth
-screenwidth=$(<$HOME/.screenwidth)
+screenwidth=$(sh $HOME/.dotfiles/screenwidth.sh)
 
 # System status bar - goes from the middle of the screen to the right, stopping
 # 20 pixels away from the right-hand-side of the screen, leaving room for the
 # system tray.
 exec conky --config=$HOME/.xmonad/conkyrc | dzen2 -x $((screenwidth / 2)) -y 0 \
-    -w $(((screenwidth / 2) - 20)) -ta r -bg '#fdf6e3' \
-    -fn 'Inconsolata:size=11' -e 'button3=scrollhome' &
+    -w $(((screenwidth / 2) - 20)) -h 16 -ta r -bg '#fdf6e3' \
+    -fn 'Inconsolata:size=10' -e 'button3=scrollhome' &
 
 # System tray
-exec trayer --edge top --align right --height 18 --widthtype pixel \
+exec trayer --edge top --align right --height 16 --widthtype pixel \
     --width 20 --expand true --transparent true --alpha 0 --tint 0xfdf6e3 &

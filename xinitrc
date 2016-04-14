@@ -14,9 +14,8 @@ fi
 # Load xterm settings
 exec xrdb -merge ~/.Xresources &
 
-# Run the network manager & volume tray icons
+# Run the network manager applet
 exec nm-applet &
-exec volumeicon &
 
 # Launch the screensaver daemon
 exec xautolock -time 20 -locker "i3lock -e -c 002b36" &

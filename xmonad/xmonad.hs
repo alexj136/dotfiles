@@ -20,12 +20,13 @@ import Graphics.X11.ExtraTypes.XF86
 
 import System.Exit
 import System.IO (stderr)
---import System.Process (runCommand)
+import System.Process --(readProcess)
 import System.Directory (getHomeDirectory)
 
 import qualified XMonad.StackSet               as W
 import qualified XMonad.Actions.FlexibleResize as F
 import qualified Data.Map                      as M
+import Data.Char (isSpace)
 
 {-------------------------------------------------------------------------------
         COLOUR DEFINITIONS
@@ -95,7 +96,7 @@ myColors             = solarizedLightColors
 myModMask            = mod4Mask
 myWorkspaces         = map show [1..9]
 myFocusFollowsMouse  = True
-myFont               = "xft:Inconsolata:size=11"
+myFont               = "Inconsolata:size=10"
 
 {-------------------------------------------------------------------------------
         KEY BINDINGS. ADD, MODIFY OR REMOVE KEY BINDINGS HERE.
@@ -365,13 +366,14 @@ main = do
 
     -- Determine the screen width
     homeDir <- getHomeDirectory
-    screenWidthString <- readFile $ homeDir ++ "/.screenwidth"
+    --screenWidthString <- readProcess "sh" [homeDir ++ "/.dotfiles/screenwidth.sh"] ""
+    screenWidthString <- readFile (homeDir ++ "/.screenwidth")
     let screenWidth = read screenWidthString
 
     -- Run the XMonad status bar from the left-hand edge to the exact middle of
     -- the screen
     xmonadDzenBar <- spawnPipe ("dzen2 -ta l -x 0 -y 0 -w "
-        ++ show (screenWidth `div` 2) ++ " -bg '" ++ (myColors Background)
+        ++ show (screenWidth `div` 2) ++ " -h 16 -bg '" ++ (myColors Background)
         ++ "' -fn '" ++ myFont ++ "' -e 'button3=scrollhome'")
 
     spawn ("sh " ++ homeDir ++ "/.xmonad/autostart")
