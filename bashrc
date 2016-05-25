@@ -30,6 +30,12 @@ FIGNORE=".aux:.log:.dvi:.class:.o:.pyc:.hi:.swp:.bbl:.blg:"
 # Append to histfile when shell exits, rather than overwrite
 shopt -s histappend
 
+# Typing only a directory performs a cd there
+shopt -s autocd
+
+# Resize shell when terminal resizes
+shopt -s checkwinsize
+
 # Add my scripts directory to the path variable
 export PATH=$PATH:$HOME/scripts/
 
