@@ -8,7 +8,8 @@ own_window no
 max_text_width 0
 
 TEXT
-[{ "color" : "\#cb4b16" , "separator" : false , "full_text" : "HDD ${fs_used}" },
+[{ "color" : "\#93a1a1" , "separator" : false , "full_text" : "${exec nmcli connection show --active | tail -n1 | awk '{print toupper($1)}' | sed -e "s/NAME/NO CONNECTION/"}" },
+ { "color" : "\#cb4b16" , "separator" : false , "full_text" : "HDD ${fs_used}" },
  { "color" : "\#dc322f" , "separator" : false , "full_text" : "CPU ${cpu cpu0}% ${acpitemp}C" },
  { "color" : "\#d33682" , "separator" : false , "full_text" : "VOL ${exec amixer get Master | grep -oE "\[[[:digit:]]*%\] \[(on|off)\]" | tail -1 | sed -e "s/\[//g" -e "s/\]//g" -e "s/on/ON/g" -e "s/off/OFF/g"}" },
  { "color" : "\#6c71c4" , "separator" : false , "full_text" : "RAM ${mem}" },
