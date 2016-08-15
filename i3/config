@@ -22,8 +22,8 @@ bindsym $mod+t exec $term
 # Launch firefox
 bindsym $mod+y exec google-chrome-stable
 
-# Launch zathura
-bindsym $mod+u exec zathura
+# Launch evince
+bindsym $mod+u exec evince
 
 # Run dmenu
 bindsym $mod+d exec sh $HOME/.dotfiles/run_dmenu.sh
