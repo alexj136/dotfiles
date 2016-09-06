@@ -18,7 +18,10 @@ alias gpl='git pull'
 alias gps='git push'
 alias gad='git add -A'
 alias gcm='git commit -m'
-alias glg='git --no-pager log --reverse --pretty=format:'\''%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)'\'' --abbrev-commit'
+function glg {
+    git --no-pager log --reverse --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' --abbrev-commit $@
+    echo ""
+}
 
 # Prompt style
 PS1='\[\e[0;34m\][\[\e[m\]\u@\h\[\e[0;34m\]] [\[\e[m\]\A \D{%d-%m-%y}\
