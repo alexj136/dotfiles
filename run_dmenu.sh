@@ -1,4 +1,5 @@
 #!/bin/bash
+source ~/.bashrc
 # Colour configuration
 dark_base03="#002b36"
 #dark_base02="#073642"

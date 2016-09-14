@@ -3,6 +3,10 @@
 # ~/.bashrc
 #
 
+# Add my local bin directory for my own scripts to the path variable. Doing this
+# before the interactivity check allows dmenu to get this path.
+export PATH=$PATH:$HOME/bin/
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -38,9 +42,6 @@ shopt -s autocd
 
 # Resize shell when terminal resizes
 shopt -s checkwinsize
-
-# Add my scripts directory to the path variable
-export PATH=$PATH:$HOME/scripts/
 
 # Set some java options to enable antialiasing, etcetera
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true

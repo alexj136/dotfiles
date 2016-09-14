@@ -19,8 +19,11 @@ floating_modifier $mod
 bindsym $mod+Return exec $term
 bindsym $mod+t exec $term
 
-# Launch firefox
+# Launch chrome
 bindsym $mod+y exec google-chrome-stable
+
+# Launch gnome-mplayer
+bindsym $mod+m exec gnome-mplayer
 
 # Launch evince
 bindsym $mod+u exec evince
