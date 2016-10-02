@@ -25,6 +25,12 @@ if [ ! -d "$HOME/.xmonad" ]; then
     ln -s --verbose $HOME/.dotfiles/xmonad/ $HOME/.xmonad
 fi
 
+# Luakit
+ln -s --verbose $HOME/.dotfiles/luakit/ $HOME/.config/
+mkdir -p $HOME/.local/share/luakit
+wget --output-document=$HOME/.local/share/luakit/easylist.txt \
+    https://easylist-downloads.adblockplus.org/easylist.txt
+
 # Openbox related things
 ln -s --verbose $HOME/.dotfiles/pypanelrc $HOME/.pypanelrc
 ln -s --verbose $HOME/.dotfiles/openbox/ $HOME/.config/
