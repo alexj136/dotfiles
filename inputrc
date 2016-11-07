@@ -14,16 +14,12 @@ $if mode=emacs
 
 # for linux console and RH/Debian xterm
 "\e[1~": beginning-of-line
-"\e[4~": end-of-line
-"\e[5~": beginning-of-history
-"\e[6~": end-of-history
-"\e[7~": beginning-of-line
+"\e[4~": end-of-line            # end key
+"\e[7~": beginning-of-line      # home key
+#"\e[5~": beginning-of-history   # page up key
+#"\e[6~": end-of-history         # page down key
 "\e[3~": delete-char
 "\e[2~": quoted-insert
-"\e[5C": forward-word
-"\e[5D": backward-word
-"\e\e[C": forward-word
-"\e\e[D": backward-word
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
 
