@@ -21,6 +21,7 @@ bindsym $mod+t exec $term
 
 # Launch chrome
 bindsym $mod+y exec google-chrome-stable
+for_window [class="google-chrome"] border none
 
 # Launch gnome-mplayer
 bindsym $mod+m exec gnome-mplayer
