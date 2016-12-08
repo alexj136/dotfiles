@@ -15,6 +15,9 @@ stow i3
 #stow xmonad
 #stow openbox
 
+# bin directory
+stow bin
+
 # Get the Luakit adblock list
 mkdir -p $HOME/.local/share/luakit
 wget --output-document=$HOME/.local/share/luakit/easylist.txt \

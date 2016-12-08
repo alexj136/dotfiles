@@ -1,0 +1,7 @@
+#!/bin/sh
+# Runs the MARS mips simulator.
+# Requires the MARS jar, downloadable at:
+#     http://courses.missouristate.edu/KenVollmar/mars/download.htm
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+        -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+java -jar ~/.mars/Mars4_5.jar
