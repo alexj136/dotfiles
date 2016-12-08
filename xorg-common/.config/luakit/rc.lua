@@ -60,6 +60,7 @@ require "binds"
 -- (See ArchWiki on Luakit)
 require "adblock"
 require "adblock_chrome"
+os.execute("sh ~/.dotfiles/luakit_get_adblock_list_if_missing.sh")
 
 require "webinspector"
 
