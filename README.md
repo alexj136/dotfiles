@@ -14,11 +14,11 @@ This organisation scheme allows easy management using GNU stow.
 - `cd` into it
 - 'stow' all the desired categories. You will almost certainly want to do this for the `bin` and `console` categories. For machines running a X, you will want to do it for `xorg-common` and just one of the window manager categories (`i3`, `openbox` or `xmonad`):
 
-    stow console
-    stow bin
-    stow xorg-common
-    stow i3
+        stow console
+        stow bin
+        stow xorg-common
+        stow i3
 
 - To 'unstow' a category, use the `-D` flag:
 
-    stow -D i3
+        stow -D i3
