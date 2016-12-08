@@ -2,14 +2,10 @@
 
 # Creates required symbolic links to the files in this repository, in the
 # required locations. Run with 'sh links.sh'. This script requires that the git
-# repo exist at '$HOME/.dotfiles/'.
+# repo exist at '$HOME/.dotfiles/' and must be executed there.
 
 # Command-line related things
-ln -s --verbose $HOME/.dotfiles/gitconfig $HOME/.gitconfig
-ln -s --verbose $HOME/.dotfiles/hgrc $HOME/.hgrc
-ln -s --verbose $HOME/.dotfiles/zshrc $HOME/.zshrc
-ln -s --verbose $HOME/.dotfiles/bashrc $HOME/.bashrc
-ln -s --verbose $HOME/.dotfiles/inputrc $HOME/.inputrc
+stow console
 
 # X.Org related things
 ln -s --verbose $HOME/.dotfiles/xinitrc $HOME/.xinitrc
