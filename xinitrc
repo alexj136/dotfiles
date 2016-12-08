@@ -23,5 +23,8 @@ exec xautolock -time 20 -locker "i3lock -e -c 002b36" &
 # Set desktop wallpaper
 exec nitrogen --restore &
 
+# Run redshift (like f.lux or twilight)
+exec redshift -l '50:0' &
+
 # Run window manager selected by SLiM
 exec $1
