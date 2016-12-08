@@ -8,10 +8,7 @@
 stow console
 
 # X.Org related things
-ln -s --verbose $HOME/.dotfiles/xinitrc $HOME/.xinitrc
-ln -s --verbose $HOME/.dotfiles/Xresources $HOME/.Xresources
-ln -s --verbose $HOME/.dotfiles/gtkrc-2.0 $HOME/.gtkrc-2.0
-ln -s --verbose $HOME/.dotfiles/fontconfig $HOME/.config/
+stow xorg-common
 
 # i3WM config file
 ln -s --verbose $HOME/.dotfiles/i3/ $HOME/.config/
