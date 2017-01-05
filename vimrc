@@ -73,9 +73,12 @@ elseif has ("gui_macvim")
   set guifont=Inconsolata:h14
 elseif match ($TERM, "xterm-256color")        != -1 ||
      \ match ($TERM, "xterm")                 != -1 ||
-     \ match ($TERM, "rxvt-unicode-256color") != -1 ||
-     \ match ($TERM, "screen-256color")       != -1
+     \ match ($TERM, "rxvt-unicode-256color") != -1
   set background=dark " For some reason terminal vim confuses solarized BGs
+  let g:solarized_termcolors=16
+  colorscheme solarized
+elseif match ($TERM, "screen-256color")       != -1
+  set background=light " But it doesn't happen in tmux
   let g:solarized_termcolors=16
   colorscheme solarized
 else
