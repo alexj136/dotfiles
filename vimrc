@@ -62,27 +62,34 @@ set laststatus=2            " Always show status line
 " Status line showing buffer number, file path, readonly, modified, position
 set statusline=\ %n:\ %-50.50F\ %-5.5r%-4.4m%=%l/%L,%c\ 
 
-" Color schemes - if we're in gvim, or a terminal that supports 256 colors,
-" use solarized. Otherwise, use the default color scheme.
+" ====================
+" Color Settings 
+" ====================
+
+" Settings for gvim on Arch Linux
 if has ("gui_running")
   set background=light
   colorscheme solarized
   set guifont=Inconsolata\ 10
+
+" Settings for Mac at Uni
 elseif has ("gui_macvim")
   colorscheme solarized
   set guifont=Inconsolata:h14
+
+" Settings for terminal vim
 elseif match ($TERM, "xterm-256color")        != -1 ||
      \ match ($TERM, "xterm")                 != -1 ||
-     \ match ($TERM, "rxvt-unicode-256color") != -1
-  set background=dark " For some reason terminal vim confuses solarized BGs
+     \ match ($TERM, "rxvt-unicode-256color") != -1 ||
+     \ match ($TERM, "screen-256color")       != -1
+  set background=light
   let g:solarized_termcolors=16
   colorscheme solarized
-elseif match ($TERM, "screen-256color")       != -1
-  set background=light " But it doesn't happen in tmux
-  let g:solarized_termcolors=16
-  colorscheme solarized
+
+" If the terminal isn't recognised then use vim's default scheme
 else
   colorscheme default
+
 endif
 
 " ================
