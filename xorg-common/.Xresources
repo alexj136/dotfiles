@@ -1,75 +1,29 @@
-! SOLARIZED COLOUR THEME
-! Common colours
-#define S_yellow #b58900
-#define S_orange #cb4b16
-#define S_red #dc322f
-#define S_magenta #d33682
-#define S_violet #6c71c4
-#define S_blue #268bd2
-#define S_cyan #2aa198
-#define S_green #859900
-! Dark-only colours
-!#define S_base03 #002b36
-!#define S_base02 #073642
-!#define S_base01 #586e75
-!#define S_base00 #657b83
-!#define S_base0 #839496
-!#define S_base1 #93a1a1
-!#define S_base2 #eee8d5
-!#define S_base3 #fdf6e3
-! Light-only colours
-#define S_base03 #fdf6e3
-#define S_base02 #eee8d5
-#define S_base01 #93a1a1
-#define S_base00 #839496
-#define S_base0 #657b83
-#define S_base1 #586e75
-#define S_base2 #073642
-#define S_base3 #002b36
+! SOLARIZED LIGHT COLOUR DEFINITIONS
 
-! XTERM Settings
-xterm*faceName: Inconsolata
-xterm*faceSize: 11
-xterm*loginshell: true
-xterm*termName: xterm-256color
-xterm*cursorBlink: true
-xterm*scrollTtyOutput: false
-xterm*scrollKey: true
-xterm*savelines: 16384
+#define S_yellow    #b58900
+#define S_orange    #cb4b16
+#define S_red       #dc322f
+#define S_magenta   #d33682
+#define S_violet    #6c71c4
+#define S_blue      #268bd2
+#define S_cyan      #2aa198
+#define S_green     #859900
 
-! Double-click to select whole URLs
-xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+#define S_base03    #002b36
+#define S_base02    #073642
+#define S_base01    #586e75
+#define S_base00    #657b83
+#define S_base0     #839496
+#define S_base1     #93a1a1
+#define S_base2     #eee8d5
+#define S_base3     #fdf6e3
 
-! XTERM Colours
-xterm*background: S_base03
-xterm*foreground: S_base0
-xterm*fading: 40
-xterm*fadeColor: S_base03
-xterm*cursorColor: S_base1
-xterm*pointerColorBackground: S_base01
-xterm*pointerColorForeground: S_base1
-xterm*color0: S_base02
-xterm*color1: S_red
-xterm*color2: S_green
-xterm*color3: S_yellow
-xterm*color4: S_blue
-xterm*color5: S_magenta
-xterm*color6: S_cyan
-xterm*color7: S_base2
-xterm*color8: S_base03
-xterm*color9: S_orange
-xterm*color10: S_base01
-xterm*color11: S_base00
-xterm*color12: S_base0
-xterm*color13: S_violet
-xterm*color14: S_base1
-xterm*color15: S_base3
+! URXVT BEHAVIOUR SETTINGS
 
-! URXVT Settings
 URxvt.scrollBar: false
 URxvt.font: xft:Inconsolata:size=10
 URxvt.letterSpace: -1
-URxvt.fading:  0
+URxvt*fading: 40
 URxvt.intensityStyles: false
 URxvt*loginShell: true
 URxvt*cursorBlink: true
@@ -84,13 +38,12 @@ URxvt.keysym.Control-Left:  \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
 
 ! URXVT Colours
-URxvt*background: S_base03
-URxvt*foreground: S_base0
-URxvt*fading: 40
-URxvt*fadeColor: S_base03
-URxvt*cursorColor: S_base1
-URxvt*pointerColorBackground: S_base01
-URxvt*pointerColorForeground: S_base1
+URxvt*background: S_base3
+URxvt*foreground: S_base00
+URxvt*fadeColor: S_base3
+URxvt*cursorColor: S_base01
+URxvt*pointerColorBackground: S_base1
+URxvt*pointerColorForeground: S_base01
 URxvt*color0: S_base02
 URxvt*color1: S_red
 URxvt*color2: S_green
