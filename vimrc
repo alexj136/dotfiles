@@ -110,13 +110,15 @@ set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.log,*.dvi,*.bbl,*.blg
 map j gj
 map k gk
 
-" Scroll through buffers with Ctrl+N and Ctrl+Shift+N
-nnoremap <silent> <F10> :bprevious<CR>
-nnoremap <silent> <F11> :bnext<CR>
+" - is leader key
+let mapleader = "-"
 
-" List buffers and give a prompt to change with a number by pressing F12
-nnoremap <F12> :ls<CR>:b
-cnoremap <F12> <ESC><ESC>
+" Scroll through buffers with -- and -_
+nnoremap <silent> <leader>- :bprevious<CR>
+nnoremap <silent> <leader>_ :bnext<CR>
+
+" List buffers and give a prompt to change with a number using -=
+nnoremap <leader>= :ls<CR>:b
 
 " Disable entering ex mode with Shift+Q - I never use ex mode
 nnoremap Q <nop>
