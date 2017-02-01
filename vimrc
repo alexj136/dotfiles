@@ -29,14 +29,18 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
+" For seamless switching between vim viewports and tmux panes. Requires
+" corresponding bindings in ~/.tmux.conf.
+Plugin 'christoomey/vim-tmux-navigator'
+
+" Solarized color scheme
+Plugin 'altercation/vim-colors-solarized'
+
 " Scala development
 Plugin 'derekwyatt/vim-scala'
 
 " Haskell development
 Plugin 'neovimhaskell/haskell-vim'
-
-" Color schemes
-Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 filetype plugin indent on
