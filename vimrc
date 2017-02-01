@@ -32,6 +32,9 @@ Plugin 'honza/vim-snippets'
 " Scala development
 Plugin 'derekwyatt/vim-scala'
 
+" Haskell development
+Plugin 'neovimhaskell/haskell-vim'
+
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
 
@@ -161,3 +164,6 @@ set showmatch
 
 " Enable mouse usage in console vim
 set mouse=a
+
+" Disable auto-indentation settings in haskell-vim, because they're annoying
+let g:haskell_indent_disable = 1
