@@ -36,6 +36,10 @@ Plugin 'christoomey/vim-tmux-navigator'
 " Solarized color scheme
 Plugin 'altercation/vim-colors-solarized'
 
+" Airline - status etc
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 " Scala development
 Plugin 'derekwyatt/vim-scala'
 
@@ -65,11 +69,6 @@ syntax on                   " Enable syntax highlighting.
 set colorcolumn=81          " Enable ruler
 set guioptions=a            " Disable menu bar & toolbar in gvim
 set number                  " Show line numbers at launch
-set showcmd                 " Show current command info in status line
-set laststatus=2            " Always show status line
-
-" Status line showing buffer number, file path, readonly, modified, position
-set statusline=\ %n:\ %-50.50F\ %-5.5r%-4.4m%=%l/%L,%c\ 
 
 " ====================
 " Color Settings 
@@ -117,12 +116,9 @@ set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.log,*.dvi,*.bbl,*.blg
 map j gj
 map k gk
 
-" - is leader key
-let mapleader = "-"
-
-" Scroll through buffers with -- and -_
-nnoremap <silent> <leader>- :bprevious<CR>
-nnoremap <silent> <leader>_ :bnext<CR>
+" Scroll through buffers with tab and shift-tab
+nnoremap <silent> <tab> :bprevious<CR>
+nnoremap <silent> <S-tab> :bnext<CR>
 
 " List buffers and give a prompt to change with a number using -=
 nnoremap <leader>= :ls<CR>:b
@@ -168,6 +164,14 @@ set showmatch
 
 " Enable mouse usage in console vim
 set mouse=a
+
+" Enable airline buffer bar. Don't use separators.
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_theme='solarized'
 
 " Disable auto-indentation settings in haskell-vim, because they're annoying
 let g:haskell_indent_disable = 1
