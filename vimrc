@@ -74,16 +74,16 @@ set number                  " Show line numbers at launch
 " Color Settings 
 " ====================
 
+" Settings for Mac at Uni
+if has ("gui_macvim")
+  colorscheme solarized
+  set guifont=Menlo\ Regular:h11
+
 " Settings for gvim on Arch Linux
-if has ("gui_running")
+elseif has ("gui_running")
   set background=light
   colorscheme solarized
   set guifont=Inconsolata\ 10
-
-" Settings for Mac at Uni
-elseif has ("gui_macvim")
-  colorscheme solarized
-  set guifont=Inconsolata:h14
 
 " Settings for terminal vim
 elseif match ($TERM, "xterm-256color")        != -1 ||
