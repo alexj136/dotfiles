@@ -125,7 +125,17 @@ nnoremap Q <nop>
 nnoremap q: <nop>
 
 " Command to toggle spell-check 
-command SpellToggle setlocal spell! spelllang=en_gb
+command! SpellToggle setlocal spell! spelllang=en_gb
+
+" Command to toggle light/dark background when using the solarized color scheme
+function! BGToggle()
+    if &background=="light"
+        set background=dark
+    else
+        set background=light
+    endif
+endfunction
+command! BGToggle call BGToggle()
 
 " =============
 " Misc Settings
