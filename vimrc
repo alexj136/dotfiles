@@ -71,7 +71,7 @@ set guioptions=a            " Disable menu bar & toolbar in gvim
 set number                  " Show line numbers at launch
 
 " ====================
-" Color Settings 
+" Color Settings
 " ====================
 
 " Settings for Mac at Uni
@@ -117,21 +117,22 @@ map j gj
 map k gk
 
 " Scroll through buffers with tab and shift-tab
-nnoremap <silent> <tab> :bprevious<CR>
-nnoremap <silent> <S-tab> :bnext<CR>
+nnoremap <silent> <tab> :bnext<CR>
+nnoremap <silent> <S-tab> :bprevious<CR>
 
-" List buffers and give a prompt to change with a number using -=
-nnoremap <leader>= :ls<CR>:b
-
-" Disable entering ex mode with Shift+Q - I never use ex mode
+" Disable bindings to enter ex mode - I never use ex mode
 nnoremap Q <nop>
+nnoremap q: <nop>
 
-" Toggle spell-check with F5
-map <F5> :setlocal spell! spelllang=en_gb<CR>
+" Command to toggle spell-check 
+command SpellToggle setlocal spell! spelllang=en_gb
 
 " =============
 " Misc Settings
 " =============
+
+" Put swap-files in a convenient location
+set directory^=$HOME/.vim/swapfiles//
 
 " Jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
@@ -173,8 +174,8 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ' '
 let g:airline#extensions#tabline#right_sep = ' '
 let g:airline#extensions#tabline#right_alt_sep = ' '
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+let g:airline_left_sep=' '
+let g:airline_right_sep=' '
 let g:airline_theme='solarized'
 
 " Disable auto-indentation settings in haskell-vim, because they're annoying
