@@ -3,7 +3,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Hide window titles
-#new_window pixel 2
+new_window pixel 2
 
 set $mod Mod4
 set $term urxvt
@@ -191,3 +191,7 @@ client.focused          $dark_base_2 $dark_base_2 $dark_base01 $dark_base_2
 client.focused_inactive $dark_base03 $dark_base03 $dark_base_1 $dark_base03
 client.unfocused        $dark_base03 $dark_base03 $dark_base_1 $dark_base03
 client.urgent           $dark_base03 $accent_red  $dark_base03 $dark_base03
+
+# i3-gaps stuff - remove if not using i3-gaps from the AUR.
+gaps inner 30
+smart_gaps on
