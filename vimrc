@@ -26,6 +26,7 @@ Plugin 'gmarik/Vundle.vim'
 " Snipmate + dependencies + snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-surround'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
@@ -77,7 +78,7 @@ set number                  " Show line numbers at launch
 " Settings for Mac at Uni
 if has ("gui_macvim")
   colorscheme solarized
-  set guifont=Menlo\ Regular:h11
+  set guifont=Inconsolata\ Regular:h14
 
 " Settings for gvim on Arch Linux
 elseif has ("gui_running")
@@ -124,18 +125,14 @@ nnoremap <silent> <S-tab> :bprevious<CR>
 nnoremap Q <nop>
 nnoremap q: <nop>
 
-" Command to toggle spell-check 
+" Command to toggle spell-check
 command! SpellToggle setlocal spell! spelllang=en_gb
 
 " Command to toggle light/dark background when using the solarized color scheme
-function! BGToggle()
-    if &background=="light"
-        set background=dark
-    else
-        set background=light
-    endif
-endfunction
-command! BGToggle call BGToggle()
+command! BGToggle
+  \ if &background=="light" | set background=dark  |
+  \ else                    | set background=light |
+  \ endif
 
 " =============
 " Misc Settings
@@ -176,6 +173,9 @@ set showmatch
 " Enable mouse usage in console vim
 set mouse=a
 
+" Disable bells
+set visualbell t_vb=
+
 " Enable airline buffer bar. Don't use separators.
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
@@ -187,6 +187,7 @@ let g:airline#extensions#tabline#right_alt_sep = ' '
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='solarized'
+if !exists('g:airline_symbols') | let g:airline_symbols = {} | endif
 
 " Disable auto-indentation settings in haskell-vim, because they're annoying
 let g:haskell_indent_disable = 1
