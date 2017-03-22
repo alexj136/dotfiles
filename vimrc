@@ -78,7 +78,7 @@ set number                  " Show line numbers at launch
 " Settings for Mac at Uni
 if has ("gui_macvim")
   colorscheme solarized
-  set guifont=Inconsolata\ Regular:h14
+  set guifont=Inconsolata\ Regular:h15
 
 " Settings for gvim on Arch Linux
 elseif has ("gui_running")
