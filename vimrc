@@ -26,9 +26,12 @@ Plugin 'gmarik/Vundle.vim'
 " Snipmate + dependencies + snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'tpope/vim-surround'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+
+" Workflow stuff
+Plugin 'tpope/vim-surround'
+Plugin 'junegunn/vim-easy-align'
 
 " For seamless switching between vim viewports and tmux panes. Requires
 " corresponding bindings in ~/.tmux.conf.
