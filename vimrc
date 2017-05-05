@@ -120,6 +120,10 @@ set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.log,*.dvi,*.bbl,*.blg
 map j gj
 map k gk
 
+" Display partial wrapped lines when the full line won't fit on the screen
+" instead of the @ placeholders at the bottom-left
+set display=lastline
+
 " Scroll through buffers with tab and shift-tab
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <S-tab> :bprevious<CR>
