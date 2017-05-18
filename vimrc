@@ -88,7 +88,7 @@ if has ("gui_macvim")
 elseif has ("gui_running")
   set background=light
   colorscheme solarized
-  set guifont=Inconsolata\ 10
+  set guifont=Inconsolata\ 11
   set columns=85
 
 " Settings for terminal vim
