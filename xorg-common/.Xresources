@@ -21,9 +21,9 @@
 ! URXVT BEHAVIOUR SETTINGS
 
 URxvt.scrollBar: false
-URxvt.font: xft:Inconsolata:size=10
+URxvt.font: xft:Inconsolata:size=11
 URxvt.letterSpace: -1
-URxvt*fading: 40
+URxvt*fading: 0
 URxvt.intensityStyles: false
 URxvt*loginShell: true
 URxvt*cursorBlink: true
