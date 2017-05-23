@@ -185,6 +185,11 @@ set mouse=a
 " Disable bells
 set visualbell t_vb=
 
+" Read project-specific vimrc if present, but disable unsafe commands in those
+" external vimrcs (no autocmd, no shelling out, no write commands)
+set exrc
+set secure
+
 " Enable airline buffer bar. Don't use separators.
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
