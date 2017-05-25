@@ -70,7 +70,7 @@ set nojoinspaces            " Don't convert spaces to tabs
 " ===================
 
 syntax on                   " Enable syntax highlighting.
-set colorcolumn=81          " Enable ruler
+set colorcolumn=80          " Enable ruler
 set guioptions=a            " Disable menu bar & toolbar in gvim
 set number                  " Show line numbers at launch
 
@@ -82,14 +82,14 @@ set number                  " Show line numbers at launch
 if has ("gui_macvim")
   colorscheme solarized
   set guifont=Inconsolata\ Regular:h15
-  set columns=85
+  set columns=84
 
 " Settings for gvim on Arch Linux
 elseif has ("gui_running")
   set background=light
   colorscheme solarized
   set guifont=Inconsolata\ 11
-  set columns=85
+  set columns=84
 
 " Settings for terminal vim
 elseif match ($TERM, "xterm-256color")        != -1 ||
@@ -136,6 +136,11 @@ nnoremap q: <nop>
 
 " Command to toggle spell-check
 command! SpellToggle setlocal spell! spelllang=en_gb
+
+" Enable spell checking by default in tex, md, txt
+autocmd Filetype tex setlocal spell spelllang=en_gb
+autocmd Filetype md  setlocal spell spelllang=en_gb
+autocmd Filetype txt setlocal spell spelllang=en_gb
 
 " Command to toggle light/dark background when using the solarized color scheme
 command! BGToggle
