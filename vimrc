@@ -31,7 +31,7 @@ Plugin 'honza/vim-snippets'
 
 " Workflow stuff
 Plugin 'tpope/vim-surround'
-Plugin 'junegunn/vim-easy-align'
+Plugin 'godlygeek/tabular'
 
 " For seamless switching between vim viewports and tmux panes. Requires
 " corresponding bindings in ~/.tmux.conf.
@@ -112,7 +112,8 @@ endif
 
 set wildmenu
 set wildmode=longest,list
-set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.log,*.dvi,*.bbl,*.blg
+set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.log,*.dvi,*.bbl,*.blg,
+    \*.pdf
 
 " ============
 " Key Bindings
