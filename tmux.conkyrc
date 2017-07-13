@@ -1,0 +1,10 @@
+background no
+out_to_x no
+out_to_console yes
+total_run_times 1
+use_spacer none
+own_window no
+max_text_width 0
+
+TEXT
+\#[fg=orange]HDD ${fs_used} \#[fg=red]CPU ${cpu cpu0}% ${acpitemp}C \#[fg=pink]VOL ${exec amixer get Master | grep -oE "\[[[:digit:]]*%\] \[(on|off)\]" | tail -1 | sed -e "s/\[//g" -e "s/\]//g" -e "s/on/ON/g" -e "s/off/OFF/g"} \#[fg=purple]RAM ${mem} \#[fg=blue]BAT ${exec acpi -a | grep -oE '\on|\off' | sed -e 's/on/P/' -e 's/off/U/'} ${battery_percent}% \#[fg=green]${time %a %d %b %Y} \#[fg=yellow]${time %H:%M}
