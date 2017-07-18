@@ -7,4 +7,4 @@ own_window no
 max_text_width 0
 
 TEXT
-\#[fg=orange]HDD ${fs_used} \#[fg=red]CPU ${cpu cpu0}% ${acpitemp}C \#[fg=pink]VOL ${exec amixer get Master | grep -oE "\[[[:digit:]]*%\] \[(on|off)\]" | tail -1 | sed -e "s/\[//g" -e "s/\]//g" -e "s/on/ON/g" -e "s/off/OFF/g"} \#[fg=purple]RAM ${mem} \#[fg=blue]BAT ${exec acpi -a | grep -oE '\on|\off' | sed -e 's/on/P/' -e 's/off/U/'} ${battery_percent}% \#[fg=green]${time %a %d %b %Y} \#[fg=yellow]${time %H:%M}
+\#[fg=yellow]HDD ${fs_used} \#[fg=red]CPU ${cpu cpu0}% ${acpitemp}C \#[fg=magenta]VOL ${exec amixer get Master | grep -oE "\[[[:digit:]]*%\] \[(on|off)\]" | tail -1 | sed -e "s/\[//g" -e "s/\]//g" -e "s/on/ON/g" -e "s/off/OFF/g"} \#[fg=colour13]RAM ${mem} \#[fg=blue]BAT ${exec acpi -a | grep -oE '\on|\off' | sed -e 's/on/P/' -e 's/off/U/'} ${battery_percent}% \#[fg=cyan]${time %a %d %b %Y} \#[fg=green]${time %H:%M}
