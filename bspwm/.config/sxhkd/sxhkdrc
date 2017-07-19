@@ -7,11 +7,11 @@ super + Return
 	urxvt
 
 # program launcher
-super + @space
-	dmenu_run
+super + d
+	sh ~/.dotfiles/run_dmenu.sh
 
 # make sxhkd reload its configuration files:
-super + Escape
+super + shift + e
 	pkill -USR1 -x sxhkd
 
 #
@@ -19,12 +19,12 @@ super + Escape
 #
 
 # quit bspwm normally
-super + alt + Escape
+super + shift + x
 	bspc quit
 
 # close and kill
-super + {_,shift + }w
-	bspc node -{c,k}
+super + shift + q
+	bspc node -c
 
 # alternate between the tiled and monocle layout
 super + m
@@ -32,7 +32,8 @@ super + m
 
 # if the current node is automatic, send it to the last manual, otherwise pull the last leaf
 super + y
-	bspc query -N -n focused.automatic && bspc node -n last.!automatic || bspc node last.leaf -n focused
+	bspc query -N -n focused.automatic && \
+    bspc node -n last.!automatic || bspc node last.leaf -n focused
 
 # swap the current node and the biggest node
 super + g
