@@ -19,3 +19,7 @@ dark_base_2="#eee8d5"
 #accent_green="#859900"
 dmenu_run -p "\$" -b -fn "Inconsolata:size=11" \
     -nb $dark_base03 -nf $dark_base_1 -sb $dark_base_2 -sf $dark_base01
+unset dark_base03="#002b36"
+unset dark_base01="#586e75"
+unset dark_base_1="#93a1a1"
+unset dark_base_2="#eee8d5"
