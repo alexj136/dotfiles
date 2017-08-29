@@ -9,6 +9,8 @@ super + y
     google-chrome-stable
 super + d
 	sh ~/.dotfiles/run_dmenu.sh
+super + u
+	evince
 
 # Make sxhkd reload its configuration files:
 super + shift + e
