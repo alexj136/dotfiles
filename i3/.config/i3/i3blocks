@@ -2,7 +2,7 @@ separator=false
 
 [disk]
 label=HDD
-command=echo TODO
+command=df -h | awk '/\/dev\/sda1.+/ {print $3 "/" $2 " " $5}'
 interval=10
 color=#cb4b16
 
@@ -19,7 +19,7 @@ color=#dc322f
 
 [volume]
 label=VOL
-command=amixer get Master | awk '/Mono.+/ {print $4 " " toupper($6)}' | tr -d '[]'
+command=amixer get Master | tail -1 | awk '/Mono.+/ {print $4 " " toupper($6)} /Front Right.+/ {print $5 " " toupper($6)}' | tr -d '[]'
 interval=1
 signal=1
 color=#d33682
