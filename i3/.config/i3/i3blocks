@@ -32,8 +32,8 @@ color=#6c71c4
 
 [battery]
 label=BAT
-command=echo TODO
-interval=30
+command=acpi | awk '{print $3 " " $4}' | sed -e 's/Charging/P/' | sed -e 's/Discharging/U/' | tr -d ','
+interval=10
 color=#268bd2
 
 [date]
