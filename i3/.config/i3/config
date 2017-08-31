@@ -156,7 +156,7 @@ focus_follows_mouse no
 bar {
     position top
     workspace_buttons yes
-    status_command i3blocks -c $HOME/.config/i3/i3blocks
+    status_command i3blocks -c $HOME/.config/i3/blocks
     colors {
         background $dark_base03
         # class            border        background    text
