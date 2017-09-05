@@ -1,7 +1,3 @@
-# Search history with up and down keys
-"\e[A":history-search-backward
-"\e[B":history-search-forward
-
 # do not bell on tab-completion
 #set bell-style none
 
@@ -36,7 +32,10 @@ $if mode=emacs
 $endif
 
 set editing-mode vi
-set keymap vi-command
 set show-mode-in-prompt on
 set vi-cmd-mode-string ":"
 set vi-ins-mode-string "+"
+
+# Search history with up and down keys
+"\e[A":history-search-backward
+"\e[B":history-search-forward
