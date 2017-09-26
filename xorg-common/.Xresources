@@ -22,7 +22,7 @@
 
 URxvt.scrollBar: false
 URxvt.font: xft:Inconsolata:size=11
-URxvt.letterSpace: -1
+URxvt.letterSpace: -2
 URxvt*fading: 0
 URxvt.intensityStyles: false
 URxvt*loginShell: true
