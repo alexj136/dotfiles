@@ -8,6 +8,24 @@ snippet doc a new document
 	\maketitle
 	${0}
 	\end{document}
+snippet phonedoc a new document formatted for phone reading
+	\documentclass[a6paper]{article}
+	\usepackage[margin=5mm,
+	  paperwidth=8cm,
+	  paperheight=187cm,
+	  width=5.5cm,
+	  height=7.5cm,
+	  left=.25cm,
+	  includefoot,
+	  foot=\baselineskip]{geometry}
+	\title{${1:New Document}}
+	\author{${2:Author Name}}
+	%\pagenumbering{gobble} % Hide page numbers
+	\author{English Standard Version}
+	\begin{document}
+	\maketitle
+	${0}
+	\end{document}
 snippet pic $\pi$-calculus
 	$\pi$-calculus${0}
 snippet vsp \vspace{}

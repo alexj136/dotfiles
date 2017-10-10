@@ -32,6 +32,7 @@ Plugin 'honza/vim-snippets'
 " Workflow stuff
 Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
+Plugin 'vim-scripts/boxdraw'
 
 " For seamless switching between vim viewports and tmux panes. Requires
 " corresponding bindings in ~/.tmux.conf.
@@ -44,11 +45,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-" Scala development
+" PL-specific plugins
 Plugin 'derekwyatt/vim-scala'
-
-" Haskell development
 Plugin 'neovimhaskell/haskell-vim'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
