@@ -20,7 +20,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+t exec $term
 
 # Launch chromium
-bindsym $mod+y exec chromium
+bindsym $mod+y exec chromium || chromium-browser
 for_window [class="chromium"] border none
 
 # Launch gnome-mplayer
