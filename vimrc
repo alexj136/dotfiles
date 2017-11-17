@@ -91,10 +91,11 @@ elseif has ("gui_running")
   set guifont=Inconsolata\ 11
 
 " Settings for terminal vim
-elseif match ($TERM, "xterm-256color")        != -1 ||
-     \ match ($TERM, "xterm")                 != -1 ||
+elseif match ($TERM, "xterm-256color"       ) != -1 ||
+     \ match ($TERM, "xterm"                ) != -1 ||
+     \ match ($TERM, "rxvt-unicode"         ) != -1 ||
      \ match ($TERM, "rxvt-unicode-256color") != -1 ||
-     \ match ($TERM, "screen-256color")       != -1
+     \ match ($TERM, "screen-256color"      ) != -1
   set background=light
   let g:solarized_termcolors=16
   colorscheme solarized
