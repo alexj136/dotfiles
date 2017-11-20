@@ -51,6 +51,10 @@ bindsym $mod+0 exec $muteVol
 bindsym $mod+equal exec $raiseVol
 bindsym $mod+minus exec $lowerVol
 
+bindsym XF86AudioPause exec cmus-remote --pause
+bindsym XF86AudioNext exec cmus-remote --next
+bindsym XF86AudioPrev exec cmus-remote --prev
+
 # Lock screen
 bindsym $mod+Shift+z exec i3lock -e -c 002b36
 
