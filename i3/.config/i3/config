@@ -11,7 +11,7 @@ hide_edge_borders smart
 
 # Per application border settings
 for_window [class="chromium"] border none
-#for_window [class="Thunderbird"] border pixel 2
+for_window [window_role="Msgcompose"] floating enable
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
