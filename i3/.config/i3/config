@@ -6,7 +6,7 @@
 #new_window pixel 2
 
 set $mod Mod4
-set $term urxvt
+set $term terminator
 
 # No border needed for the following windows
 for_window [class="chromium"] border none
@@ -29,8 +29,8 @@ bindsym $mod+y exec chromium || chromium-browser
 # Launch gnome-mplayer
 bindsym $mod+m exec gnome-mplayer
 
-# Launch evince
-bindsym $mod+u exec evince
+# Launch zathura
+bindsym $mod+u exec zathura
 
 # Run dmenu
 bindsym $mod+d exec sh $HOME/.dotfiles/run_dmenu.sh
