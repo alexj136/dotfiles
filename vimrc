@@ -208,9 +208,9 @@ let g:airline#extensions#tabline#right_alt_sep = ' '
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='solarized'
+if !exists('g:airline_symbols') | let g:airline_symbols = {} | endif
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
-if !exists('g:airline_symbols') | let g:airline_symbols = {} | endif
 
 " Disable auto-indentation settings in haskell-vim, because they're annoying
 let g:haskell_indent_disable = 1
