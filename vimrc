@@ -97,6 +97,7 @@ elseif match ($TERM, "xterm-256color"       ) != -1 ||
      \ match ($TERM, "rxvt-unicode-256color") != -1 ||
      \ match ($TERM, "screen-256color"      ) != -1
   set background=light
+  set t_Co=16
   let g:solarized_termcolors=16
   colorscheme solarized
 
