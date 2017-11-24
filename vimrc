@@ -32,7 +32,6 @@ Plugin 'honza/vim-snippets'
 " Workflow stuff
 Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
-Plugin 'vim-scripts/boxdraw'
 
 " For seamless switching between vim viewports and tmux panes. Requires
 " corresponding bindings in ~/.tmux.conf.
