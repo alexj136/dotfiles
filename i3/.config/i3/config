@@ -163,6 +163,7 @@ focus_follows_mouse no
 # Bar configuration
 bar {
     position top
+    tray_output primary
     workspace_buttons yes
     status_command i3blocks -c $HOME/.config/i3/blocks
     colors {
