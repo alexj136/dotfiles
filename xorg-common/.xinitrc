@@ -26,5 +26,10 @@ exec nitrogen --restore &
 # Run redshift (like f.lux or twilight)
 exec redshift -l '50:0' &
 
+# Source a machine-local xinitrc if one exists
+if [ -e "$HOME/.xinitrc.local" ]; then
+    sh "$HOME/.xinitrc.local"
+fi
+
 # Run window manager selected by SLiM
 exec $1
