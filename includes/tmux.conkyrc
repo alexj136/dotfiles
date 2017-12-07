@@ -1,0 +1,10 @@
+background no
+out_to_x no
+out_to_console yes
+total_run_times 1
+use_spacer none
+own_window no
+max_text_width 0
+
+TEXT
+\#[fg=yellow]HDD ${fs_used} \#[fg=red]CPU ${cpu cpu0}% ${acpitemp}C \#[fg=magenta]VOL ${exec amixer get Master | grep -oE "\[[[:digit:]]*%\] \[(on|off)\]" | tail -1 | sed -e "s/\[//g" -e "s/\]//g" -e "s/on/ON/g" -e "s/off/OFF/g"} \#[fg=colour13]RAM ${mem} \#[fg=blue]${exec python ~/.dotfiles/scripts/acpi_battery.py} \#[fg=cyan]${time %a %d %b %Y} \#[fg=green]${time %H:%M}

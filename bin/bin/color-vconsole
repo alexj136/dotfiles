@@ -1,3 +1,4 @@
+#!/bin/sh
 echo -en "\\e]P3B58900"
 echo -en "\\e]P9CB4B16"
 echo -en "\\e]P1DC322F"

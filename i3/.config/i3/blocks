@@ -1,7 +1,7 @@
 separator=false
 
 [battery]
-command=python .dotfiles/acpi_battery.py
+command=python .dotfiles/scripts/acpi_battery.py
 interval=10
 #color=#268bd2
 color=#93a1a1

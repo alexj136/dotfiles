@@ -8,7 +8,7 @@ super + Return
 super + y
     google-chrome-stable
 super + d
-	sh ~/.dotfiles/run_dmenu.sh
+	sh ~/.dotfiles/scripts/run_dmenu.sh
 super + u
 	evince
 
