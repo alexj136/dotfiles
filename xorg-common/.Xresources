@@ -69,3 +69,6 @@ Xft.hinting: true
 Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 Xft.rgba: rgb
+
+! Rofi settings
+rofi.font: Inconsolata 11
