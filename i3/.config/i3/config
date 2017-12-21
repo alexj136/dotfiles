@@ -33,8 +33,8 @@ bindsym $mod+m exec gnome-mplayer
 # Launch zathura
 bindsym $mod+u exec zathura
 
-# Run dmenu
-bindsym $mod+d exec sh $HOME/.dotfiles/scripts/run_dmenu.sh
+# Run rofi
+bindsym $mod+space exec rofi -show run
 
 # kill focused window
 bindsym $mod+Shift+q kill

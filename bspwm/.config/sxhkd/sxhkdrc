@@ -7,8 +7,8 @@ super + Return
 	urxvt
 super + y
     google-chrome-stable
-super + d
-	sh ~/.dotfiles/scripts/run_dmenu.sh
+super + space
+	rofi -show run
 super + u
 	evince
 
