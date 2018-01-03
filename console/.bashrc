@@ -27,10 +27,13 @@ function glg {
     echo ""
 }
 
-# Prompt style
-PS1=' \[\e[0;34m\][\[\e[m\]\u@\h\[\e[0;34m\]] [\[\e[m\]\W\[\e[0;34m\]]\[\e[m\] \$ '
 
-# File extensions to ignore
+# Prompt style. Include user and host only if on an ssh connection.
+if [[ -n $SSH_CLIENT ]]; then SSH_PS1=" \[\e[0;34m\][\[\e[m\]\u@\h\[\e[0;34m\]]\[\e[m\]"; else SSH_PS1=""; fi
+PS1="$SSH_PS1 \[\e[0;34m\][\[\e[m\]\W\[\e[0;34m\]]\[\e[m\] \$ "
+unset SSH_PS1
+
+# File extensions to ignore in interactive completion
 FIGNORE=".aux:.log:.dvi:.class:.o:.pyc:.hi:.swp:.bbl:.blg:"
 
 # Append to histfile when shell exits, rather than overwrite
@@ -42,7 +45,8 @@ shopt -s autocd
 # Resize shell when terminal resizes
 shopt -s checkwinsize
 
-# Set some java options to enable antialiasing, etcetera
+# Set some java options to enable antialiasing and GTK themeing in java apps
+# with certain window managers
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
         -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
