@@ -191,6 +191,9 @@ set mouse=a
 " Disable bells
 set visualbell t_vb=
 
+" Scroll the buffer when the cursor is within 4 lines of the top or bottom
+set scrolloff=4
+
 " Read project-specific vimrc if present, but disable unsafe commands in those
 " external vimrcs (no autocmd, no shelling out, no write commands)
 set exrc
