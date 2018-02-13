@@ -3,9 +3,11 @@
 # ~/.bashrc
 #
 
-# Add my local bin directory for my own scripts to the path variable. Doing this
-# before the interactivity check allows dmenu to get this path.
-export PATH=$PATH:$HOME/bin/
+# Additional paths:
+# ~/bin/
+# ~/.local/bin/
+# ~/.cargo/bin/ (for rust dev)
+export PATH=$PATH:$HOME/bin/:$HOME/.local/bin:$HOME/.cargo/bin
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -47,8 +49,8 @@ shopt -s checkwinsize
 
 # Set some java options to enable antialiasing and GTK themeing in java apps
 # with certain window managers
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
-        -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+#        -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 # A helpful function to separate text on the terminal. Prints two lines of
 # equal signs, and if any arguments are given, the appear between the lines.

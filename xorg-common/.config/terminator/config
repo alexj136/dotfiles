@@ -6,6 +6,7 @@
   [[default]]
     [[[child1]]]
       parent = window0
+      profile = default
       type = Terminal
     [[[window0]]]
       parent = ""
@@ -14,6 +15,7 @@
 [profiles]
   [[default]]
     background_color = "#fdf6e3"
+    background_image = None
     cursor_color = "#002b36"
     font = Inconsolata 11
     foreground_color = "#657b83"
