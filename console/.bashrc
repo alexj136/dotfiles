@@ -24,7 +24,7 @@ alias gps='git push'
 alias gad='git add -A'
 alias gcm='git commit -m'
 function glg {
-    git --no-pager log --reverse --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' --abbrev-commit $@
+    git --no-pager log --reverse --pretty=format:'%C(red)%h%C(reset)%C(yellow)%d%C(reset) %C(green)(%cr) %C(blue)<%an>%C(reset)%n%s' --abbrev-commit $@
     echo ""
 }
 
