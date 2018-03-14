@@ -33,8 +33,8 @@ bindsym $mod+y exec chromium || chromium-browser
 # Launch gnome-mplayer
 bindsym $mod+m exec gnome-mplayer
 
-# Launch zathura
-bindsym $mod+u exec zathura
+# Launch evince
+bindsym $mod+u exec evince
 
 # Run rofi
 bindsym $mod+space exec rofi -show run
