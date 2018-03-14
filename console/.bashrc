@@ -3,9 +3,10 @@
 # ~/.bashrc
 #
 
-# Add my local bin directory for my own scripts to the path variable. Doing this
-# before the interactivity check allows dmenu to get this path.
-export PATH=$PATH:$HOME/bin/
+# Additional paths:
+# ~/bin/
+# ~/.local/bin/
+export PATH=$PATH:$HOME/bin/:$HOME/.local/bin
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -29,7 +30,7 @@ alias gps='git push'
 alias gad='git add -A'
 alias gcm='git commit -m'
 function glg {
-    git --no-pager log --reverse --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' --abbrev-commit $@
+    git --no-pager log --reverse --pretty=format:'%C(red)%h%C(reset)%C(yellow)%d%C(reset) %C(green)(%cr) %C(blue)<%an>%C(reset)%n%s' --abbrev-commit $@
     echo ""
 }
 
@@ -53,8 +54,8 @@ shopt -s checkwinsize
 
 # Set some java options to enable antialiasing and GTK themeing in java apps
 # with certain window managers
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
-        -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+#        -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 # A helpful function to separate text on the terminal. Prints two lines of
 # equal signs, and if any arguments are given, the appear between the lines.
