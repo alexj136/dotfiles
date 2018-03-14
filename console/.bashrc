@@ -10,6 +10,12 @@ export PATH=$PATH:$HOME/bin/
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Run gnome-keyring-daemon to unlock ssh keys when connecting to a server.
+if [ -n "$DESKTOP_SESSION" ]; then
+    eval $(gnome-keyring-daemon --start --components=ssh)
+    export SSH_AUTH_SOCK
+fi
+
 # Aliases
 alias ls='ls --color=auto'  # Pretty colours for ls
 alias :q='exit'             # Quit like it's vim
