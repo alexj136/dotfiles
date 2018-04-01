@@ -2,6 +2,10 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# i3-gaps only settings
+smart_gaps on
+gaps inner 10
+
 set $mod Mod4
 set $term terminator
 
