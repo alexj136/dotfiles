@@ -170,19 +170,19 @@ focus_follows_mouse no
 
 # Bar configuration
 bar {
-    #position top
-    #tray_output primary
-    #workspace_buttons yes
-    #status_command i3blocks -c $HOME/.config/i3/blocks
-    #colors {
-    #    background $dark_base03
-    #    # class            border        background    text
-    #    focused_workspace  $dark_base03  $dark_base_2  $dark_base01
-    #    active_workspace   $dark_base03  $dark_base03  $dark_base_1
-    #    inactive_workspace $dark_base03  $dark_base03  $dark_base_1
-    #    urgent_workspace   $dark_base03  $accent_red   $dark_base03
-    #}
-	i3bar_command killall -q polybar; while pgrep -u $UID -x polybar >/dev/null;do sleep 1; done; polybar mybar &
+    position top
+    tray_output primary
+    workspace_buttons yes
+    status_command i3blocks -c $HOME/.config/i3/blocks
+    colors {
+        background $dark_base03
+        # class            border        background    text
+        focused_workspace  $dark_base03  $dark_base_2  $dark_base01
+        active_workspace   $dark_base03  $dark_base03  $dark_base_1
+        inactive_workspace $dark_base03  $dark_base03  $dark_base_1
+        urgent_workspace   $dark_base03  $accent_red   $dark_base03
+    }
+	#i3bar_command killall -q polybar; while pgrep -u $UID -x polybar >/dev/null;do sleep 1; done; polybar mybar &
 }
 
 # Colour configuration

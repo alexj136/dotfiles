@@ -75,7 +75,7 @@ label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 1
 
 label-mode = %mode%
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-background = ${colors.S_red}
 
 [module/xwindow]
