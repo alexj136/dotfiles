@@ -2,18 +2,20 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# i3-gaps only settings
+smart_gaps on
+gaps inner 10
+
 set $mod Mod4
 set $term terminator
-
-# Launch compton for nice transitions and transparency
-exec_always compton -f
 
 # Default border options
 new_window pixel 2
 hide_edge_borders smart
 
 # Per application border settings
-for_window [class="chromium"] border none
+for_window [class=".*"] border pixel 2
+for_window [class="Pavucontrol"] floating enable 
 for_window [window_role="Msgcompose"] floating enable
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -177,6 +179,7 @@ bar {
         inactive_workspace $dark_base03  $dark_base03  $dark_base_1
         urgent_workspace   $dark_base03  $accent_red   $dark_base03
     }
+	#i3bar_command killall -q polybar; while pgrep -u $UID -x polybar >/dev/null;do sleep 1; done; polybar mybar &
 }
 
 # Colour configuration

@@ -24,3 +24,5 @@ This organisation scheme allows easy management using GNU stow.
         stow -D i3
 
 - Note that the `scripts` directory is for scripts by other files in the repository but that should not be in bash's path variable for the interactive user. Scripts for the user's path should go in `bin/bin`.
+
+- Files in the `misc` directory are not for `stow`ing. Instead, these should be manually copied to their specified location, which should be outside the user's home directory.
