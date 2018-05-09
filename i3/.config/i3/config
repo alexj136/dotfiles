@@ -32,12 +32,6 @@ bindsym $mod+t exec $term
 # Launch chromium
 bindsym $mod+y exec chromium || chromium-browser
 
-# Launch gnome-mplayer
-bindsym $mod+m exec gnome-mplayer
-
-# Launch evince
-bindsym $mod+u exec evince
-
 # Run rofi
 bindsym $mod+space exec rofi -show run
 
