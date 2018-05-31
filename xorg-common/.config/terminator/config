@@ -15,12 +15,12 @@
 [plugins]
 [profiles]
   [[default]]
-    background_color = "#fdf6e3"
+    background_color = "#272822"
+    cursor_color = "#ffffff"
+    foreground_color = "#f8f8f2"
+    palette = "#75715e:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2aa198:#f9f8f5:#272822:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2aa198:#f9f8f5"
     background_image = None
-    cursor_color = "#002b36"
     font = Inconsolata 12
-    foreground_color = "#657b83"
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
     scrollback_lines = 65536
     scrollbar_position = hidden
     show_titlebar = False
