@@ -37,8 +37,8 @@ Plugin 'godlygeek/tabular'
 " corresponding bindings in ~/.tmux.conf.
 Plugin 'christoomey/vim-tmux-navigator'
 
-" Solarized color scheme
-Plugin 'altercation/vim-colors-solarized'
+" Molokai color scheme
+Plugin 'sickill/vim-monokai'
 
 " Airline - status etc
 Plugin 'vim-airline/vim-airline'
@@ -79,14 +79,13 @@ set number                  " Show line numbers at launch
 
 " Settings for MacVim
 if has ("gui_macvim")
-  colorscheme solarized
+  colorscheme monokai
   set guifont=Inconsolata\ Regular:h15
   set columns=84
 
 " Settings for gvim on Linux
 elseif has ("gui_running")
-  set background=light
-  colorscheme solarized
+  colorscheme monokai
   set guifont=Inconsolata\ 11
 
 " Settings for terminal vim
@@ -95,10 +94,8 @@ elseif match ($TERM, "xterm-256color"       ) != -1 ||
      \ match ($TERM, "rxvt-unicode"         ) != -1 ||
      \ match ($TERM, "rxvt-unicode-256color") != -1 ||
      \ match ($TERM, "screen-256color"      ) != -1
-  set background=light
   set t_Co=16
-  let g:solarized_termcolors=16
-  colorscheme solarized
+  colorscheme monokai
 
 " If the terminal isn't recognised then use vim's default scheme
 else
@@ -142,12 +139,6 @@ command! SpellToggle setlocal spell! spelllang=en_gb
 autocmd Filetype tex setlocal spell spelllang=en_gb
 autocmd Filetype md  setlocal spell spelllang=en_gb
 autocmd Filetype txt setlocal spell spelllang=en_gb
-
-" Command to toggle light/dark background when using the solarized color scheme
-command! BGToggle
-  \ if &background=="light" | set background=dark  |
-  \ else                    | set background=light |
-  \ endif
 
 " =============
 " Misc Settings
@@ -210,7 +201,7 @@ let g:airline#extensions#tabline#right_sep = ' '
 let g:airline#extensions#tabline#right_alt_sep = ' '
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline_theme='solarized'
+let g:airline_theme='base16_monokai'
 if !exists('g:airline_symbols') | let g:airline_symbols = {} | endif
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
