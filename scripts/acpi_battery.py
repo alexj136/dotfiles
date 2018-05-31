@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # A script to parse the battery status from acpi for use with status bar apps.
+# Assumes that multiple batteries will each have the same capacity.
 
 import re
 from subprocess import check_output
@@ -12,21 +13,34 @@ else:
     batteries = acpi_output.split("\n")
     batteries = list(filter(None, batteries))
     num_batteries = len(batteries)
-    for battery_index, battery in enumerate(batteries):
+    unknown = []
+    charging = []
+    full = []
+    percentages = []
+    for battery in batteries:
         if battery != '':
             state = battery.split(": ")[1].split(", ")[0]
             percent = int(battery.split(", ")[1].rstrip("%\n"))
-            if num_batteries > 1:
-                output += " " + str(battery_index) + ":"
             if state == "Discharging":
-                output += " D"
+                full.append(False)
+                charging.append(False)
+                unknown.append(False)
             elif state == "Full":
-                output += " F"
+                full.append(True)
+                charging.append(False)
+                unknown.append(False)
             elif state == "Unknown":
-                output += " U"
+                full.append(False)
+                charging.append(False)
+                unknown.append(True)
             else:
-                output += " C"
-            output += " " + str(percent) + "%"
-            if num_batteries > 1 and battery_index < num_batteries - 1:
-                output += ";"
+                full.append(False)
+                charging.append(True)
+                unknown.append(False)
+            percentages.append(percent)
+    if all(full): output += " F "
+    elif any(charging): output += " C "
+    elif all(unknown): output += " U "
+    else: output += " D "
+    output += str(sum(percentages) // len(percentages)) + "%"
 print(output)
