@@ -165,18 +165,19 @@ bar {
     tray_output primary
     workspace_buttons yes
     status_command i3blocks -c $HOME/.config/i3/blocks
+    separator_symbol " ● "
     colors {
-        background $dark_base03
-        # class            border        background    text
-        focused_workspace  $dark_base03  $dark_base_2  $dark_base01
-        active_workspace   $dark_base03  $dark_base03  $dark_base_1
-        inactive_workspace $dark_base03  $dark_base03  $dark_base_1
-        urgent_workspace   $dark_base03  $accent_red   $dark_base03
+        background $ad_darker
+        # class            border      background text
+        focused_workspace  $ad_darker  $ad_white  $ad_dark
+        active_workspace   $ad_darker  $ad_grey   $ad_white
+        inactive_workspace $ad_darker  $ad_grey   $ad_white
+        urgent_workspace   $ad_darker  $ad_red    $ad_white
     }
 	#i3bar_command killall -q polybar; while pgrep -u $UID -x polybar >/dev/null;do sleep 1; done; polybar mybar &
 }
 
-# Colour configuration
+# Solarized colour configuration
 set $dark_base03 #002b36
 set $dark_base02 #073642
 set $dark_base01 #586e75
@@ -195,8 +196,16 @@ set $accent_blue    #268bd2
 set $accent_cyan    #2aa198
 set $accent_green   #859900
 
-# class                 border       background   text         indicator
-client.focused          $dark_base_2 $dark_base_2 $dark_base01 $dark_base_2
-client.focused_inactive $dark_base03 $dark_base03 $dark_base_1 $dark_base03
-client.unfocused        $dark_base03 $dark_base03 $dark_base_1 $dark_base03
-client.urgent           $dark_base03 $accent_red  $dark_base03 $dark_base03
+# Arc-Darker colour configuration
+set $ad_darker #303642
+set $ad_dark   #414a59
+set $ad_grey   #7c818c
+set $ad_blue   #5294e2
+set $ad_red    #cc575d
+set $ad_white  #f5f6f7
+
+# class                 border    background text      indicator
+client.focused          $ad_white $ad_white  $ad_white $ad_white
+client.focused_inactive $ad_dark  $ad_dark   $ad_white $ad_dark
+client.unfocused        $ad_dark  $ad_dark   $ad_white $ad_dark
+client.urgent           $ad_dark  $ad_red    $ad_white $ad_dark
