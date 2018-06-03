@@ -15,7 +15,7 @@ hide_edge_borders smart
 
 # Per application border settings
 for_window [class=".*"] border pixel 2
-for_window [class="Pavucontrol"] floating enable 
+for_window [class="Pavucontrol"] floating enable
 for_window [window_role="Msgcompose"] floating enable
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -167,12 +167,12 @@ bar {
     status_command i3blocks -c $HOME/.config/i3/blocks
     separator_symbol " ● "
     colors {
-        background $ad_darker
-        # class            border      background text
-        focused_workspace  $ad_darker  $ad_white  $ad_dark
-        active_workspace   $ad_darker  $ad_grey   $ad_white
-        inactive_workspace $ad_darker  $ad_grey   $ad_white
-        urgent_workspace   $ad_darker  $ad_red    $ad_white
+        background $mk_darker
+        # class            border      background      text
+        focused_workspace  $mk_white   $mk_white       $mk_dark
+        active_workspace   $mk_darkest $mk_darkest     $mk_white
+        inactive_workspace $mk_darkest $mk_darkest     $mk_white
+        urgent_workspace   $mk_darkest $mk_lightorange $mk_white
     }
 	#i3bar_command killall -q polybar; while pgrep -u $UID -x polybar >/dev/null;do sleep 1; done; polybar mybar &
 }
@@ -196,16 +196,21 @@ set $accent_blue    #268bd2
 set $accent_cyan    #2aa198
 set $accent_green   #859900
 
-# Arc-Darker colour configuration
-set $ad_darker #303642
-set $ad_dark   #414a59
-set $ad_grey   #7c818c
-set $ad_blue   #5294e2
-set $ad_red    #cc575d
-set $ad_white  #f5f6f7
+# Monokai colours
+set $mk_olive       #75715e
+set $mk_pink        #f92672
+set $mk_green       #a6e22e
+set $mk_lightorange #f4bf75
+set $mk_lightblue   #66d9ef
+set $mk_purple      #ae81ff
+set $mk_mint        #2aa198
+set $mk_white       #f8f8f2
+set $mk_dark        #5f5f5f
+set $mk_darker      #3a3a3a
+set $mk_darkest     #262626
 
-# class                 border    background text      indicator
-client.focused          $ad_white $ad_white  $ad_white $ad_white
-client.focused_inactive $ad_dark  $ad_dark   $ad_white $ad_dark
-client.unfocused        $ad_dark  $ad_dark   $ad_white $ad_dark
-client.urgent           $ad_dark  $ad_red    $ad_white $ad_dark
+# class                 border    background      text      indicator
+client.focused          $mk_white $mk_white       $mk_white $mk_white
+client.focused_inactive $mk_dark  $mk_dark        $mk_white $mk_dark
+client.unfocused        $mk_dark  $mk_dark        $mk_white $mk_dark
+client.urgent           $mk_dark  $mk_lightorange $mk_white $mk_dark

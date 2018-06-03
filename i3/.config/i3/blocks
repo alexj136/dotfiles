@@ -3,44 +3,44 @@ separator=true
 [battery]
 command=python .dotfiles/scripts/acpi_battery.py
 interval=10
-color=#f5f6f7
+color=#f8f8f2
 
 [volume]
 label=VOL
 command=amixer get Master | tail -1 | awk '/Mono.+/ {print $4 " " toupper($6)} /Front Right.+/ {print $5 " " toupper($6)}' | tr -d '[]'
 interval=1
 signal=1
-color=#f5f6f7
+color=#f8f8f2
 
 [disk]
 label=HDD
 command=df -h | awk '/\/dev\/sda1.+/ {print $3 "/" $2 " " $5}'
 interval=10
-color=#f5f6f7
+color=#f8f8f2
 
 [cpu_usage]
 label=CPU
 command=grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {OFMT="%.0f%"; print usage}'
 interval=10
-color=#f5f6f7
+color=#f8f8f2
 
 [cpu_temp]
 command=sensors | awk '/Physical.+/ {print $4}'
 interval=10
-color=#f5f6f7
+color=#f8f8f2
 
 [memory]
 label=RAM
 command=free | grep Mem | awk '{OFMT="%.0f%"; print $3/$2 * 100.0}'
 interval=5
-color=#f5f6f7
+color=#f8f8f2
 
 [date]
 command=date '+%a %d %b %Y'
 interval=5
-color=#f5f6f7
+color=#f8f8f2
 
 [time]
 command=date '+%H:%M'
 interval=5
-color=#f5f6f7
+color=#f8f8f2
