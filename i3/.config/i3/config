@@ -167,12 +167,12 @@ bar {
     status_command i3blocks -c $HOME/.config/i3/blocks
     separator_symbol " ● "
     colors {
-        background $mk_darker
-        # class            border      background      text
-        focused_workspace  $mk_white   $mk_white       $mk_dark
-        active_workspace   $mk_darkest $mk_darkest     $mk_white
-        inactive_workspace $mk_darkest $mk_darkest     $mk_white
-        urgent_workspace   $mk_darkest $mk_lightorange $mk_white
+        background $mk_darkest
+        # class            border    background      text
+        focused_workspace  $mk_white $mk_white       $mk_dark
+        active_workspace   $mk_dark  $mk_dark        $mk_white
+        inactive_workspace $mk_dark  $mk_dark        $mk_white
+        urgent_workspace   $mk_dark  $mk_lightorange $mk_white
     }
 	#i3bar_command killall -q polybar; while pgrep -u $UID -x polybar >/dev/null;do sleep 1; done; polybar mybar &
 }
