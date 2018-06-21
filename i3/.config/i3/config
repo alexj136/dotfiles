@@ -56,7 +56,7 @@ bindsym XF86AudioNext exec cmus-remote --next
 bindsym XF86AudioPrev exec cmus-remote --prev
 
 # Lock screen
-bindsym $mod+Shift+z exec i3lock -e -c 002b36
+bindsym $mod+Shift+z exec dm-tool lock
 
 # change focus
 bindsym $mod+h focus left
