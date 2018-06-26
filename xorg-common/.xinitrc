@@ -18,7 +18,7 @@ exec xrdb -merge ~/.Xresources &
 exec nm-applet &
 
 # Launch the screensaver daemon
-exec xautolock -time 20 -locker "dm-tool lock" &
+exec xautolock -time 20 -locker "i3lock -e -c 002b36" &
 
 # Set desktop wallpaper
 exec nitrogen --restore &
