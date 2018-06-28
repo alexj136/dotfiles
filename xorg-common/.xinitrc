@@ -24,7 +24,7 @@ exec xautolock -time 20 -locker "i3lock -e -c 002b36" &
 exec nitrogen --restore &
 
 # Run redshift (like f.lux or twilight)
-exec redshift -l '50:0' &
+exec redshift -l '50:0' -b '0.35' -g '1:0.8:0.7' &
 
 # Source a machine-local xinitrc if one exists
 if [ -e "$HOME/.xinitrc.local" ]; then
