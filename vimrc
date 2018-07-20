@@ -167,8 +167,11 @@ set wrap lbr
 " Allow movement past the end of a line in visual block mode
 set virtualedit=block
 
-" Do not auto insert carriage returns at long lines
-set textwidth=0
+" Wrap text to 80 characters when manually wrapping ('gq' in visual line mode)
+set textwidth=80
+
+" Do not wrap automatically
+set wrapmargin=0
 
 " Allow hiding of unsaved modified buffers
 set hidden
