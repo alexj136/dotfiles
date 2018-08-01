@@ -58,6 +58,9 @@ bindsym XF86AudioPrev exec cmus-remote --prev
 # Lock screen
 bindsym $mod+Shift+z exec i3lock -e -c 002b36
 
+# Toggle redshift
+bindsym XF86Tools exec "bash $HOME/bin/redshifttoggle"
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
