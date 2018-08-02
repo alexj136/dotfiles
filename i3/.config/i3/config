@@ -30,7 +30,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+t exec $term
 
 # Launch chromium
-bindsym $mod+y exec chromium || chromium-browser
+bindsym $mod+y exec firefox
 
 # Run rofi
 bindsym $mod+space exec rofi -show run
