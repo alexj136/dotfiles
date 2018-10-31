@@ -8,6 +8,10 @@
 # ~/.local/bin/
 export PATH=$PATH:$HOME/bin/:$HOME/.local/bin
 
+# Ruby gems stuff
+export GEM_HOME=$HOME/.gem
+export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
