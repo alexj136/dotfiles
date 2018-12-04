@@ -22,10 +22,11 @@ if [ -n "$DESKTOP_SESSION" ]; then
 fi
 
 # Aliases
-alias ls='ls --color=auto'  # Pretty colours for ls
-alias :q='exit'             # Quit like it's vim
-alias :e='vim'              # Edit like it's vim
-alias tmux='tmux -2'        # Force tmux to use 256 colours
+alias ls='ls --color=auto'      # Pretty colours for ls
+alias grep='grep --color=auto'  # Likewise for grep
+alias :q='exit'                 # Quit like it's vim
+alias :e='vim'                  # Edit like it's vim
+alias tmux='tmux -2'            # Force tmux to use 256 colours
 
 # Git command aliases
 alias gdf='git --no-pager diff'
