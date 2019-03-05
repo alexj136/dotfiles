@@ -211,3 +211,29 @@ let g:airline_symbols.maxlinenr = ''
 
 " Disable auto-indentation settings in haskell-vim, because they're annoying
 let g:haskell_indent_disable = 1
+
+" =============================================
+" Functions for easy toggling of paste settings
+" =============================================
+
+function! PasteOn()
+    set mouse=
+    set paste
+    echo "paste on, mouse disabled"
+endfunction
+
+function! PasteOff()
+    set mouse=a
+    set nopaste
+    echo "paste off, mouse enabled"
+endfunction
+
+function! PasteToggle()
+    if &paste
+        call PasteOff()
+    else
+        call PasteOn()
+    endif
+endfunction
+
+nnoremap <silent> <F2> :call PasteToggle() <CR>
