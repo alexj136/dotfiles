@@ -24,6 +24,7 @@ fi
 # Aliases
 alias ls='ls --color=auto'      # Pretty colours for ls
 alias grep='grep --color=auto'  # Likewise for grep
+alias diff='diff --color=auto'  # Likewise for diff
 alias :q='exit'                 # Quit like it's vim
 alias :e='vim'                  # Edit like it's vim
 alias tmux='tmux -2'            # Force tmux to use 256 colours
@@ -47,7 +48,7 @@ PS1="$SSH_PS1 \[\e[0;34m\][\[\e[m\]\W\[\e[0;34m\]]\[\e[m\] \$ "
 unset SSH_PS1
 
 # File extensions to ignore in interactive completion
-FIGNORE=".aux:.log:.dvi:.class:.o:.pyc:.hi:.swp:.bbl:.blg:"
+FIGNORE=".aux:.log:.dvi:.class:.o:.pyc:.hi:.swp:.bbl:.blg:.toc:"
 
 # Append to histfile when shell exits, rather than overwrite
 shopt -s histappend
