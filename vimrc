@@ -191,6 +191,11 @@ set visualbell t_vb=
 " Scroll the buffer when the cursor is within 4 lines of the top or bottom
 set scrolloff=4
 
+" Make searches case insensetive unless the search contains capitals or the \C
+" escape sequence at the start/end
+set ignorecase
+set smartcase
+
 " Read project-specific vimrc if present, but disable unsafe commands in those
 " external vimrcs (no autocmd, no shelling out, no write commands)
 set exrc
