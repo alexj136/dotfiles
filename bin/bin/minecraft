@@ -1,4 +1,0 @@
-#!/bin/bash
-# Runs minecraft with sensible JVM properties.
-# Requires the distributed minecraft jar to be at ~/.minecraft/Minecraft.jar
-nohup java -Xmx2048M -Xms2048M -jar ~/.minecraft/Minecraft.jar > /dev/null &
