@@ -55,9 +55,6 @@ bindsym XF86AudioPause exec cmus-remote --pause
 bindsym XF86AudioNext exec cmus-remote --next
 bindsym XF86AudioPrev exec cmus-remote --prev
 
-# Lock screen
-bindsym $mod+Shift+z exec i3lock -e -c 002b36
-
 # Toggle redshift
 bindsym XF86Tools exec "bash $HOME/bin/redshifttoggle"
 
@@ -128,16 +125,6 @@ bindsym $mod+Shift+Tab workspace prev
 # Asking to change to the focused workspace focuses the previously focused one
 workspace_auto_back_and_forth yes
 
-# Reload configuration file
-bindsym $mod+Shift+c reload
-
-# Restart i3 (preserves session)
-bindsym $mod+Shift+r restart
-
-# Exit i3 and logout
-bindsym $mod+Shift+x exec "i3-msg exit"
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
@@ -146,7 +133,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym Print exec sh $HOME/.dotfiles/scripts/screenshot.sh
 
 # Resize window (mouse also works)
-mode "resize" {
+bindsym $mod+r mode "$mode_resize"
+set $mode_resize RESIZE ● h → Shrink H ● j → Grow V ● k → Shrink V ● l → Grow H
+mode "$mode_resize" {
     bindsym h resize shrink width 4 px or 1 ppt
     bindsym j resize grow height 4 px or 1 ppt
     bindsym k resize shrink height 4 px or 1 ppt
@@ -157,7 +146,37 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+Shift+z mode "$mode_system"
+set $mode_system SYSTEM ● l → Lock ● s → Suspend ● Shift+r → Reboot ● Shift+p → Power Off
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3lock -e -c 002b36, mode "default"
+    bindsym s exec --no-startup-id i3lock -e -c 002b36 && systemctl suspend, mode "default"
+    bindsym Shift+r exec --no-startup-id reboot, mode "default"
+    bindsym Shift+p exec --no-startup-id poweroff, mode "default"
+
+    # Return to normal mode with enter or escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+x mode "$mode_i3"
+set $mode_i3 i3 ● c → Reload Config ● r → Restart ● Shift+e → Exit
+mode "$mode_i3" {
+
+    # Reload configuration file
+    bindsym c reload
+
+    # Restart i3 (preserves session)
+    bindsym r restart
+
+    # Exit i3 and logout
+    bindsym Shift+x exec "i3-msg exit"
+    #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+    # Return to normal mode with enter or escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # Focus does not follow the cursor
 focus_follows_mouse no
@@ -171,13 +190,13 @@ bar {
     separator_symbol " ● "
     colors {
         background $mk_darkest
-        # class            border    background      text
-        focused_workspace  $mk_white $mk_white       $mk_dark
-        active_workspace   $mk_dark  $mk_dark        $mk_white
-        inactive_workspace $mk_dark  $mk_dark        $mk_white
-        urgent_workspace   $mk_dark  $mk_lightorange $mk_white
+        # class            border    background text
+        focused_workspace  $mk_white $mk_white  $mk_dark
+        active_workspace   $mk_dark  $mk_dark   $mk_white
+        inactive_workspace $mk_dark  $mk_dark   $mk_white
+        urgent_workspace   $mk_dark  $mk_purple $mk_white
     }
-	#i3bar_command killall -q polybar; while pgrep -u $UID -x polybar >/dev/null;do sleep 1; done; polybar mybar &
+    #i3bar_command killall -q polybar; while pgrep -u $UID -x polybar >/dev/null;do sleep 1; done; polybar mybar &
 }
 
 # Solarized colour configuration
