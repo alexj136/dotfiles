@@ -40,7 +40,16 @@ function glg {
     git --no-pager log --reverse --pretty=format:'%C(red)%h%C(reset)%C(yellow)%d%C(reset) %C(green)(%cr) %C(blue)<%an>%C(reset)%n%s' --abbrev-commit $@
     echo ""
 }
-
+function gcl {
+    if [[ $# -eq 1 ]]; then
+        git clone "git+ssh://git@github.com/alexj136/$1.git"
+    elif [[ $# -eq 2 ]]; then
+        git clone "git+ssh://git@github.com/$1/$2.git"
+    else
+        echo "Usage: gcl username? reponame"
+        echo "Default user: alexj136"
+    fi
+}
 
 # Prompt style. Include user and host only if on an ssh connection.
 if [[ -n $SSH_CLIENT ]]; then SSH_PS1=" \[\e[0;34m\][\[\e[m\]\u@\h\[\e[0;34m\]]\[\e[m\]"; else SSH_PS1=""; fi
@@ -80,4 +89,8 @@ function divider {
     fi
     line
     unset line
+}
+
+function pcp {
+    python -c "print($@)"
 }
