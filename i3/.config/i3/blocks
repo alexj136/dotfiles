@@ -1,7 +1,9 @@
 separator=true
 
 [battery]
-command=python .dotfiles/scripts/acpi_battery.py
+label=BAT 
+#command=python3 .dotfiles/scripts/acpi_battery.py
+command=acpi | grep -o '[^ ]*%' | tr '\n' ' ' ; printf '\n'
 interval=10
 color=#f8f8f2
 
