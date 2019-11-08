@@ -23,6 +23,11 @@ exec xautolock -time 20 -locker "i3lock -e -c 002b36" &
 # Set desktop wallpaper
 exec nitrogen --restore &
 
+# Run the emoji picker applet if installed (AUR emojione-picker-git package)
+if hash emojione-picker 2>/dev/null; then
+    exec emojione-picker &
+fi
+
 # Source a machine-local xinitrc if one exists
 if [ -e "$HOME/.xinitrc.local" ]; then
     sh "$HOME/.xinitrc.local"
