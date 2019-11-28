@@ -151,6 +151,9 @@ autocmd Filetype txt setlocal spell spelllang=en_gb
 " which case, the repo's root is used.
 let g:ctrlp_working_path_mode = 'ra'
 
+" Don't limit the number of files searched
+let g:ctrlp_max_files=0
+
 " =============
 " Misc Settings
 " =============
