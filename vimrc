@@ -32,6 +32,7 @@ Plugin 'honza/vim-snippets'
 " Workflow stuff
 Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " For seamless switching between vim viewports and tmux panes. Requires
 " corresponding bindings in ~/.tmux.conf.
@@ -139,6 +140,16 @@ command! SpellToggle setlocal spell! spelllang=en_gb
 autocmd Filetype tex setlocal spell spelllang=en_gb
 autocmd Filetype md  setlocal spell spelllang=en_gb
 autocmd Filetype txt setlocal spell spelllang=en_gb
+
+" ==============
+" CtrlP Settings
+" ==============
+
+" CtrlP's working directory will be that of the current file unless the current
+" file is a child of the current working directory, in which case the current
+" working directory is used. These rules are overridden in a VC repository, in
+" which case, the repo's root is used.
+let g:ctrlp_working_path_mode = 'ra'
 
 " =============
 " Misc Settings
