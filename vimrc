@@ -154,6 +154,13 @@ let g:ctrlp_working_path_mode = 'ra'
 " Don't limit the number of files searched
 let g:ctrlp_max_files=0
 
+" Don't search the following directories/files
+" Ignore some folders and files for CtrlP indexing
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp$',
+    \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+    \ }
+
 " =============
 " Misc Settings
 " =============
