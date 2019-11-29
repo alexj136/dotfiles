@@ -26,7 +26,8 @@ alias ls='ls --color=auto'      # Pretty colours for ls
 alias grep='grep --color=auto'  # Likewise for grep
 alias diff='diff --color=auto'  # Likewise for diff
 alias :q='exit'                 # Quit like it's vim
-alias :e='vim'                  # Edit like it's vim
+alias vim='nvim'                # Use neovim
+alias :e='nvim'                 # Edit like it's (n)vim
 alias tmux='tmux -2'            # Force tmux to use 256 colours
 
 # Git command aliases
