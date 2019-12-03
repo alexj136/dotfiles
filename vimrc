@@ -141,13 +141,19 @@ autocmd Filetype tex setlocal spell spelllang=en_gb
 autocmd Filetype md  setlocal spell spelllang=en_gb
 autocmd Filetype txt setlocal spell spelllang=en_gb
 
+" ============
+" FZF Bindings
+" ============
+
+" ctrl+p to fuzzy-find and open files in working directory
+nnoremap <silent> <C-p> :Files<CR>
+
+" ctrl+l to fuzzy-find and navigate to lines in open buffers
+nnoremap <silent> <c-l> :Lines<CR>
 
 " =============
 " Misc Settings
 " =============
-
-" ctrl+p to fuzzy-find with fzf.vim
-nnoremap <silent> <c-p> :Files<CR>
 
 " Put swap-files in a convenient location
 set directory^=$HOME/.vim/swapfiles//
