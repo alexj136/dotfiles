@@ -32,7 +32,7 @@ Plugin 'honza/vim-snippets'
 " Workflow stuff
 Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/fzf.vim' " requires the fzf command to be installed
 
 " For seamless switching between vim viewports and tmux panes. Requires
 " corresponding bindings in ~/.tmux.conf.
@@ -141,29 +141,13 @@ autocmd Filetype tex setlocal spell spelllang=en_gb
 autocmd Filetype md  setlocal spell spelllang=en_gb
 autocmd Filetype txt setlocal spell spelllang=en_gb
 
-" ==============
-" CtrlP Settings
-" ==============
-
-" CtrlP's working directory will be that of the current file unless the current
-" file is a child of the current working directory, in which case the current
-" working directory is used. These rules are overridden in a VC repository, in
-" which case, the repo's root is used.
-let g:ctrlp_working_path_mode = 'ra'
-
-" Don't limit the number of files searched
-let g:ctrlp_max_files=0
-
-" Don't search the following directories/files
-" Ignore some folders and files for CtrlP indexing
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp\|generated-sources$',
-    \ 'file': '\.so$\|\.dat$|\.DS_Store$'
-    \ }
 
 " =============
 " Misc Settings
 " =============
+
+" ctrl+p to fuzzy-find with fzf.vim
+nnoremap <silent> <c-p> :Files<CR>
 
 " Put swap-files in a convenient location
 set directory^=$HOME/.vim/swapfiles//
