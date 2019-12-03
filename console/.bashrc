@@ -3,14 +3,8 @@
 # ~/.bashrc
 #
 
-# Additional paths:
-# ~/bin/
-# ~/.local/bin/
+# Add additional paths: ~/bin/ and ~/.local/bin/
 export PATH=$PATH:$HOME/bin/:$HOME/.local/bin
-
-# Ruby gems stuff
-export GEM_HOME=$HOME/.gem
-export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -68,6 +62,12 @@ shopt -s autocd
 
 # Resize shell when terminal resizes
 shopt -s checkwinsize
+
+# Enable fzf (fuzzy finder) if installed - run with Ctrl+T or **<Tab>
+if [ -x "$(command -v fzf)" ]; then
+    source /usr/share/fzf/key-bindings.bash
+    source /usr/share/fzf/completion.bash
+fi
 
 # Set some java options to enable antialiasing and GTK themeing in java apps
 # with certain window managers
