@@ -157,7 +157,7 @@ let g:ctrlp_max_files=0
 " Don't search the following directories/files
 " Ignore some folders and files for CtrlP indexing
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp$',
+    \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp\|generated-sources$',
     \ 'file': '\.so$\|\.dat$|\.DS_Store$'
     \ }
 
