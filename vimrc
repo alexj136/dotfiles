@@ -117,6 +117,9 @@ set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.log,*.dvi,*.bbl,*.blg,
 " Key Bindings
 " ============
 
+" Leader key
+let mapleader = ","
+
 " Move cursor with display lines
 map j gj
 map k gk
@@ -145,11 +148,12 @@ autocmd Filetype txt setlocal spell spelllang=en_gb
 " FZF Bindings
 " ============
 
-" ctrl+p to fuzzy-find and open files in working directory
-nnoremap <silent> <C-p> :Files<CR>
+" ,t to fuzzy-find and open files in working directory
+nnoremap <silent> <leader>t :Files<CR>
 
-" ctrl+l to fuzzy-find and navigate to lines in open buffers
-nnoremap <silent> <c-l> :Lines<CR>
+" ,l to fuzzy-find lines in current buffer, ,L for all buffers
+nnoremap <silent> <leader>L :Lines<CR>
+nnoremap <silent> <leader>l :BLines<CR>
 
 " =============
 " Misc Settings
