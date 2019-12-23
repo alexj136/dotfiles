@@ -45,6 +45,18 @@ function gcl {
         echo "Default user: alexj136"
     fi
 }
+function gd {
+    # cd to the root of the git repo we're in, if any
+    git status &> /dev/null
+    if [ $? -ne 0 ]; then
+        echo "fatal: not a git repository (or any of the parent directories): .git"
+        return 1
+    fi
+    GIT_ROOT=$(git rev-parse --show-toplevel)
+    echo "cd $GIT_ROOT"
+    cd "$GIT_ROOT"
+    unset GIT_ROOT
+}
 
 # Prompt style. Include user and host only if on an ssh connection.
 if [[ -n $SSH_CLIENT ]]; then SSH_PS1=" \[\e[0;34m\][\[\e[m\]\u@\h\[\e[0;34m\]]\[\e[m\]"; else SSH_PS1=""; fi
@@ -93,5 +105,8 @@ function divider {
 }
 
 function pcp {
-    python -c "print($@)"
+    python -c "
+import math
+print($@)
+"
 }
