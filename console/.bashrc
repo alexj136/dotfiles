@@ -106,7 +106,7 @@ function divider {
 
 function pcp {
     python -c "
-import math
+from math import *
 print($@)
 "
 }
