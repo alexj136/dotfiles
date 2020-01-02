@@ -7,7 +7,7 @@ smart_gaps on
 gaps inner 10
 
 set $mod Mod4
-set $term terminator
+set $term gnome-terminal
 
 # Default border options
 new_window pixel 2

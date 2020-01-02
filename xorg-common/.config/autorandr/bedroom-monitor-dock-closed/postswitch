@@ -1,2 +1,0 @@
-#!/bin/sh
-nitrogen --head=0 --set-zoom-fill Pictures/Colorado_Dunes_by_Garret_Weintrob.jpg
