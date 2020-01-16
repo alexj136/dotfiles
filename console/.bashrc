@@ -110,3 +110,20 @@ from math import *
 print($@)
 "
 }
+
+function note {
+    if [ $# -ne 1 ]; then
+        echo "one argument expected - a file in ~/Dropbox/Notes/"
+    fi
+    vim "$HOME/Dropbox/Notes/$@"
+}
+
+function completionNote {
+    COMPREPLY=($(compgen -W "$(ls $HOME/Dropbox/Notes)" "${COMP_WORDS[1]}"))
+}
+complete -o nospace -F completionNote note
+
+# Source a local bashrc if available
+if [ -f "$HOME/.bashrc.local" ]; then
+    source "$HOME/.bashrc.local"
+fi
