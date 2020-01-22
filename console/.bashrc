@@ -111,6 +111,7 @@ print($@)
 "
 }
 
+# Note taking bits
 function note {
     if [ $# -ne 1 ]; then
         echo "one argument expected - a file in ~/Dropbox/Notes/"
@@ -119,9 +120,13 @@ function note {
 }
 
 function completionNote {
-    COMPREPLY=($(compgen -W "$(ls $HOME/Dropbox/Notes)" "${COMP_WORDS[1]}"))
+    COMPREPLY=($(compgen -W "$(find $HOME/Dropbox/Notes -type f -printf "%P\n")" "${COMP_WORDS[1]}"))
 }
 complete -o nospace -F completionNote note
+
+function todo {
+    grep --recursive --ignore-case --no-filename $@ "todo" "$HOME/Dropbox/Notes/" | awk '{$1=$1};1'
+}
 
 # Source a local bashrc if available
 if [ -f "$HOME/.bashrc.local" ]; then
