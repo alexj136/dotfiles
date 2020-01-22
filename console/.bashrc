@@ -112,11 +112,24 @@ print($@)
 }
 
 # Note taking bits
+function printNotes {
+    NOTES=$(find "$HOME/Dropbox/Notes" -type f -exec ls -1t "{}" +)
+    for note in $NOTES; do
+        printf "\n"
+        divider "$(stat -c '%y %n' $note)"
+        cat $note
+    done
+}
+
 function note {
     if [ $# -ne 1 ]; then
         echo "one argument expected - a file in ~/Dropbox/Notes/"
     fi
-    vim "$HOME/Dropbox/Notes/$@"
+    if [ $1 = "-l" ]; then
+        printNotes | less
+    else
+        vim "$HOME/Dropbox/Notes/$1"
+    fi
 }
 
 function completionNote {
