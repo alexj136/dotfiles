@@ -29,7 +29,6 @@ alias gdf='git --no-pager diff'
 alias gst='git status -u'
 alias gpl='git pull'
 alias gps='git push'
-alias gck='git checkout'
 alias gcm='git commit -m'
 function glg {
     git --no-pager log --reverse --pretty=format:'%C(red)%h%C(reset)%C(yellow)%d%C(reset) %C(green)(%cr) %C(blue)<%an>%C(reset)%n%s' --abbrev-commit $@
