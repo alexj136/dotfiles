@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Note taking bits
+function dump {
+    NOTES=$(find "$HOME/Dropbox/Notes" -type f -exec ls -1t "{}" +)
+    for note in $NOTES; do
+        printf "\n"
+        divider "$(stat -c '%y %n' $note)"
+        cat $note
+    done
+}
+
+function todo {
+    grep --recursive --ignore-case --no-filename $@ "todo" "$HOME/Dropbox/Notes/" | awk '{$1=$1};1'
+}
+
+# Require one argument
+if [ $# -ne 1 ]; then
+    echo "Usage: note [OPTION | FILE]"
+    echo "Files must exist in ~/Dropbox/Notes."
+    echo "Options:"
+    echo "    -d, --dump        dump all notes to STDOUT with pager"
+    echo "    -t, --todo        grep all notes for TODOs"
+    exit 1
+fi
+
+if [[ $1 = "-d" || $1 = "--dump" ]]; then
+    dump | less
+elif [[ $1 = "-t" || $1 = "--todo" ]]; then
+    todo
+else
+    vim "$HOME/Dropbox/Notes/$1"
+fi
+
+unset dump
+unset todo

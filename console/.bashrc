@@ -80,29 +80,7 @@ if [ -x "$(command -v fzf)" ]; then
     source /usr/share/fzf/completion.bash
 fi
 
-# Set some java options to enable antialiasing and GTK themeing in java apps
-# with certain window managers
-#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
-#        -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-
-# A helpful function to separate text on the terminal. Prints two lines of
-# equal signs, and if any arguments are given, the appear between the lines.
-function divider {
-    function line {
-        for j in {1..80}
-        do
-            printf "="
-        done
-        printf "\n"
-    }
-    line
-    if [ "$#" -gt "0" ]; then
-        echo "$@"
-    fi
-    line
-    unset line
-}
-
+# Python expression evaluator
 function pcp {
     python -c "
 from math import *
@@ -110,35 +88,11 @@ print($@)
 "
 }
 
-# Note taking bits
-function printNotes {
-    NOTES=$(find "$HOME/Dropbox/Notes" -type f -exec ls -1t "{}" +)
-    for note in $NOTES; do
-        printf "\n"
-        divider "$(stat -c '%y %n' $note)"
-        cat $note
-    done
-}
-
-function note {
-    if [ $# -ne 1 ]; then
-        echo "one argument expected - a file in ~/Dropbox/Notes/"
-    fi
-    if [ $1 = "-l" ]; then
-        printNotes | less
-    else
-        vim "$HOME/Dropbox/Notes/$1"
-    fi
-}
-
-function completionNote {
-    COMPREPLY=($(compgen -W "$(find $HOME/Dropbox/Notes -type f -printf "%P\n")" "${COMP_WORDS[1]}"))
-}
-complete -o nospace -F completionNote note
-
-function todo {
-    grep --recursive --ignore-case --no-filename $@ "todo" "$HOME/Dropbox/Notes/" | awk '{$1=$1};1'
-}
+# Source bash completion files
+for file in $(find $HOME/.dotfiles/completions/ -type f); do
+    source "$file"
+done
+unset file
 
 # Source a local bashrc if available
 if [ -f "$HOME/.bashrc.local" ]; then
