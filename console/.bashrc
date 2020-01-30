@@ -10,7 +10,7 @@ export PATH=$PATH:$HOME/bin/:$HOME/.local/bin
 [[ $- != *i* ]] && return
 
 # Run gnome-keyring-daemon to unlock ssh keys when connecting to a server.
-if [ -n "$DESKTOP_SESSION" ]; then
+if [ -x "$(command -v gnome-keyring-daemon)" -a -n "$DESKTOP_SESSION" ]; then
     eval $(gnome-keyring-daemon --start --components=ssh)
     export SSH_AUTH_SOCK
 fi
