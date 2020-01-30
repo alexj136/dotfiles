@@ -34,6 +34,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'kshenoy/vim-signature'
 
 " For seamless switching between vim viewports and tmux panes. Requires
 " corresponding bindings in ~/.tmux.conf.
