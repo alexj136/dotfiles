@@ -5,7 +5,7 @@ PS1=""
 if [[ -n $SSH_CLIENT ]]; then
     PS1+=" \[$blue\][\[$reset\]\u@\h\[$blue\]]\[$reset\]"
 fi
-PS1+=" \[$blue\][\[$reset\]\W\[$blue\]]\[$reset\] "
+PS1+=" \[$blue\][\[$reset\]\W\[$blue\]]\[$reset\] \$ "
 
 unset blue
 unset reset
