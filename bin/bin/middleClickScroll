@@ -1,0 +1,3 @@
+#!/bin/bash
+xinput set-prop "Contour Design, inc. Contour Receiver Mouse" "libinput Scroll Method Enabled" 0, 0, 1
+xinput set-prop "Contour Design, inc. Contour Receiver Mouse" "libinput Button Scrolling Button" 2
