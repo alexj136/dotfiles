@@ -1,16 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 # A helpful function to separate text on the terminal. Prints two lines of
 # equal signs, and if any arguments are given, the appear between the lines.
 function line {
-    for j in {1..80}
-    do
-        printf "="
-    done
+    for j in {1..80}; do printf "="; done
     printf "\n"
 }
 line
 if [ "$#" -gt "0" ]; then
     echo "$@"
+    line
 fi
-line
 unset line
