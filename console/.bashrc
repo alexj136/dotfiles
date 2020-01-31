@@ -51,16 +51,13 @@ function gd {
         echo "fatal: not a git repository (or any of the parent directories): .git"
         return 1
     fi
-    GIT_ROOT=$(git rev-parse --show-toplevel)
-    echo "cd $GIT_ROOT"
-    cd "$GIT_ROOT"
-    unset GIT_ROOT
+    local git_root=$(git rev-parse --show-toplevel)
+    echo "cd $git_root"
+    cd "$git_root"
 }
 
-# Prompt style. Include user and host only if on an ssh connection.
-if [[ -n $SSH_CLIENT ]]; then SSH_PS1=" \[\e[0;34m\][\[\e[m\]\u@\h\[\e[0;34m\]]\[\e[m\]"; else SSH_PS1=""; fi
-PS1="$SSH_PS1 \[\e[0;34m\][\[\e[m\]\W\[\e[0;34m\]]\[\e[m\] \$ "
-unset SSH_PS1
+# Prompt style
+source $HOME/.dotfiles/scripts/ps1.bash
 
 # File extensions to ignore in interactive completion
 FIGNORE=".aux:.log:.dvi:.class:.o:.pyc:.hi:.swp:.bbl:.blg:.toc:"
