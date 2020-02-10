@@ -64,12 +64,18 @@ FIGNORE=".aux:.log:.dvi:.class:.o:.pyc:.hi:.swp:.bbl:.blg:.toc:"
 
 # Append to histfile when shell exits, rather than overwrite
 shopt -s histappend
+export HISTSIZE=10000000
+export HISTFILESIZE=10000000
 
 # Typing only a directory performs a cd there
 shopt -s autocd
 
 # Resize shell when terminal resizes
 shopt -s checkwinsize
+
+# Use (n)vim please
+export EDITOR=vim
+export VISUAL="$EDITOR"
 
 # Enable fzf (fuzzy finder) if installed - run with Ctrl+T or **<Tab>
 if [ -x "$(command -v fzf)" ]; then
