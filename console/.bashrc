@@ -55,6 +55,15 @@ function gd {
     echo "cd $git_root"
     cd "$git_root"
 }
+function gbf {
+    if [ $# -ne 0 ]; then
+        echo "Ignoring arguments: $@"
+    fi
+    echo "The files that changed with respect to master are:"
+    local base="master"
+    local current="$(git rev-parse --abbrev-ref HEAD)"
+    git diff --name-only $current $(git merge-base $current $base)
+}
 
 # Prompt style
 source $HOME/.dotfiles/scripts/ps1.bash
