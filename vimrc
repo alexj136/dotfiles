@@ -11,9 +11,9 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-" ====================
+" =========================================
 " Vundle Configuration
-" ====================
+" =========================================
 
 set nocompatible
 filetype off
@@ -40,8 +40,9 @@ Plugin 'kshenoy/vim-signature'
 " corresponding bindings in ~/.tmux.conf.
 Plugin 'christoomey/vim-tmux-navigator'
 
-" Molokai color scheme
+" Color schemes
 Plugin 'sickill/vim-monokai'
+Plugin 'cormacrelf/vim-colors-github'
 
 " Airline - status etc
 Plugin 'vim-airline/vim-airline'
@@ -55,9 +56,9 @@ Plugin 'rust-lang/rust.vim'
 call vundle#end()
 filetype plugin indent on
 
-" ===================
-" Indentation Options
-" ===================
+" =========================================
+" Global Indentation Options
+" =========================================
 
 set tabstop=4               " Set tab width to 4
 set expandtab               " Always use spaces instead of tabs
@@ -67,38 +68,28 @@ set smarttab                " Indent instead of tab at the start of a line
 set shiftround              " Round spaces to the nearest shiftwidth multiple
 set nojoinspaces            " Don't convert spaces to tabs
 
-" ===================
+" =========================================
 " Appearence Settings
-" ===================
+" =========================================
 
 syntax on                   " Enable syntax highlighting.
 set colorcolumn=80          " Enable ruler
 set guioptions=a            " Disable menu bar & toolbar in gvim
 set number                  " Show line numbers at launch
 
-" ====================
+" =========================================
 " Color Settings
-" ====================
-
-" Settings for MacVim
-if has ("gui_macvim")
-  colorscheme monokai
-  set guifont=Inconsolata\ Regular:h15
-  set columns=84
-
-" Settings for gvim on Linux
-elseif has ("gui_running")
-  colorscheme monokai
-  set guifont=Inconsolata\ 11
+" =========================================
 
 " Settings for terminal vim
-elseif match ($TERM, "xterm-256color"       ) != -1 ||
-     \ match ($TERM, "xterm"                ) != -1 ||
-     \ match ($TERM, "rxvt-unicode"         ) != -1 ||
-     \ match ($TERM, "rxvt-unicode-256color") != -1 ||
-     \ match ($TERM, "screen-256color"      ) != -1
+if match ($TERM, "xterm-256color"       ) != -1 ||
+ \ match ($TERM, "xterm"                ) != -1 ||
+ \ match ($TERM, "rxvt-unicode"         ) != -1 ||
+ \ match ($TERM, "rxvt-unicode-256color") != -1 ||
+ \ match ($TERM, "screen-256color"      ) != -1
   set t_Co=16
-  colorscheme monokai
+  "colorscheme monokai " Be sure to also toggle the airline theme below ↓
+  colorscheme github
 
 " If the terminal isn't recognised then use vim's default scheme
 else
@@ -106,18 +97,18 @@ else
 
 endif
 
-" ================
+" =========================================
 " WildMenu Options
-" ================
+" =========================================
 
 set wildmenu
 set wildmode=longest,list
 set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.log,*.dvi,*.bbl,*.blg,
     \*.pdf
 
-" ============
+" =========================================
 " Key Bindings
-" ============
+" =========================================
 
 " Leader key
 let mapleader = ","
@@ -146,9 +137,9 @@ autocmd Filetype tex setlocal spell spelllang=en_gb
 autocmd Filetype md  setlocal spell spelllang=en_gb
 autocmd Filetype txt setlocal spell spelllang=en_gb
 
-" ============
+" =========================================
 " FZF Bindings
-" ============
+" =========================================
 
 " ,t to fuzzy-find and open files in working directory
 nnoremap <silent> <leader>t :Files<CR>
@@ -157,9 +148,9 @@ nnoremap <silent> <leader>t :Files<CR>
 nnoremap <silent> <leader>L :Lines<CR>
 nnoremap <silent> <leader>l :BLines<CR>
 
-" =============
+" =========================================
 " Misc Settings
-" =============
+" =========================================
 
 " Put swap-files in a convenient location
 set directory^=$HOME/.vim/swapfiles//
@@ -229,7 +220,8 @@ let g:airline#extensions#tabline#right_sep = ' '
 let g:airline#extensions#tabline#right_alt_sep = ' '
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline_theme='base16_monokai'
+"let g:airline_theme='base16_monokai'
+let g:airline_theme='github'
 if !exists('g:airline_symbols') | let g:airline_symbols = {} | endif
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
