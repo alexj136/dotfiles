@@ -86,12 +86,6 @@ shopt -s checkwinsize
 export EDITOR=vim
 export VISUAL="$EDITOR"
 
-# Enable fzf (fuzzy finder) if installed - run with Ctrl+T or **<Tab>
-if [ -x "$(command -v fzf)" ]; then
-    source /usr/share/fzf/key-bindings.bash
-    source /usr/share/fzf/completion.bash
-fi
-
 # Python expression evaluator
 function pcp {
     python -c "
@@ -110,3 +104,6 @@ unset file
 if [ -f "$HOME/.bashrc.local" ]; then
     source "$HOME/.bashrc.local"
 fi
+
+# Load fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
