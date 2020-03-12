@@ -35,6 +35,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'kshenoy/vim-signature'
+Plugin 'airblade/vim-gitgutter'
 
 " For seamless switching between vim viewports and tmux panes. Requires
 " corresponding bindings in ~/.tmux.conf.
@@ -67,6 +68,10 @@ set shiftwidth=4            " An indent is always 4 spaces
 set smarttab                " Indent instead of tab at the start of a line
 set shiftround              " Round spaces to the nearest shiftwidth multiple
 set nojoinspaces            " Don't convert spaces to tabs
+"set wrap lbr                " Don't soft-wrap mid-word
+set breakindent             " Indent soft-wrapped lines
+set breakindentopt=shift:0  " Amount to indent soft-wrapped lines
+set showbreak=....          " Show this text on indented soft-wrapped lines
 
 " =========================================
 " Appearence Settings
@@ -152,6 +157,9 @@ nnoremap <silent> <leader>l :BLines<CR>
 " Misc Settings
 " =========================================
 
+" Required by gitgutter
+set updatetime=100
+
 " Put swap-files in a convenient location
 set directory^=$HOME/.vim/swapfiles//
 
@@ -168,9 +176,6 @@ nnoremap <silent> <CR> :nohlsearch<CR><CR>
 
 " Do smart case matching when searching
 set smartcase
-
-" Wrap long display lines only between separate words, do not wrap within a word
-set wrap lbr
 
 " Allow movement past the end of a line in visual block mode
 set virtualedit=block
