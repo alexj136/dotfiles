@@ -180,10 +180,10 @@ set smartcase
 " Allow movement past the end of a line in visual block mode
 set virtualedit=block
 
-" Wrap text to 80 characters when manually wrapping ('gq' in visual line mode)
-set textwidth=80
+" Auto-hard-wrap text to 80 characters
+"set textwidth=80
 
-" Do not wrap automatically
+" Do not hard-wrap automatically
 set wrapmargin=0
 
 " Allow hiding of unsaved modified buffers
