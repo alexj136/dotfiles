@@ -98,12 +98,9 @@ print($@)
 for file in $(find $HOME/.dotfiles/completions/ -type f); do
     source "$file"
 done
+
+# Source local bash run-commands in .bashrc.d/
+for file in $(find $HOME/.bashrc.d/ -type f); do
+    source "$file"
+done
 unset file
-
-# Source a local bashrc if available
-if [ -f "$HOME/.bashrc.local" ]; then
-    source "$HOME/.bashrc.local"
-fi
-
-# Load fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
