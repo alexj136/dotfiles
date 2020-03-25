@@ -32,8 +32,6 @@ Plugin 'honza/vim-snippets'
 " Workflow stuff
 Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
 Plugin 'kshenoy/vim-signature'
 Plugin 'airblade/vim-gitgutter'
 
@@ -141,17 +139,6 @@ command! SpellToggle setlocal spell! spelllang=en_gb
 autocmd Filetype tex setlocal spell spelllang=en_gb
 autocmd Filetype md  setlocal spell spelllang=en_gb
 autocmd Filetype txt setlocal spell spelllang=en_gb
-
-" =========================================
-" FZF Bindings
-" =========================================
-
-" ,t to fuzzy-find and open files in working directory
-nnoremap <silent> <leader>t :Files<CR>
-
-" ,l to fuzzy-find lines in current buffer, ,L for all buffers
-nnoremap <silent> <leader>L :Lines<CR>
-nnoremap <silent> <leader>l :BLines<CR>
 
 " =========================================
 " Misc Settings
