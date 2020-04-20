@@ -71,6 +71,11 @@ set breakindent             " Indent soft-wrapped lines
 set breakindentopt=shift:0  " Amount to indent soft-wrapped lines
 set showbreak=....          " Show this text on indented soft-wrapped lines
 
+" Highlight hard tabs
+highlight SpecialKey ctermfg=1
+set list
+set listchars=tab:>
+
 " =========================================
 " Appearence Settings
 " =========================================
@@ -135,10 +140,11 @@ nnoremap q: <nop>
 " Command to toggle spell-check
 command! SpellToggle setlocal spell! spelllang=en_gb
 
-" Enable spell checking by default in tex, md, txt
-autocmd Filetype tex setlocal spell spelllang=en_gb
-autocmd Filetype md  setlocal spell spelllang=en_gb
-autocmd Filetype txt setlocal spell spelllang=en_gb
+" Enable spell checking by default in tex, md, txt, adoc
+autocmd Filetype tex  setlocal spell spelllang=en_gb
+autocmd Filetype md   setlocal spell spelllang=en_gb
+autocmd Filetype txt  setlocal spell spelllang=en_gb
+autocmd Filetype adoc setlocal spell spelllang=en_gb
 
 " =========================================
 " Misc Settings
