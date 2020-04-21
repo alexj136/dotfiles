@@ -74,7 +74,7 @@ set showbreak=....          " Show this text on indented soft-wrapped lines
 " Highlight hard tabs
 highlight SpecialKey ctermfg=1
 set list
-set listchars=tab:>
+set listchars=tab:\>\ 
 
 " =========================================
 " Appearence Settings
