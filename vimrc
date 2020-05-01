@@ -97,14 +97,19 @@ if match ($TERM, "xterm-256color"       ) != -1 ||
  \ match ($TERM, "rxvt-unicode-256color") != -1 ||
  \ match ($TERM, "screen-256color"      ) != -1
   set t_Co=16
-  colorscheme monokai " Be sure to also toggle the airline theme below ↓
-  "colorscheme github
+  "colorscheme monokai " Be sure to also toggle the airline theme below ↓
+  colorscheme github
 
 " If the terminal isn't recognised then use vim's default scheme
 else
   colorscheme default
 
 endif
+
+command! LightColors colorscheme github | let g:airline_theme='github' |
+    \ AirlineRefresh
+command! DarkColors colorscheme monokai | let g:airline_theme='base16_monokai' |
+    \ AirlineRefresh
 
 " =========================================
 " WildMenu Options
@@ -219,8 +224,8 @@ let g:airline#extensions#tabline#right_sep = ' '
 let g:airline#extensions#tabline#right_alt_sep = ' '
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline_theme='base16_monokai'
-"let g:airline_theme='github'
+"let g:airline_theme='base16_monokai'
+let g:airline_theme='github'
 if !exists('g:airline_symbols') | let g:airline_symbols = {} | endif
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
