@@ -51,6 +51,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'rust-lang/rust.vim'
+Plugin 'vim-scripts/sablecc.vim' " SableCC parser generator, and _forks of it_.
 
 call vundle#end()
 filetype plugin indent on
@@ -96,8 +97,8 @@ if match ($TERM, "xterm-256color"       ) != -1 ||
  \ match ($TERM, "rxvt-unicode-256color") != -1 ||
  \ match ($TERM, "screen-256color"      ) != -1
   set t_Co=16
-  "colorscheme monokai " Be sure to also toggle the airline theme below ↓
-  colorscheme github
+  colorscheme monokai " Be sure to also toggle the airline theme below ↓
+  "colorscheme github
 
 " If the terminal isn't recognised then use vim's default scheme
 else
@@ -218,11 +219,14 @@ let g:airline#extensions#tabline#right_sep = ' '
 let g:airline#extensions#tabline#right_alt_sep = ' '
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-"let g:airline_theme='base16_monokai'
-let g:airline_theme='github'
+let g:airline_theme='base16_monokai'
+"let g:airline_theme='github'
 if !exists('g:airline_symbols') | let g:airline_symbols = {} | endif
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
 
 " Disable auto-indentation settings in haskell-vim, because they're annoying
 let g:haskell_indent_disable = 1
+
+" Use SableCC highlighting for files with a .polyglot extension
+autocmd BufRead,BufNewFile *.polyglot set filetype=sablecc
