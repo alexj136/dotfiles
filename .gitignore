@@ -1,6 +1,6 @@
 *.swp
 *.swo
-xmonad/*
-!xmonad/xmonad.hs
-!xmonad/autostart
-!xmonad/conkyrc
+vim/.vim/.netrwhist
+vim/.vim/bundle
+vim/.vim/plugin
+vim/.vim/spell/*.spl
