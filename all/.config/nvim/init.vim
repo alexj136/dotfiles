@@ -61,8 +61,6 @@ set wildmode=longest,list
 set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.dvi,*.bbl,*.blg,*.pdf
 
 " Keybindings
-map j gj                " Move cursor down with display lines
-map k gk                " Move cursor up with display lines
 nnoremap <silent> <tab> :bnext<CR>          " Next buffer
 nnoremap <silent> <S-tab> :bprevious<CR>    " Prev buffer
 nnoremap Q <nop>        " Disable ex mode binding
