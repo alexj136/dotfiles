@@ -2,31 +2,20 @@
 " ALEX'S VIMRC
 " =========================================
 
-" VUNDLE CONFIGURATION
+" Vundle configuration
 set nocompatible
 filetype off
 set runtimepath+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin("~/.config/nvim/bundle")
-
-" Vundle manages itself
-Plugin 'VundleVim/Vundle.vim'
-
-" Workflow stuff
-Plugin 'godlygeek/tabular'      " Align blocks of text by given characters
-Plugin 'kshenoy/vim-signature'  " Show marks in the gutter
-Plugin 'airblade/vim-gitgutter' " Git status in the gutter
-Plugin 'tpope/vim-fugitive'     " Other git bits
-
-" Color schemes
-Plugin 'sickill/vim-monokai'
-Plugin 'cormacrelf/vim-colors-github'
-
-" PL-specific plugins
-Plugin 'vim-scripts/sablecc.vim'
-
+Plugin 'VundleVim/Vundle.vim'           " Vundle manages itself
+Plugin 'godlygeek/tabular'              " Align text by given characters
+Plugin 'kshenoy/vim-signature'          " Show marks in the gutter
+Plugin 'airblade/vim-gitgutter'         " Git status in the gutter
+Plugin 'sickill/vim-monokai'            " A dark colorscheme
+Plugin 'cormacrelf/vim-colors-github'   " A light colorscheme
+Plugin 'vim-scripts/sablecc.vim'        " Colour for sablecc (polyglot)
 call vundle#end()
 filetype plugin indent on
-" END VUNDLE CONFIGURATION
 
 " Indentation Options
 set tabstop=4               " Set tab width to 4
@@ -71,13 +60,13 @@ set wildmenu
 set wildmode=longest,list
 set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.dvi,*.bbl,*.blg,*.pdf
 
-" Move cursor with display lines
-map j gj
-map k gk
-
-" Disable bindings to enter ex mode - I never use ex mode
-nnoremap Q <nop>
-nnoremap q: <nop>
+" Keybindings
+map j gj                " Move cursor down with display lines
+map k gk                " Move cursor up with display lines
+nnoremap <silent> <tab> :bnext<CR>          " Next buffer
+nnoremap <silent> <S-tab> :bprevious<CR>    " Prev buffer
+nnoremap Q <nop>        " Disable ex mode binding
+nnoremap q: <nop>       " Disable ex mode binding
 
 " Command to toggle spell-check
 command! SpellToggle setlocal spell! spelllang=en_gb
@@ -89,7 +78,7 @@ set directory^=$HOME/.config/nvim/swapfiles//
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
 \ | exe "normal! g'\"" | endif
 
-" Use SableCC highlighting for files with a .polyglot extension
+" Use SableCC highlighting for files with .polyglot or .productions extensions
 autocmd BufRead,BufNewFile *.polyglot    set filetype=sablecc
 autocmd BufRead,BufNewFile *.productions set filetype=sablecc
 
