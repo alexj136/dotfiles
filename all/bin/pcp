@@ -1,0 +1,6 @@
+#!/bin/sh
+# Python expression evaluator
+python3 -c "
+from math import *
+print($@)
+"

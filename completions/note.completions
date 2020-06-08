@@ -1,8 +1,0 @@
-#!/bin/bash
-
-function completionNote {
-    files=$(find $HOME/Dropbox/Notes -type f -printf "%P\n")
-    COMPREPLY=($(compgen -W "$files" "${COMP_WORDS[1]}"))
-}
-
-complete -o nospace -F completionNote note

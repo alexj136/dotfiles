@@ -1,0 +1,10 @@
+#!/bin/bash
+# github cloning helper
+if [[ $# -eq 1 ]]; then
+    git clone "git+ssh://git@github.com/alexj136/$1.git"
+elif [[ $# -eq 2 ]]; then
+    git clone "git+ssh://git@github.com/$1/$2.git"
+else
+    echo "Usage: gcl username? reponame"
+    echo "Default user: alexj136"
+fi

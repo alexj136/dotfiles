@@ -1,6 +1,0 @@
-#!/bin/bash
-if pgrep -x "redshift" > /dev/null; then
-    killall redshift
-else
-    redshift -l 50:0 -b 0.35 -g 1:0.8:0.7 &
-fi

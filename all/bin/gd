@@ -1,0 +1,10 @@
+#!/bin/bash
+# cd to the root of the git repo we're in, if any
+git status &> /dev/null
+if [ $? -ne 0 ]; then
+    echo "fatal: not a git repository (or any of the parent directories): .git"
+    return 1
+fi
+local git_root=$(git rev-parse --show-toplevel)
+echo "cd $git_root"
+cd "$git_root"

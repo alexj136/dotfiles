@@ -1,9 +1,0 @@
-#!/bin/sh
-# A script to be used interactively, that runs a command entirely in the
-# background. For example, the command:
-#
-#     detach firefox
-#
-# Will launch firefox from the console, but the console will not receive any
-# output from firefox, nor will firefox close if the console is closed.
-nohup $@ > /dev/null &

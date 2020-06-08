@@ -1,8 +1,0 @@
-# color the right and bottom edges of maximized gvim windows
-style "gvim" {
-    #bg[NORMAL] = "#1b1d1e" # Molokai
-    #bg[NORMAL] = "#002b36" # Solarized dark
-    bg[NORMAL] = "#fdf6e3"  # Solarized light
-}
-widget "vim-main-window.*GtkForm" style "gvim"
-gtk-theme-name="Arc-Darker"

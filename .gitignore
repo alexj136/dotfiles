@@ -1,6 +1,6 @@
 *.swp
 *.swo
-console/.vim/.netrwhist
-console/.vim/bundle
-console/.vim/plugin
-console/.vim/spell/*.spl
+all/.vim/.netrwhist
+all/.vim/bundle
+all/.vim/plugin
+all/.vim/spell/*.spl

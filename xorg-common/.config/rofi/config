@@ -1,9 +1,0 @@
-! Rofi settings
-rofi.font: Inconsolata 14
-
-! Colours          bg     ,  fg     ,  bgalt  ,  hlbg   ,  hlfg
-rofi.color-normal: #fdf6e3,  #002b36,  #fdf6e3,  #586e75,  #eee8d5
-rofi.color-urgent: #fdf6e3,  #dc322f,  #fdf6e3,  #dc322f,  #fdf6e3
-rofi.color-active: #fdf6e3,  #268bd2,  #fdf6e3,  #268bd2,  #fdf6e3
-!                  background, border , separator
-rofi.color-window: #fdf6e3   , #fdf6e3, #fdf6e3
