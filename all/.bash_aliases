@@ -21,6 +21,7 @@ alias gst='git status -u'
 alias gpl='git pull'
 alias gps='git push'
 alias gcm='git commit -m'
+alias gd='cd $(git rev-parse --show-toplevel)'
 
 # Use (n)vim please
 export EDITOR=vim
