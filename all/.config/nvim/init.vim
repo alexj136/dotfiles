@@ -47,7 +47,6 @@ set colorcolumn=80      " Ruler at 80 characters
 set hidden              " Allow hiding of unsaved modified buffers
 set ignorecase          " Ignore case in search...
 set smartcase           " unless search contains uppercase or \C escape sequence
-set nowrapscan          " No wrap to top/bottom of file when searching
 set display=lastline    " Don't hide any wrapped lines
 
 " Highlight hard tabs
