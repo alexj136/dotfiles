@@ -6,7 +6,7 @@ if [ -x "$(command -v gnome-keyring-daemon)" -a -n "$DESKTOP_SESSION" ]; then
     export SSH_AUTH_SOCK
 fi
 
-# Aliases
+# General aliases
 alias ls='ls --color=auto'      # Pretty colours for ls
 alias grep='grep --color=auto'  # Likewise for grep
 alias diff='diff --color=auto'  # Likewise for diff
@@ -22,6 +22,11 @@ alias gpl='git pull'
 alias gps='git push'
 alias gcm='git commit -m'
 alias gd='cd $(git rev-parse --show-toplevel)'
+
+# Functions
+function pcp {
+    python -c "from math import *; from random import *; print($@)"
+}
 
 # Use (n)vim please
 export EDITOR=vim
