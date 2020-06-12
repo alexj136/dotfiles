@@ -14,6 +14,9 @@ alias :q='exit'                 # Quit like it's vim
 alias vim='nvim'                # Use neovim
 alias :e='nvim'                 # Edit like it's (n)vim
 alias tmux='tmux -2'            # Force tmux to use 256 colours
+function pcp {
+    python -c "from math import *; from random import *; print($@)"
+}
 
 # Git command aliases
 alias gdf='git --no-pager diff'
@@ -22,10 +25,9 @@ alias gpl='git pull'
 alias gps='git push'
 alias gcm='git commit -m'
 alias gd='cd $(git rev-parse --show-toplevel)'
-
-# Functions
-function pcp {
-    python -c "from math import *; from random import *; print($@)"
+function glg {
+    git --no-pager log --reverse --pretty=format:'%C(red)%h%C(reset)%C(yellow)%d%C(reset) %C(green)(%cr) %C(blue)<%an>%C(reset)%n%s' --abbrev-commit $@
+    echo ""
 }
 
 # Use (n)vim please
