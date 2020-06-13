@@ -49,6 +49,9 @@ set ignorecase          " Ignore case in search...
 set smartcase           " unless search contains uppercase or \C escape sequence
 set display=lastline    " Don't hide any wrapped lines
 
+" status: file modified ___ [line/total:column] bufno
+set statusline=\ %f\ %m%=%l/%L:%c\ %10p%%\ 
+
 " Highlight hard tabs
 highlight SpecialKey ctermfg=1
 set list
@@ -59,11 +62,16 @@ set wildmenu
 set wildmode=longest,list
 set wildignore+=*.o,*.hi,*.swp,*.pyc,*.class,*.aux,*.dvi,*.bbl,*.blg,*.pdf
 
-" Keybindings
-nnoremap <silent> <tab> :bnext<CR>          " Next buffer
-nnoremap <silent> <S-tab> :bprevious<CR>    " Prev buffer
-nnoremap Q <nop>        " Disable ex mode binding
-nnoremap q: <nop>       " Disable ex mode binding
+" KEYBINDINGS
+" Cycle buffers
+nnoremap <silent> <tab> :bnext<CR>
+nnoremap <silent> <S-tab> :bprevious<CR>
+" Disable ex-mode bindings
+nnoremap Q <nop>
+nnoremap q: <nop>
+" Show buffers
+nnoremap <C-K> :buffers<CR>:b<Space>
+cnoremap <C-K> <C-U><Esc><CR>
 
 " Command to toggle spell-check
 command! SpellToggle setlocal spell! spelllang=en_gb
