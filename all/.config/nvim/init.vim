@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'           " Vundle manages itself
 Plugin 'godlygeek/tabular'              " Align text by given characters
 Plugin 'kshenoy/vim-signature'          " Show marks in the gutter
 Plugin 'airblade/vim-gitgutter'         " Git status in the gutter
+Plugin 'tpope/vim-fugitive'             " Other git bits
 Plugin 'sickill/vim-monokai'            " A dark colorscheme
 Plugin 'cormacrelf/vim-colors-github'   " A light colorscheme
 Plugin 'vim-scripts/sablecc.vim'        " Colour for sablecc (polyglot)
@@ -49,8 +50,8 @@ set ignorecase          " Ignore case in search...
 set smartcase           " unless search contains uppercase or \C escape sequence
 set display=lastline    " Don't hide any wrapped lines
 
-" status: file modified ___ [line/total:column] bufno
-set statusline=\ %f\ %m%=%l/%L:%c\ %10p%%\ 
+" status: file modified git ___ [line/total:column] bufno
+set statusline=\ %f\ %m\ %{FugitiveStatusline()}%=%l/%L:%c\ %8p%%\ 
 
 " Highlight hard tabs
 highlight SpecialKey ctermfg=1
