@@ -12,3 +12,5 @@ Oh, and you might need to
 ```
 sudo apt install stow
 ```
+The files in `misc/` are not for stow, and should be handled on a per-file
+basis.
