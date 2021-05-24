@@ -19,7 +19,8 @@ function pcp {
 }
 
 # Git command aliases
-alias gdf='git --no-pager diff'
+alias gdf='git --no-pager diff --color=always | less -R'
+alias gdfb='git --no-pager diff --color=always master...$(git symbolic-ref --short HEAD) | less -R'
 alias gst='git status -u'
 alias gpl='git pull'
 alias gps='git push'
