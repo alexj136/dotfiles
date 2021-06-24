@@ -19,8 +19,6 @@ function pcp {
 }
 
 # Git command aliases
-alias gdf='git --no-pager diff --color=always | less -R'
-alias gdfb='git --no-pager diff --color=always master...$(git symbolic-ref --short HEAD) | less -R'
 alias gst='git status -u'
 alias gpl='git pull'
 alias gps='git push'
@@ -29,6 +27,14 @@ alias gd='cd $(git rev-parse --show-toplevel)'
 function glg {
     git --no-pager log --reverse --pretty=format:'%C(red)%h%C(reset)%C(yellow)%d%C(reset) %C(green)(%cr) %C(blue)<%an>%C(reset)%n%s' --abbrev-commit $@
     echo ""
+}
+function gdf {
+    if [ "$1" == "--branch" ]; then
+        GDF_BRANCH_MODE="master...$(git symbolic-ref --short HEAD)"
+        shift
+    fi
+    git --no-pager diff $@ --color=always $GDF_BRANCH_MODE | less -R --quit-if-one-screen
+    unset GDF_BRANCH_MODE
 }
 
 # Use (n)vim please
