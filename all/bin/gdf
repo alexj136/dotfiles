@@ -1,0 +1,50 @@
+#!/bin/bash
+
+#
+# git diff, with some abbreviations for things that are unhelpfully verbose to
+# to in pure git.
+#
+# EXAMPLES
+#
+# Plain git diff:
+#                   gdf
+#
+# Show diff between branch and master:
+#
+#                   gdf --branch
+#
+# Show diff between current branch and other-branch:
+#
+#                   gdf --branch --base=other-branch
+#
+# Show diff, but only filenames (supports above opts):
+#
+#                   gdf --name-only
+#
+
+GDF_BRANCH_BASE=master
+GDF_OTHER_ARGS=""
+while [ $# -ne 0 ]
+do
+    case "$1" in
+        --branch)
+            GDF_BRANCH_MODE=true
+            ;;
+        --base=*)
+            GDF_BRANCH_BASE="${1#*=}"
+            ;;
+        --name-only)
+            GDF_NAME_ONLY="$1"
+            ;;
+        *)
+            GDF_OTHER_ARGS="$GDF_OTHER_ARGS $1"
+            ;;
+    esac
+    shift
+done
+
+if [ "$GDF_BRANCH_MODE" = true ]; then
+    GDF_BRANCH_STRING="$GDF_BRANCH_BASE...$(git symbolic-ref --short HEAD)"
+fi
+git --no-pager diff $GDF_NAME_ONLY --color=always $GDF_BRANCH_STRING $GDF_OTHER_ARGS | less -R --quit-if-one-screen
+unset GDF_BRANCH_MODE GDF_BRANCH_STRING GDF_BRANCH_BASE GDF_NAME_ONLY GDF_OTHER_ARGS
