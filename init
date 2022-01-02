@@ -1,9 +1,6 @@
 #!/bin/bash
-
-# Make a bin directory
 mkdir -p ~/bin/
-
-# Neovim
 mkdir -p ~/.config/nvim/bundle/
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+stow all
 nvim +PluginInstall +qall
