@@ -1,4 +1,6 @@
 #!/bin/bash
+# Requires neovim (nvim), git and stow.
+set -e
 mkdir -p ~/bin/
 mkdir -p ~/.config/nvim/bundle/
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
