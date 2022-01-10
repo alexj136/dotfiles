@@ -15,7 +15,7 @@ alias vim='nvim'                # Use neovim
 alias :e='nvim'                 # Edit like it's (n)vim
 alias tmux='tmux -2'            # Force tmux to use 256 colours
 function pcp {
-    python -c "from math import *; from random import *; print($@)"
+    python3 -c "from math import *; from random import *; print($@)"
 }
 
 # Git command aliases
