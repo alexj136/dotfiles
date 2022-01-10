@@ -93,3 +93,8 @@ autocmd Filetype tex  setlocal spell spelllang=en_gb
 autocmd Filetype md   setlocal spell spelllang=en_gb
 autocmd Filetype txt  setlocal spell spelllang=en_gb
 autocmd Filetype adoc setlocal spell spelllang=en_gb
+
+" Source a local config file if it exists
+if filereadable(expand("~/.init.vim.local"))
+  exe 'source' "~/.init.vim.local"
+endif
