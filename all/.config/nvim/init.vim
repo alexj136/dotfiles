@@ -1,6 +1,12 @@
-" =========================================
-" ALEX'S VIMRC
-" =========================================
+" ==============================================================================
+"               _           _      __      _______ __  __ _____   _____ 
+"         /\   | |         ( )     \ \    / /_   _|  \/  |  __ \ / ____|
+"        /  \  | | _____  _|/ ___   \ \  / /  | | | \  / | |__) | |
+"       / /\ \ | |/ _ \ \/ / / __|   \ \/ /   | | | |\/| |  _  /| |
+"      / ____ \| |  __/>  <  \__ \    \  /   _| |_| |  | | | \ \| |____ 
+"     /_/    \_\_|\___/_/\_\ |___/     \/   |_____|_|  |_|_|  \_\\_____|
+"
+" ==============================================================================
 
 " Vundle configuration
 set nocompatible
@@ -8,6 +14,7 @@ filetype off
 set runtimepath+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin("~/.config/nvim/bundle")
 Plugin 'VundleVim/Vundle.vim'           " Vundle manages itself
+Plugin 'vim-airline/vim-airline'        " A nice buffer line
 Plugin 'godlygeek/tabular'              " Align text by given characters
 Plugin 'kshenoy/vim-signature'          " Show marks in the gutter
 Plugin 'airblade/vim-gitgutter'         " Git status in the gutter
@@ -50,8 +57,9 @@ set ignorecase          " Ignore case in search...
 set smartcase           " unless search contains uppercase or \C escape sequence
 set display=lastline    " Don't hide any wrapped lines
 
-" status: file modified git ___ [line/total:column] bufno
-set statusline=\ %f\ %m\ %{FugitiveStatusline()}%=%l/%L:%c\ %8p%%\ 
+" Airline stuff
+let g:airline#extensions#tabline#enabled = 1        " Enable the buffer line
+let g:airline#extensions#tabline#left_alt_sep = ' ' " Hide trailing bar char
 
 " Highlight hard tabs
 highlight SpecialKey ctermfg=1
