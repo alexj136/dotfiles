@@ -90,11 +90,13 @@ set directory^=$HOME/.config/nvim/swapfiles//
 
 " Jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
-    \ | exe "normal! g'\"" | endif
+\ | exe "normal! g'\"" | endif
 
 " Use SableCC highlighting for polyglot-related files
-autocmd BufRead,BufNewFile *.polyglot,*.productions,*.tokens,*.helpers
-    \set filetype=sablecc
+autocmd BufRead,BufNewFile *.polyglot    set filetype=sablecc
+autocmd BufRead,BufNewFile *.productions set filetype=sablecc
+autocmd BufRead,BufNewFile *.tokens      set filetype=sablecc
+autocmd BufRead,BufNewFile *.helpers     set filetype=sablecc
 
 " Enable spell checking by default in tex, md, txt, adoc
 autocmd Filetype tex  setlocal spell spelllang=en_gb
