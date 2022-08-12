@@ -7,3 +7,7 @@
 	editor = vim
 [credential "https://github.com"]
     username = alexj136
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[pack]
+	windowMemory = 128m

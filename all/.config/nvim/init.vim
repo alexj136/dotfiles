@@ -58,8 +58,9 @@ set smartcase           " unless search contains uppercase or \C escape sequence
 set display=lastline    " Don't hide any wrapped lines
 
 " Airline stuff
-let g:airline#extensions#tabline#enabled = 1        " Enable the buffer line
-let g:airline#extensions#tabline#left_alt_sep = ' ' " Hide trailing bar char
+let g:airline#extensions#tabline#enabled = 1               " Enable buffer line
+let g:airline#extensions#tabline#left_alt_sep = ' '        " No trailing | char
+let g:airline#extensions#tabline#formatter = 'unique_tail' " Tab title style
 
 " Highlight hard tabs
 highlight SpecialKey ctermfg=1
