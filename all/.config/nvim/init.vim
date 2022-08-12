@@ -17,7 +17,7 @@ Plugin 'VundleVim/Vundle.vim'           " Vundle manages itself
 Plugin 'vim-airline/vim-airline'        " A nice buffer line
 Plugin 'godlygeek/tabular'              " Align text by given characters
 Plugin 'kshenoy/vim-signature'          " Show marks in the gutter
-Plugin 'airblade/vim-gitgutter'         " Git status in the gutter
+Plugin 'mhinz/vim-signify'              " Git/hg status in the gutter
 Plugin 'tpope/vim-fugitive'             " Other git bits
 Plugin 'sickill/vim-monokai'            " A dark colorscheme
 Plugin 'cormacrelf/vim-colors-github'   " A light colorscheme
@@ -50,7 +50,7 @@ set mouse=n             " Preffered mouse settings
 set pastetoggle=<F2>    " Toggle paste mode with F2
 set visualbell t_vb=    " Disable bells
 set laststatus=2        " Status bar always
-set updatetime=100      " Required by gitgutter
+set updatetime=100      " Required by signify (git/hg gutter status)
 set colorcolumn=80      " Ruler at 80 characters
 set hidden              " Allow hiding of unsaved modified buffers
 set ignorecase          " Ignore case in search...
