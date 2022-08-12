@@ -18,7 +18,7 @@ Plugin 'vim-airline/vim-airline'        " A nice buffer line
 Plugin 'godlygeek/tabular'              " Align text by given characters
 Plugin 'kshenoy/vim-signature'          " Show marks in the gutter
 Plugin 'mhinz/vim-signify'              " Git/hg status in the gutter
-Plugin 'tpope/vim-fugitive'             " Other git bits
+Plugin 'tpope/vim-fugitive'             " Other git bits e.g. status in airline
 Plugin 'sickill/vim-monokai'            " A dark colorscheme
 Plugin 'cormacrelf/vim-colors-github'   " A light colorscheme
 Plugin 'vim-scripts/sablecc.vim'        " Colour for sablecc (polyglot)
