@@ -41,7 +41,7 @@ set showbreak=....          " Show this text on indented soft-wrapped lines
 syntax on               " Enable syntax highlighting.
 set guioptions=a        " Disable menu bar & toolbar in gvim
 set number              " Show line numbers at launch
-colorscheme github      " monokai theme also installed for when dark is required
+colorscheme monokai     " github theme also installed for when light is required
 set virtualedit=block   " Allow movement past the EOL in visual block mode
 set wrapmargin=0        " Do not hard-wrap automatically
 set hidden              " Allow hiding of unsaved modified buffers
