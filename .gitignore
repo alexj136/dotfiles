@@ -1,5 +1,6 @@
-*.swp
 *.swo
+*.swp
+all/.config/nvim/bundle/
 all/.vim/.netrwhist
 all/.vim/bundle
 all/.vim/plugin
