@@ -1,11 +1,5 @@
 # ~/.bash_aliases
 
-# Run gnome-keyring-daemon to unlock ssh keys when connecting to a server.
-if [ -x "$(command -v gnome-keyring-daemon)" -a -n "$DESKTOP_SESSION" ]; then
-    eval $(gnome-keyring-daemon --start --components=ssh)
-    export SSH_AUTH_SOCK
-fi
-
 # General aliases
 alias ls='ls --color=auto'      # Pretty colours for ls
 alias grep='grep --color=auto'  # Likewise for grep
