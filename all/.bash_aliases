@@ -19,7 +19,18 @@ alias gps='git push'
 alias gcm='git commit -m'
 alias gd='cd $(git rev-parse --show-toplevel)'
 function glg {
-    git --no-pager log --reverse --pretty=format:'%C(red)%h%C(reset)%C(yellow)%d%C(reset) %C(green)(%cr) %C(blue)<%an>%C(reset)%n%s' --abbrev-commit $@
+    if [ $# -eq 0 ]; then
+        local current_branch=$(git rev-parse --abbrev-ref HEAD)
+        local default_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+        if [[ "$default_branch" == "$current_branch" ]]; then
+            local args="-1"
+        else
+            local args="$default_branch..$current_branch"
+        fi
+    else
+        local args=$@
+    fi
+    git --no-pager log --reverse --pretty=format:'%C(red)%h%C(reset)%C(yellow)%d%C(reset) %C(green)(%cr) %C(blue)<%an>%C(reset)%n%s' --abbrev-commit $args
     echo ""
 }
 
