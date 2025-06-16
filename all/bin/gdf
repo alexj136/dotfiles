@@ -22,7 +22,7 @@
 #                   gdf --name-only
 #
 
-GDF_BRANCH_BASE=master
+GDF_DEFAULT_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
 GDF_OTHER_ARGS=""
 while [ $# -ne 0 ]
 do
@@ -31,7 +31,7 @@ do
             GDF_BRANCH_MODE=true
             ;;
         --base=*)
-            GDF_BRANCH_BASE="${1#*=}"
+            GDF_DEFAULT_BRANCH="${1#*=}"
             ;;
         --name-only)
             GDF_NAME_ONLY="$1"
@@ -44,7 +44,7 @@ do
 done
 
 if [ "$GDF_BRANCH_MODE" = true ]; then
-    GDF_BRANCH_STRING="$GDF_BRANCH_BASE...$(git symbolic-ref --short HEAD)"
+    GDF_BRANCH_STRING="$GDF_DEFAULT_BRANCH...$(git symbolic-ref --short HEAD)"
 fi
 git --no-pager diff $GDF_NAME_ONLY --color=always $GDF_BRANCH_STRING $GDF_OTHER_ARGS | less -R --quit-if-one-screen
-unset GDF_BRANCH_MODE GDF_BRANCH_STRING GDF_BRANCH_BASE GDF_NAME_ONLY GDF_OTHER_ARGS
+unset GDF_BRANCH_MODE GDF_BRANCH_STRING GDF_DEFAULT_BRANCH GDF_NAME_ONLY GDF_OTHER_ARGS
