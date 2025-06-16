@@ -22,6 +22,7 @@ Plugin 'tpope/vim-fugitive'             " Other git bits e.g. status in airline
 Plugin 'sickill/vim-monokai'            " A dark colorscheme
 Plugin 'cormacrelf/vim-colors-github'   " A light colorscheme
 Plugin 'vim-scripts/sablecc.vim'        " Colour for sablecc (polyglot)
+Plugin 'git+ssh://git@bitbucket.org/chromawallet/rell-vim.git'
 call vundle#end()
 filetype plugin indent on
 
