@@ -21,8 +21,6 @@ Plugin 'mhinz/vim-signify'              " Git/hg status in the gutter
 Plugin 'tpope/vim-fugitive'             " Other git bits e.g. status in airline
 Plugin 'sickill/vim-monokai'            " A dark colorscheme
 Plugin 'cormacrelf/vim-colors-github'   " A light colorscheme
-Plugin 'vim-scripts/sablecc.vim'        " Colour for sablecc (polyglot)
-Plugin 'git+ssh://git@bitbucket.org/chromawallet/rell-vim.git'
 call vundle#end()
 filetype plugin indent on
 
@@ -40,7 +38,6 @@ set showbreak=....          " Show this text on indented soft-wrapped lines
 
 " General settings
 syntax on               " Enable syntax highlighting.
-set guioptions=a        " Disable menu bar & toolbar in gvim
 set number              " Show line numbers at launch
 colorscheme github      " github theme also installed for when light is required
 set background=light    " Default to a light background (for github theme)
@@ -49,7 +46,6 @@ set wrapmargin=0        " Do not hard-wrap automatically
 set hidden              " Allow hiding of unsaved modified buffers
 set showmatch           " Breifly highlight the matching brackets on insertion
 set mouse=n             " Preffered mouse settings
-set pastetoggle=<F2>    " Toggle paste mode with F2
 set visualbell t_vb=    " Disable bells
 set laststatus=2        " Status bar always
 set updatetime=100      " Required by signify (git/hg gutter status)
@@ -94,12 +90,6 @@ set directory^=$HOME/.config/nvim/swapfiles//
 " Jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
 \ | exe "normal! g'\"" | endif
-
-" Use SableCC highlighting for polyglot-related files
-autocmd BufRead,BufNewFile *.polyglot    set filetype=sablecc
-autocmd BufRead,BufNewFile *.productions set filetype=sablecc
-autocmd BufRead,BufNewFile *.tokens      set filetype=sablecc
-autocmd BufRead,BufNewFile *.helpers     set filetype=sablecc
 
 " Enable spell checking by default in tex, md, txt, adoc
 autocmd Filetype tex  setlocal spell spelllang=en_gb
