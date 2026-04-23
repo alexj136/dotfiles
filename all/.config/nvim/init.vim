@@ -39,7 +39,7 @@ set showbreak=....          " Show this text on indented soft-wrapped lines
 " General settings
 syntax on               " Enable syntax highlighting.
 set number              " Show line numbers at launch
-colorscheme github      " github theme also installed for when light is required
+colorscheme monokai     " github theme also installed for when light is required
 set background=light    " Default to a light background (for github theme)
 set virtualedit=block   " Allow movement past the EOL in visual block mode
 set wrapmargin=0        " Do not hard-wrap automatically
