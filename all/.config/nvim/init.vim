@@ -101,3 +101,28 @@ autocmd Filetype adoc setlocal spell spelllang=en_gb
 if filereadable(expand("~/.init.vim.local"))
   exe 'source' "~/.init.vim.local"
 endif
+
+function! UGToChordPro()
+  while getline('.') =~# '\S'
+    let chordline = getline('.')
+    let lyricline = getline(line('.') + 1)
+    let chord = matchstr(chordline, '\S\+\s*$')
+    let chord = substitute(chord, '\s\+$', '', '')
+    let col = match(chordline, '\S\+\s*$')
+    let chordline = strpart(chordline, 0, col)
+    let chordline = substitute(chordline, '\s\+$', '', '')
+    call setline('.', chordline)
+    if col >= strlen(lyricline)
+      let lyricline .= '[' . chord . ']'
+    else
+      let lyricline =
+            \ strpart(lyricline, 0, col)
+            \ . '[' . chord . ']'
+            \ . strpart(lyricline, col)
+    endif
+    call setline(line('.') + 1, lyricline)
+  endwhile
+  call deletebufline(bufnr('%'), line('.'))
+endfunction
+
+command! UGToChordPro call UGToChordPro()
