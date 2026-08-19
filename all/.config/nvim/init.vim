@@ -13,14 +13,17 @@ set nocompatible
 filetype off
 set runtimepath+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin("~/.config/nvim/bundle")
-Plugin 'VundleVim/Vundle.vim'           " Vundle manages itself
-Plugin 'vim-airline/vim-airline'        " A nice buffer line
-Plugin 'godlygeek/tabular'              " Align text by given characters
-Plugin 'kshenoy/vim-signature'          " Show marks in the gutter
-Plugin 'mhinz/vim-signify'              " Git/hg status in the gutter
-Plugin 'tpope/vim-fugitive'             " Other git bits e.g. status in airline
-Plugin 'sickill/vim-monokai'            " A dark colorscheme
-Plugin 'cormacrelf/vim-colors-github'   " A light colorscheme
+Plugin 'VundleVim/Vundle.vim'               " Vundle manages itself
+Plugin 'vim-airline/vim-airline'            " A nice buffer line
+Plugin 'godlygeek/tabular'                  " Align text by given characters
+Plugin 'kshenoy/vim-signature'              " Show marks in the gutter
+Plugin 'mhinz/vim-signify'                  " Git/hg status in the gutter
+Plugin 'tpope/vim-fugitive'                 " Other git bits e.g. status in airline
+Plugin 'sainnhe/sonokai'                    " A dark colorscheme
+Plugin 'cormacrelf/vim-colors-github'       " A light colorscheme
+Plugin 'junegunn/fzf.vim'                   " Requires apt install fzf or similar
+Plugin 'rmagatti/auto-session'              " Automatically restore sessions based on directory
+Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}   " Much better syntax highlighting
 call vundle#end()
 filetype plugin indent on
 
@@ -39,7 +42,7 @@ set showbreak=....          " Show this text on indented soft-wrapped lines
 " General settings
 syntax on               " Enable syntax highlighting.
 set number              " Show line numbers at launch
-colorscheme monokai     " github theme also installed for when light is required
+colorscheme sonokai     " github theme also installed for when light is required
 set background=light    " Default to a light background (for github theme)
 set virtualedit=block   " Allow movement past the EOL in visual block mode
 set wrapmargin=0        " Do not hard-wrap automatically
@@ -49,7 +52,7 @@ set mouse=n             " Preffered mouse settings
 set visualbell t_vb=    " Disable bells
 set laststatus=2        " Status bar always
 set updatetime=100      " Required by signify (git/hg gutter status)
-set colorcolumn=80      " Ruler at 80 characters
+set colorcolumn=100     " Ruler at 100 characters (up from 80, it's 2026 now!)
 set hidden              " Allow hiding of unsaved modified buffers
 set ignorecase          " Ignore case in search...
 set smartcase           " unless search contains uppercase or \C escape sequence
@@ -59,6 +62,14 @@ set display=lastline    " Don't hide any wrapped lines
 let g:airline#extensions#tabline#enabled = 1               " Enable buffer line
 let g:airline#extensions#tabline#left_alt_sep = ' '        " No trailing | char
 let g:airline#extensions#tabline#formatter = 'unique_tail' " Tab title style
+
+" Treesitter stuff
+lua require('nvim-treesitter').install({'haskell'})
+autocmd FileType haskell lua vim.treesitter.start()
+
+" Auto-session stuff
+set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions
+lua require('auto-session').setup({ suppressed_dirs = { '~/', '~/Downloads', '/' } })
 
 " Highlight hard tabs
 highlight SpecialKey ctermfg=1
