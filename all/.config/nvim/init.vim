@@ -21,9 +21,7 @@ Plugin 'mhinz/vim-signify'                  " Git/hg status in the gutter
 Plugin 'tpope/vim-fugitive'                 " Other git bits e.g. status in airline
 Plugin 'sainnhe/sonokai'                    " A dark colorscheme
 Plugin 'cormacrelf/vim-colors-github'       " A light colorscheme
-Plugin 'junegunn/fzf.vim'                   " Requires apt install fzf or similar
 Plugin 'rmagatti/auto-session'              " Automatically restore sessions based on directory
-Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}   " Much better syntax highlighting
 call vundle#end()
 filetype plugin indent on
 
@@ -63,10 +61,6 @@ let g:airline#extensions#tabline#enabled = 1               " Enable buffer line
 let g:airline#extensions#tabline#left_alt_sep = ' '        " No trailing | char
 let g:airline#extensions#tabline#formatter = 'unique_tail' " Tab title style
 
-" Treesitter stuff
-lua require('nvim-treesitter').install({'haskell'})
-autocmd FileType haskell lua vim.treesitter.start()
-
 " Auto-session stuff
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions
 lua require('auto-session').setup({ suppressed_dirs = { '~/', '~/Downloads', '/' } })
@@ -87,6 +81,7 @@ nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <S-tab> :bprevious<CR>
 " Disable ex-mode bindings
 nnoremap Q <nop>
+nnoremap gQ <nop>
 nnoremap q: <nop>
 " Show buffers
 nnoremap <C-K> :buffers<CR>:b<Space>
